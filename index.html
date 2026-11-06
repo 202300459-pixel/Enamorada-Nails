@@ -6,11 +6,10 @@
 <title>Enamorada’s Nails — Agenda tu cita</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff3f7;--card:#fff;--ink:#4a1d33;--muted:#9b6b80;--pink:#e8457f;--pink2:#f7a8c4;--soft:#ffe0ec;--line:#f6c9da;--ok:#2e9e6b;--bad:#d6455d;color-scheme:light;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#fff3f7;--card:#fff;--ink:#4a1d33;--muted:#9b6b80;--pink:#e8457f;--pink2:#f7a8c4;--soft:#ffe0ec;--line:#f6c9da;--ok:#2e9e6b;--bad:#d6455d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1220;--card:#3a1a2d;--ink:#ffe8f1;--muted:#d9a3bb;--pink:#ff6fa5;--pink2:#c2457a;--soft:#4d2239;--line:#6a2f4e;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#2a1220;--card:#3a1a2d;--ink:#ffe8f1;--muted:#d9a3bb;--pink:#ff6fa5;--pink2:#c2457a;--soft:#4d2239;--line:#6a2f4e;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body.admin{--bg:#120a0f;--card:#221019;--ink:#ffe8f1;--muted:#c79ab0;--pink:#ff6fa5;--pink2:#7a2b50;--soft:#37182a;--line:#4a2238;color-scheme:dark}
+body.admin header{background:linear-gradient(160deg,#4a1d38,#7a2b50)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.45}
 .wrap{max-width:560px;margin:0 auto;padding:0 16px 40px}
@@ -20,7 +19,7 @@ header p{margin:6px 0 0;opacity:.95;font-size:14px}
 .tabs{display:flex;gap:8px;margin:18px 0 14px}
 .tab{flex:1;border:2px solid var(--line);background:var(--card);color:var(--ink);padding:10px;border-radius:999px;font:600 14px 'Poppins',system-ui,sans-serif;cursor:pointer}
 .tab.on{background:var(--pink);border-color:var(--pink);color:#fff}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 4px 14px rgba(232,69,127,.08)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(232,69,127,.08)}
 h2{font-family:'Playfair Display',Georgia,serif;font-size:19px;margin:0 0 10px}
 .step{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--pink);color:#fff;font:600 13px 'Poppins',sans-serif;align-items:center;justify-content:center;margin-right:8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -32,20 +31,20 @@ h2{font-family:'Playfair Display',Georgia,serif;font-size:19px;margin:0 0 10px}
 .nav:disabled{opacity:.35}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
 .dow{font-size:12px;color:var(--muted);font-weight:600;padding:4px 0}
-.day{aspect-ratio:1;border:0;border-radius:12px;background:transparent;color:var(--ink);font:500 14px 'Poppins',sans-serif;cursor:pointer;position:relative}
+.day{aspect-ratio:1;border:0;border-radius:12px;background:transparent;color:var(--ink);font:500 14px 'Poppins',sans-serif;cursor:pointer}
 .day:hover:not(:disabled){background:var(--soft)}
 .day.hoy{outline:2px solid var(--pink2)}
 .day.on{background:var(--pink);color:#fff}
 .day:disabled{color:var(--muted);opacity:.35;cursor:not-allowed}
 .day.full:disabled{text-decoration:line-through;opacity:.5}
-.legend{font-size:12px;color:var(--muted);margin-top:8px}
+.legend,.small{font-size:12px;color:var(--muted);margin-top:8px}
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .slot{border:2px solid var(--line);background:var(--card);color:var(--ink);padding:10px 4px;border-radius:12px;font:500 13px 'Poppins',sans-serif;cursor:pointer}
 .slot.on{background:var(--pink);border-color:var(--pink);color:#fff}
 .slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed;background:var(--soft)}
 label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
 input,textarea,select{width:100%;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 12px;font:400 15px 'Poppins',system-ui,sans-serif}
-input:focus,textarea:focus{outline:none;border-color:var(--pink)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--pink)}
 .btn{width:100%;border:0;background:var(--pink);color:#fff;padding:14px;border-radius:999px;font:600 16px 'Poppins',sans-serif;margin-top:14px;cursor:pointer}
 .btn:disabled{opacity:.5}
 .btn.sm{width:auto;padding:8px 14px;font-size:13px;margin:0;display:inline-block;text-decoration:none}
@@ -53,20 +52,28 @@ input:focus,textarea:focus{outline:none;border-color:var(--pink)}
 .btn.wa{background:#1fa855;color:#fff;text-decoration:none;display:block;text-align:center;margin-top:10px}
 .btn.bad{background:var(--bad);color:#fff}
 .sum{background:var(--soft);border-radius:14px;padding:10px 12px;font-size:14px;margin-bottom:6px}
-.note{background:var(--soft);color:var(--ink);border-radius:14px;padding:12px;font-size:14px}
-.ok{text-align:center;padding:10px 0}
-.ok .big{font-size:48px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;text-align:center;padding:12px 4px}
-.stat b{display:block;font:700 26px 'Playfair Display',Georgia,serif;color:var(--pink)}
-.stat span{font-size:12px;color:var(--muted)}
-.cita{border-left:5px solid var(--pink2);padding-left:12px;margin-bottom:14px}
-.cita.confirmada{border-color:var(--ok)}
-.cita.cancelada{border-color:var(--bad);opacity:.6}
-.cita .top{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:14px}
-.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--pink);font-weight:600;height:fit-content}
+.ok{text-align:center;padding:10px 0}.ok .big{font-size:48px}
+.seg{display:flex;gap:6px;background:var(--soft);padding:4px;border-radius:999px;margin-bottom:12px}
+.seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:9px 4px;border-radius:999px;font:600 13px 'Poppins',sans-serif;cursor:pointer}
+.seg button.on{background:var(--pink);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;padding:10px 2px}
+.stat b{display:block;font:700 22px 'Playfair Display',Georgia,serif;color:var(--pink)}
+.stat span{font-size:11px;color:var(--muted)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:12px}
+.wd{border:2px solid var(--line);background:var(--card);color:var(--muted);border-radius:12px;padding:6px 0;font:600 11px 'Poppins',sans-serif;cursor:pointer;text-align:center}
+.wd b{display:block;font-size:16px;color:var(--ink)}.wd i{font-style:normal;font-size:9px;color:var(--pink)}
+.wd.on{border-color:var(--pink)}
+.dh{font-weight:600;font-size:13px;color:var(--muted);margin:14px 0 6px;text-transform:capitalize}
+.cita{border-left:5px solid var(--pink2)}
+.cita.pendiente{border-left-color:#f5a524}.cita.confirmada{border-left-color:var(--ok)}.cita.completada{border-left-color:#5aa0ff;opacity:.8}.cita.cancelada{border-left-color:var(--bad);opacity:.55}
+.top{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:14px}
+.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--pink);font-weight:600;height:fit-content;white-space:nowrap}
 .cita p{margin:3px 0;font-size:13px;color:var(--muted)}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}.chk input{width:auto}
+.prev{background:var(--soft);border-radius:12px;padding:10px;font-size:13px;margin-top:10px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:9}
 .hide{display:none}
 </style>
@@ -80,221 +87,271 @@ input:focus,textarea:focus{outline:none;border-color:var(--pink)}
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, setDoc, updateDoc, deleteDoc, collection, onSnapshot, writeBatch, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  // Configuración oficial de tu proyecto Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDDdrh8JTlPNAa1i5iQMV2mZ7aLyF3eA5I",
-    authDomain: "enamorada-s-nails.firebaseapp.com",
-    projectId: "enamorada-s-nails",
-    storageBucket: "enamorada-s-nails.firebasestorage.app",
-    messagingSenderId: "55705065716",
-    appId: "1:55705065716:web:b520060955aafefd6e66a1"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyDDdrh8JTlPNAa1i5iQMV2mZ7aLyF3eA5I",
+  authDomain: "enamorada-s-nails.firebaseapp.com",
+  projectId: "enamorada-s-nails",
+  storageBucket: "enamorada-s-nails.firebasestorage.app",
+  messagingSenderId: "55705065716",
+  appId: "1:55705065716:web:b520060955aafefd6e66a1"
+};
+const db = getFirestore(initializeApp(firebaseConfig));
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DIAS=["D","L","M","M","J","V","S"];
+const SERVICIOS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Baño acrílico","Aplicación de polygel","Otro"];
+const HORAS=[7,8,9,10,11,12,13,14,15,16,17,18,19],LAST=HORAS[HORAS.length-1];
+const h12=h=>(h%12||12)+":00 "+(h<12?"AM":"PM");
+const hh=t=>+String(t).slice(0,2);
+const fLarga=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("es",{weekday:"long",day:"numeric",month:"long"})};
+const fCorta=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("es",{day:"numeric",month:"short"})};
+const nextDay=s=>{const [y,m,d]=s.split("-").map(Number);return iso(new Date(y,m-1,d+1))};
+const WA="50432180318",WAT="+504 3218-0318";
+const PW_HASH="7930b9d539644f3fd36e685de80939a7f4a4a6a78827f097e77347c7029dc759";
 
-  const $=s=>document.querySelector(s);
-  const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const pad=n=>String(n).padStart(2,"0");
-  const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
-  const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-  const DIAS=["D","L","M","M","J","V","S"];
-  const SERVICIOS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Otro"];
-  const HORAS=[7,8,9,10,11,12,13,14,15,16,17,18,19];
-  const h12=h=>(h%12||12)+":00 "+(h<12?"AM":"PM");
-  const fLarga=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("es",{weekday:"long",day:"numeric",month:"long"})};
-  const WA="50432180318",WAT="+504 3218-0318";
+let taken=new Set(),ocup=[],allCitas=[],citas=[],done=false;
+let sel={serv:null,otro:"",fecha:null,hora:null},view=new Date();view.setDate(1);
+let unlocked=false,psub="citas",filtro="prox",q="",armed=null;
+function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}
 
-  function getLocal(k,def){try{return JSON.parse(localStorage.getItem(k))||def}catch(e){return def}}
-  function setLocal(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-
-  let pwHash=getLocal("pwHash",null), unlocked=false;
-  let taken=new Set(), citas=[], done=false;
-  let sel={serv:null,fecha:null,hora:null},view=new Date(),filtro="prox",armed=null;
-  view.setDate(1);
-
-  function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}
-
-  function renderReservar(){
-    const root=$("#vReservar");
-    if(done){
-      root.innerHTML=`<div class="card ok"><div class="big">🎀</div><h2>¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b> a las <b>${esc(h12(+done.hora.slice(0,2)))}</b></p><p style="color:var(--muted);font-size:14px">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé una cita de "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(+done.hora.slice(0,2))+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn" id="otra">Agendar otra cita</button></div>`;
-      $("#otra").onclick=()=>{done=false;sel={serv:null,fecha:null,hora:null};renderReservar()};return;
-    }
-    let h=`<div class="card"><h2><span class="step">1</span>¿Qué te quieres hacer?</h2><div class="chips">${SERVICIOS.map(s=>`<button class="chip ${sel.serv===s?"on":""}" data-s="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>`;
-    if(sel.serv==="Otro")h+=`<div class="card"><label for="otro" style="margin-top:0">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué servicio necesitas" value="${esc(sel.otro||"")}"></div>`;
-    h+=`<div class="card"><h2><span class="step">2</span>Elige el día</h2><div id="cal"></div><div class="legend">Abierto todos los días · Los días tachados están llenos</div></div>`;
-    if(sel.fecha)h+=`<div class="card"><h2><span class="step">3</span>Elige la hora</h2><div class="slots" id="slots"></div></div>`;
-    if(sel.fecha&&sel.hora)h+=`<div class="card"><h2><span class="step">4</span>Tus datos</h2><div class="sum">${esc(sel.serv||"Elige un servicio")} · ${esc(fLarga(sel.fecha))} · ${esc(h12(+sel.hora.slice(0,2)))}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita 💅</button></div>`;
-    h+=`<div class="card" style="text-align:center"><p style="margin:0;font-size:14px">¿Dudas o quieres otro horario?</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, quiero información para agendar una cita 💅")}">💬 WhatsApp ${WAT}</a></div>`;
-    root.innerHTML=h;
-    root.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{sel.serv=b.dataset.s;renderReservar()});
-    drawCal();drawSlots();const ot=$("#otro");if(ot)ot.oninput=()=>{sel.otro=ot.value};
-    const go=$("#go");if(go)go.onclick=book;
+/* ================= CLIENTAS ================= */
+function renderReservar(){
+  const root=$("#vReservar");
+  if(done){
+    root.innerHTML=`<div class="card ok"><div class="big">🎀</div><h2>¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b> a las <b>${esc(h12(hh(done.hora)))}</b></p><p style="color:var(--muted);font-size:14px">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé una cita de "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(hh(done.hora))+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn" id="otra">Agendar otra cita</button></div>`;
+    $("#otra").onclick=()=>{done=false;sel={serv:null,otro:"",fecha:null,hora:null};renderReservar()};return;
   }
-
-  function drawCal(){
-    const c=$("#cal");if(!c)return;
-    const y=view.getFullYear(),m=view.getMonth(),t0=new Date();t0.setHours(0,0,0,0);
-    const max=new Date(t0);max.setDate(max.getDate()+60);
-    const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay();
-    const cur=t0.getFullYear()===y&&t0.getMonth()===m;
-    let h=`<div class="cal-h"><button class="nav" id="pv" ${cur?"disabled":""} aria-label="Mes anterior">‹</button><b>${MESES[m]} ${y}</b><button class="nav" id="nx" aria-label="Mes siguiente">›</button></div><div class="grid">${DIAS.map(d=>`<div class="dow">${d}</div>`).join("")}`;
-    for(let i=0;i<lead;i++)h+="<div></div>";
-    for(let d=1;d<=n;d++){
-      const dt=new Date(y,m,d),k=iso(dt);
-      const cnt=[...taken].filter(x=>x.startsWith(k)).length;
-      const full=cnt>=HORAS.length,off=dt<t0||dt>max||full;
-      h+=`<button class="day ${k===iso(t0)?"hoy":""} ${sel.fecha===k?"on":""} ${full?"full":""}" data-d="${k}" ${off?"disabled":""}>${d}</button>`;
-    }
-    c.innerHTML=h+"</div>";
-    $("#pv").onclick=()=>{view=new Date(y,m-1,1);drawCal()};
-    $("#nx").onclick=()=>{view=new Date(y,m+1,1);drawCal()};
-    c.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{sel.fecha=b.dataset.d;sel.hora=null;renderReservar();setTimeout(()=>{const s=$("#slots");if(s)s.scrollIntoView({behavior:"smooth",block:"center"})},50)});
+  let h=`<div class="card"><h2><span class="step">1</span>¿Qué te quieres hacer?</h2><div class="chips">${SERVICIOS.map(s=>`<button class="chip ${sel.serv===s?"on":""}" data-s="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>`;
+  if(sel.serv==="Otro")h+=`<div class="card"><label for="otro" style="margin-top:0">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué servicio necesitas" value="${esc(sel.otro)}"></div>`;
+  h+=`<div class="card"><h2><span class="step">2</span>Elige el día</h2><div id="cal"></div><div class="legend">Abierto todos los días · Los días tachados están llenos</div></div>`;
+  if(sel.fecha)h+=`<div class="card"><h2><span class="step">3</span>Elige la hora</h2><div class="slots" id="slots"></div></div>`;
+  if(sel.fecha&&sel.hora)h+=`<div class="card"><h2><span class="step">4</span>Tus datos</h2><div class="sum">${esc(sel.serv||"Elige un servicio")} · ${esc(fLarga(sel.fecha))} · ${esc(h12(hh(sel.hora)))}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita 💅</button></div>`;
+  h+=`<div class="card" style="text-align:center"><p style="margin:0;font-size:14px">¿Dudas o quieres otro horario?</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, quiero información para agendar una cita 💅")}">💬 WhatsApp ${WAT}</a></div>`;
+  root.innerHTML=h;
+  root.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{sel.serv=b.dataset.s;renderReservar()});
+  drawCal();drawSlots();const ot=$("#otro");if(ot)ot.oninput=()=>{sel.otro=ot.value};
+  const go=$("#go");if(go)go.onclick=book;
+}
+function drawCal(){
+  const c=$("#cal");if(!c)return;
+  const y=view.getFullYear(),m=view.getMonth(),t0=new Date();t0.setHours(0,0,0,0);
+  const max=new Date(t0);max.setDate(max.getDate()+90);
+  const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay(),cur=t0.getFullYear()===y&&t0.getMonth()===m;
+  let h=`<div class="cal-h"><button class="nav" id="pv" ${cur?"disabled":""} aria-label="Mes anterior">‹</button><b>${MESES[m]} ${y}</b><button class="nav" id="nx" aria-label="Mes siguiente">›</button></div><div class="grid">${DIAS.map(d=>`<div class="dow">${d}</div>`).join("")}`;
+  for(let i=0;i<lead;i++)h+="<div></div>";
+  for(let d=1;d<=n;d++){
+    const dt=new Date(y,m,d),k=iso(dt),full=[...taken].filter(x=>x.startsWith(k)).length>=HORAS.length;
+    h+=`<button class="day ${k===iso(t0)?"hoy":""} ${sel.fecha===k?"on":""} ${full?"full":""}" data-d="${k}" ${dt<t0||dt>max||full?"disabled":""}>${d}</button>`;
   }
-
-  function drawSlots(){
-    const s=$("#slots");if(!s||!sel.fecha)return;
-    const now=new Date(),hoy=sel.fecha===iso(now);
-    s.innerHTML=HORAS.map(h=>{const k=pad(h)+":00",busy=taken.has(sel.fecha+"_"+k)||(hoy&&h<=now.getHours());
-      return `<button class="slot ${sel.hora===k?"on":""}" data-h="${k}" ${busy?"disabled":""}>${h12(h)}</button>`}).join("");
-    s.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{sel.hora=b.dataset.h;renderReservar();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},50)});
-  }
-
-  async function book(){
-    const nombre=$("#nom").value.trim(),tel=$("#tel").value.trim(),notas=$("#nts").value.trim();
-    if(!sel.serv)return toast("Elige un servicio primero 💖");
-    if(sel.serv==="Otro"&&!(sel.otro||"").trim())return toast("Escribe qué te quieres hacer");
-    if(nombre.length<2)return toast("Escribe tu nombre");
-    if(tel.replace(/\D/g,"").length<8)return toast("Escribe un teléfono válido");
-    
-    const btn=$("#go");btn.disabled=true;btn.textContent="Agendando…";
-    const id=sel.fecha+"_"+sel.hora;
-
-    try{
-      const ocupRef = doc(db, "ocupado", id);
-      const ex = await getDoc(ocupRef);
-      if(ex.exists()){
-        toast("Ese horario ya se ocupó, elige otro");
-        sel.hora=null;renderReservar();return;
-      }
-      await setDoc(ocupRef, {fecha:sel.fecha, hora:sel.hora});
-      const c={nombre,tel,notas,servicio:sel.serv==="Otro"?"Otro: "+sel.otro.trim():sel.serv,fecha:sel.fecha,hora:sel.hora,estado:"pendiente",creada:Date.now()};
-      await setDoc(doc(db, "citas", id), c);
-      done=c;renderReservar();window.scrollTo({top:0,behavior:"smooth"});
-    }catch(e){
-      console.error(e);
-      toast("No se pudo agendar. Revisa tu conexión a internet.");
-      btn.disabled=false;btn.textContent="Confirmar mi cita 💅";
-    }
-  }
-
-  async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("enamorada:"+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
-
-  function renderGate(){
-    const root=$("#vPanel"),first=pwHash===null;
-    root.innerHTML=`<div class="card"><h2>🔒 ${first?"Crea tu contraseña":"Panel protegido"}</h2><p style="font-size:14px;color:var(--muted)">${first?"Elige una contraseña para entrar al panel (mínimo 4 caracteres).":"Escribe tu contraseña para ver las citas."}</p><input id="pw" type="password" autocomplete="${first?"new-password":"current-password"}" placeholder="Contraseña"><button class="btn" id="pwgo">${first?"Guardar contraseña":"Entrar"}</button></div>`;
-    const go=async()=>{
-      const v=$("#pw").value;
-      if(first){
-        if(v.length<4)return toast("Mínimo 4 caracteres");
-        const h=await sha(v);
-        pwHash=h;setLocal("pwHash",h);
-        unlocked=true;renderPanel();
-      }else{
-        if(await sha(v)===pwHash){unlocked=true;renderPanel()}else toast("Contraseña incorrecta");
-      }
-    };
-    $("#pwgo").onclick=go;$("#pw").onkeydown=e=>{if(e.key==="Enter")go()};
-  }
-
-  function renderPanel(){
-    const root=$("#vPanel");
-    if(!unlocked){renderGate();return}
-    const hoy=iso(new Date()),act=citas.filter(c=>c.estado!=="cancelada"&&!c.bloqueo);
-    const st=[["Hoy",act.filter(c=>c.fecha===hoy).length],["Próximas",act.filter(c=>c.fecha>=hoy).length],["Pendientes",act.filter(c=>c.estado==="pendiente").length]];
-    let list=[...citas].sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
-    if(filtro==="hoy")list=list.filter(c=>c.fecha===hoy&&c.estado!=="cancelada");
-    else if(filtro==="prox")list=list.filter(c=>c.fecha>=hoy&&c.estado!=="cancelada");
-    else if(filtro==="pend")list=list.filter(c=>c.estado==="pendiente");
-    const F=[["prox","Próximas"],["hoy","Hoy"],["pend","Pendientes"],["todas","Todas"]];
-    let h=`<div style="text-align:right;margin-bottom:8px"><button class="btn sm ghost" id="chg">Cambiar contraseña</button> <button class="btn sm ghost" id="lock">🔒 Bloquear panel</button></div><div class="stats">${st.map(s=>`<div class="stat"><b>${s[1]}</b><span>${s[0]}</span></div>`).join("")}</div><details class="card"><summary style="cursor:pointer;font-weight:600">🚫 Bloquear horas</summary><p style="font-size:13px;color:var(--muted)">Úsalo si sales a un mandado, tienes un retraso o una clienta usa 2 horas.</p><label for="bf">Día</label><input id="bf" type="date" min="${hoy}" value="${hoy}"><label for="bh">Desde la hora</label><select id="bh">${HORAS.map(h=>`<option value="${h}">${h12(h)}</option>`).join("")}</select><label for="bn">Cuántas horas</label><select id="bn">${[1,2,3,4,5].map(n=>`<option value="${n}">${n}</option>`).join("")}</select><label for="bm">Motivo (opcional)</label><input id="bm" maxlength="60" placeholder="Ej. Compra de productos"><button class="btn" id="bgo">Bloquear</button></details><div class="chips" style="margin-bottom:14px">${F.map(f=>`<button class="chip ${filtro===f[0]?"on":""}" data-f="${f[0]}">${f[1]}</button>`).join("")}</div><div class="card">`;
-    if(!list.length)h+=`<p style="text-align:center;color:var(--muted)">No hay citas aquí todavía 🌸</p>`;
-    list.forEach(c=>{
-      const id=c.fecha+"_"+c.hora,d=String(c.tel||"").replace(/\D/g,""),wa=d.length===8?"504"+d:d;
-      if(c.bloqueo){if(c.estado!=="cancelada")h+=`<div class="cita" style="border-color:var(--muted)"><div class="top"><span>${esc(fLarga(c.fecha))} · ${esc(h12(+c.hora.slice(0,2)))}</span><span class="badge">🚫 bloqueado</span></div><p>${esc(c.servicio)}</p><div class="acts"><button class="btn sm ghost" data-a="unb" data-id="${esc(id)}">Desbloquear</button></div></div>`;return}
-      h+=`<div class="cita ${esc(c.estado)}"><div class="top"><span>${esc(fLarga(c.fecha))} · ${esc(h12(+c.hora.slice(0,2)))}</span><span class="badge">${esc(c.estado)}</span></div><p><b style="color:var(--ink)">${esc(c.nombre)}</b> — ${esc(c.servicio)}</p><p>📞 ${esc(c.tel)}</p>${c.notas?`<p>📝 ${esc(c.notas)}</p>`:""}`;
-      if(c.estado!=="cancelada")h+=`<div class="acts">${c.estado==="pendiente"?`<button class="btn sm" data-a="ok" data-id="${esc(id)}">Confirmar</button>`:""}<a class="btn sm ghost" target="_blank" rel="noopener" href="https://wa.me/${esc(wa)}?text=${encodeURIComponent("¡Buen día, "+c.nombre+"! 💖 Muchas gracias por agendar. Confirmo tu cita para el "+fLarga(c.fecha)+" a las "+h12(+c.hora.slice(0,2))+". ¡Muchas gracias!")}">WhatsApp</a><button class="btn sm ${armed===id?"bad":"ghost"}" data-a="no" data-id="${esc(id)}">${armed===id?"¿Seguro? Cancelar":"Cancelar"}</button></div>`;
-      h+="</div>";
+  c.innerHTML=h+"</div>";
+  $("#pv").onclick=()=>{view=new Date(y,m-1,1);drawCal()};
+  $("#nx").onclick=()=>{view=new Date(y,m+1,1);drawCal()};
+  c.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{sel.fecha=b.dataset.d;sel.hora=null;renderReservar();setTimeout(()=>{const s=$("#slots");if(s)s.scrollIntoView({behavior:"smooth",block:"center"})},50)});
+}
+function drawSlots(){
+  const s=$("#slots");if(!s||!sel.fecha)return;
+  const now=new Date(),hoy=sel.fecha===iso(now);
+  s.innerHTML=HORAS.map(h=>{const k=pad(h)+":00",busy=taken.has(sel.fecha+"_"+k)||(hoy&&h<=now.getHours());
+    return `<button class="slot ${sel.hora===k?"on":""}" data-h="${k}" ${busy?"disabled":""}>${h12(h)}</button>`}).join("");
+  s.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{sel.hora=b.dataset.h;renderReservar();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},50)});
+}
+async function book(){
+  const nombre=$("#nom").value.trim(),tel=$("#tel").value.trim(),notas=$("#nts").value.trim();
+  if(!sel.serv)return toast("Elige un servicio primero 💖");
+  if(sel.serv==="Otro"&&!sel.otro.trim())return toast("Escribe qué te quieres hacer");
+  if(nombre.length<2)return toast("Escribe tu nombre");
+  if(tel.replace(/\D/g,"").length<8)return toast("Escribe un teléfono válido");
+  const btn=$("#go");btn.disabled=true;btn.textContent="Agendando…";
+  const id=sel.fecha+"_"+sel.hora;
+  const c={nombre,tel,notas,servicio:sel.serv==="Otro"?"Otro: "+sel.otro.trim():sel.serv,fecha:sel.fecha,hora:sel.hora,estado:"pendiente",creada:Date.now()};
+  try{
+    await runTransaction(db,async tx=>{
+      const r=doc(db,"ocupado",id);
+      if((await tx.get(r)).exists())throw new Error("taken");
+      tx.set(r,{fecha:sel.fecha,hora:sel.hora});
+      tx.set(doc(db,"citas",id),c);
     });
-    root.innerHTML=h+"</div>";
-    $("#lock").onclick=()=>{unlocked=false;renderPanel()};
-    $("#chg").onclick=()=>{pwHash=null;setLocal("pwHash",null);unlocked=false;renderPanel()};
-    $("#bgo").onclick=bloquear;
-    root.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;renderPanel()});
-    root.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{
-      const id=b.dataset.id;
-      try{
-        if(b.dataset.a==="unb"){
-          await updateDoc(doc(db,"citas",id), {estado:"cancelada"});
-          await deleteDoc(doc(db,"ocupado",id));
-          toast("Horario desbloqueado");
-        }else if(b.dataset.a==="ok"){
-          await updateDoc(doc(db,"citas",id), {estado:"confirmada"});
-          toast("Cita confirmada ✅");
-        }else if(armed!==id){
-          armed=id;renderPanel();return;
-        }else{
-          await updateDoc(doc(db,"citas",id), {estado:"cancelada"});
-          await deleteDoc(doc(db,"ocupado",id));
-          armed=null;toast("Cita cancelada, horario liberado");
-        }
-      }catch(e){toast("No se pudo completar la acción")}
-    });
+    done=c;renderReservar();window.scrollTo({top:0,behavior:"smooth"});
+  }catch(e){
+    if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.hora=null;renderReservar()}
+    else{console.error(e);toast("No se pudo agendar. Revisa tu conexión a internet.");btn.disabled=false;btn.textContent="Confirmar mi cita 💅"}
   }
+}
 
-  async function bloquear(){
-    const f=$("#bf").value,h0=+$("#bh").value,n=+$("#bn").value,mo=$("#bm").value.trim()||"Horario bloqueado";
-    if(!f)return toast("Elige el día");
-    let k=0;
+/* ================= PANEL ================= */
+async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("enamorada:"+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+function renderPanel(){
+  const root=$("#vPanel");
+  if(!unlocked){
+    root.innerHTML=`<div class="card"><h2>🔒 Panel protegido</h2><p style="font-size:14px;color:var(--muted)">Escribe tu clave para ver las citas.</p><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Clave"><button class="btn" id="pwgo">Entrar</button></div>`;
+    const go=async()=>{if(await sha($("#pw").value)===PW_HASH){unlocked=true;renderPanel()}else toast("Clave incorrecta")};
+    $("#pwgo").onclick=go;$("#pw").onkeydown=e=>{if(e.key==="Enter")go()};return;
+  }
+  root.innerHTML=`<div class="seg"><button data-p="citas" class="${psub==="citas"?"on":""}">📅 Citas</button><button data-p="bloqueos" class="${psub==="bloqueos"?"on":""}">🚫 Bloqueos</button><button id="lock">🔒 Salir</button></div><div id="pbody"></div>`;
+  root.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{psub=b.dataset.p;armed=null;renderPanel()});
+  $("#lock").onclick=()=>{unlocked=false;renderPanel()};
+  psub==="citas"?shellCitas():shellBloq();
+}
+
+/* ---- Citas ---- */
+function shellCitas(){
+  $("#pbody").innerHTML=`<div class="stats" id="stats"></div><div class="week" id="week"></div><input id="q" type="search" placeholder="🔍 Buscar por nombre, teléfono o servicio" value="${esc(q)}" style="margin-bottom:12px"><div class="chips" id="fl" style="margin-bottom:4px"></div><div id="lista"></div>`;
+  $("#q").oninput=e=>{q=e.target.value;drawLista()};
+  drawCitas();
+}
+function drawCitas(){
+  if(!$("#stats"))return;
+  const hoy=iso(new Date()),act=citas.filter(c=>c.estado!=="cancelada");
+  const wk=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return iso(d)});
+  const st=[["Hoy",act.filter(c=>c.fecha===hoy).length],["Próximas",act.filter(c=>c.fecha>=hoy&&c.estado!=="completada").length],["Pendientes",act.filter(c=>c.estado==="pendiente").length],["7 días",act.filter(c=>wk.includes(c.fecha)).length]];
+  $("#stats").innerHTML=st.map(s=>`<div class="stat"><b>${s[1]}</b><span>${s[0]}</span></div>`).join("");
+  $("#week").innerHTML=wk.map(f=>{const n=act.filter(c=>c.fecha===f).length,dt=new Date(f+"T12:00:00");return `<button class="wd ${filtro===f?"on":""}" data-f="${f}">${DIAS[dt.getDay()]}<b>${dt.getDate()}</b><i>${n?n+(n>1?" citas":" cita"):"·"}</i></button>`}).join("");
+  const F=[["prox","Próximas"],["hoy","Hoy"],["pend","Pendientes"],["todas","Todas"]];
+  $("#fl").innerHTML=F.map(f=>`<button class="chip ${filtro===f[0]?"on":""}" data-f="${f[0]}">${f[1]}</button>`).join("");
+  document.querySelectorAll("#week [data-f],#fl [data-f]").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;drawCitas()});
+  drawLista();
+}
+function drawLista(){
+  const el=$("#lista");if(!el)return;
+  const hoy=iso(new Date());
+  let list=[...citas].sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+  if(/^\d{4}-/.test(filtro))list=list.filter(c=>c.fecha===filtro);
+  else if(filtro==="hoy")list=list.filter(c=>c.fecha===hoy&&c.estado!=="cancelada");
+  else if(filtro==="prox")list=list.filter(c=>c.fecha>=hoy&&c.estado!=="cancelada"&&c.estado!=="completada");
+  else if(filtro==="pend")list=list.filter(c=>c.estado==="pendiente");
+  const t=q.trim().toLowerCase();
+  if(t)list=list.filter(c=>(c.nombre+" "+c.tel+" "+c.servicio).toLowerCase().includes(t));
+  if(!list.length){el.innerHTML=`<div class="card"><p style="text-align:center;color:var(--muted);margin:0">No hay citas aquí todavía 🌸</p></div>`;return}
+  let h="",last="";
+  list.forEach(c=>{
+    if(c.fecha!==last){last=c.fecha;h+=`<div class="dh">${c.fecha===hoy?"Hoy · ":""}${esc(fLarga(c.fecha))} (${list.filter(x=>x.fecha===c.fecha).length})</div>`}
+    const id=c._id,d=String(c.tel||"").replace(/\D/g,""),wa=d.length===8?"504"+d:d,arm=armed===id;
+    const msg="¡Buen día, "+c.nombre+"! 💖 Muchas gracias por agendar. Confirmo tu cita para el "+fLarga(c.fecha)+" a las "+h12(hh(c.hora))+". ¡Muchas gracias!";
+    h+=`<div class="card cita ${esc(c.estado)}"><div class="top"><span>🕒 ${esc(h12(hh(c.hora)))}</span><span class="badge">${esc(c.estado)}</span></div><p><b style="color:var(--ink)">${esc(c.nombre)}</b> — ${esc(c.servicio)}</p><p>📞 ${esc(c.tel)}</p>${c.notas?`<p>📝 ${esc(c.notas)}</p>`:""}`;
+    if(c.estado!=="cancelada"&&c.estado!=="completada")h+=`<div class="acts">${c.estado==="pendiente"?`<button class="btn sm" data-a="ok" data-id="${esc(id)}">Confirmar</button>`:""}${c.estado==="confirmada"&&c.fecha<=hoy?`<button class="btn sm" data-a="fin" data-id="${esc(id)}">✔ Atendida</button>`:""}<a class="btn sm ghost" target="_blank" rel="noopener" href="https://wa.me/${esc(wa)}?text=${encodeURIComponent(msg)}">WhatsApp</a><a class="btn sm ghost" href="tel:+${esc(wa)}">Llamar</a><button class="btn sm ${arm?"bad":"ghost"}" data-a="no" data-id="${esc(id)}">${arm?"¿Seguro? Cancelar":"Cancelar"}</button></div>`;
+    h+="</div>";
+  });
+  el.innerHTML=h;
+  el.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{
+    const id=b.dataset.id,a=b.dataset.a;
     try{
-      for(let i=0;i<n;i++){
-        const h=h0+i;if(!HORAS.includes(h))break;
-        const t=pad(h)+":00",id=f+"_"+t;
-        if(taken.has(id))continue;
-        await setDoc(doc(db, "ocupado", id), {fecha:f, hora:t, bloqueo:true});
-        const c={nombre:"Bloqueado",tel:"",notas:"",servicio:mo,fecha:f,hora:t,estado:"bloqueada",bloqueo:true,creada:Date.now()};
-        await setDoc(doc(db, "citas", id), c);
-        k++;
-      }
-      toast(k?k+" hora(s) bloqueada(s) 🚫":"Esas horas ya estaban ocupadas");
-    }catch(e){
-      toast("No se pudo bloquear");
-    }
-  }
-
-  function tab(w){
-    $("#tReservar").classList.toggle("on",w==="r");$("#tPanel").classList.toggle("on",w==="p");
-    $("#vReservar").classList.toggle("hide",w!=="r");$("#vPanel").classList.toggle("hide",w!=="p");
-  }
-  $("#tReservar").onclick=()=>tab("r");
-  $("#tPanel").onclick=()=>{tab("p");renderPanel()};
-
-  // Escuchar base de datos en tiempo real (Firebase Firestore)
-  onSnapshot(collection(db, "ocupado"), (snapshot) => {
-    taken = new Set(snapshot.docs.map(doc => doc.id));
-    drawCal();drawSlots();
+      if(a==="ok"){await updateDoc(doc(db,"citas",id),{estado:"confirmada"});toast("Cita confirmada ✅")}
+      else if(a==="fin"){await updateDoc(doc(db,"citas",id),{estado:"completada"});toast("Marcada como atendida 💖")}
+      else if(armed!==id){armed=id;drawLista()}
+      else{await updateDoc(doc(db,"citas",id),{estado:"cancelada"});await deleteDoc(doc(db,"ocupado",id));armed=null;toast("Cita cancelada, horario liberado")}
+    }catch(e){toast("No se pudo completar la acción")}
   });
+}
 
-  onSnapshot(collection(db, "citas"), (snapshot) => {
-    citas = snapshot.docs.map(doc => doc.data());
-    if(!$("#vPanel").classList.contains("hide")) renderPanel();
+/* ---- Bloqueos ---- */
+function shellBloq(){
+  const hoy=iso(new Date());
+  $("#pbody").innerHTML=`<div class="card"><h2>Nuevo bloqueo</h2><p class="small" style="margin-top:0">Bloquea varias horas, varios días o un mes entero en un solo paso.</p>
+<div class="chips"><button class="chip" data-q="hoy">Hoy</button><button class="chip" data-q="sem">Próximos 7 días</button><button class="chip" data-q="mes">Mes completo</button></div>
+<p class="small">Para bloquear otro mes, elige primero un día de ese mes y toca “Mes completo”.</p>
+<div class="row2"><div><label for="bf">Desde el día</label><input id="bf" type="date" min="${hoy}" value="${hoy}"></div><div><label for="bt">Hasta el día</label><input id="bt" type="date" min="${hoy}" value="${hoy}"></div></div>
+<label class="chk" style="margin-top:12px"><input type="checkbox" id="bd"> Todo el día (${h12(HORAS[0])} a ${h12(LAST+1)})</label>
+<div class="row2"><div><label for="bh1">Desde la hora</label><select id="bh1">${HORAS.map(x=>`<option value="${x}">${h12(x)}</option>`).join("")}</select></div><div><label for="bh2">Hasta las</label><select id="bh2">${HORAS.map(x=>`<option value="${x}" ${x===LAST?"selected":""}>${h12(x+1)}</option>`).join("")}</select></div></div>
+<label for="bm">Motivo (opcional)</label><input id="bm" maxlength="60" placeholder="Ej. Vacaciones, compra de productos">
+<div class="prev" id="prev"></div><button class="btn" id="bgo">🚫 Bloquear</button></div>
+<h2 style="margin:18px 0 8px">Bloqueos activos</h2><div id="blist"></div>`;
+  document.querySelectorAll("#pbody input,#pbody select").forEach(e=>{e.oninput=prev;e.onchange=()=>{if(e.id==="bf"&&$("#bt").value<e.value)$("#bt").value=e.value;hrs();prev()}});
+  document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>quick(b.dataset.q));
+  $("#bgo").onclick=bloquear;hrs();prev();drawBloq();
+}
+const hrs=()=>{const b=$("#bh1");if(b)b.disabled=$("#bh2").disabled=$("#bd").checked};
+function quick(k){
+  const t=new Date();let a=new Date(t),b=new Date(t);
+  if(k==="sem")b.setDate(b.getDate()+6);
+  if(k==="mes"){const base=$("#bf").value?new Date($("#bf").value+"T12:00:00"):t;a=new Date(Math.max(t,new Date(base.getFullYear(),base.getMonth(),1)));b=new Date(base.getFullYear(),base.getMonth()+1,0);$("#bd").checked=true}
+  $("#bf").value=iso(a);$("#bt").value=iso(b);hrs();prev();
+}
+function plan(){
+  const f1=$("#bf").value,f2=$("#bt").value||f1,all=$("#bd").checked;
+  if(!f1)return {err:"Elige el día"};
+  if(f2<f1)return {err:"La fecha final es antes de la inicial"};
+  const a=all?HORAS[0]:+$("#bh1").value,b=all?LAST:+$("#bh2").value;
+  if(b<a)return {err:"La hora final es antes de la inicial"};
+  const mo=$("#bm").value.trim()||"Horario bloqueado",ops=[];let skip=0,days=0;
+  const [y,m,d]=f1.split("-").map(Number);
+  for(let dt=new Date(y,m-1,d),n=0;iso(dt)<=f2&&n<93;dt.setDate(dt.getDate()+1),n++){
+    days++;const f=iso(dt);
+    for(let h=a;h<=b;h++){const t=pad(h)+":00",id=f+"_"+t;if(taken.has(id))skip++;else ops.push([id,{fecha:f,hora:t,bloqueo:true,motivo:mo}])}
+  }
+  return {ops,skip,days};
+}
+function prev(){
+  const e=$("#prev");if(!e)return;const p=plan();
+  e.textContent=p.err?p.err:`Se bloquearán ${p.ops.length} hora(s) en ${p.days} día(s).`+(p.skip?` ${p.skip} ya estaban ocupadas y se respetan.`:"");
+}
+async function bloquear(){
+  const p=plan();if(p.err)return toast(p.err);
+  if(!p.ops.length)return toast("Esas horas ya estaban ocupadas");
+  const btn=$("#bgo");btn.disabled=true;
+  try{
+    for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,"ocupado",id),o));await b.commit()}
+    toast(p.ops.length+" hora(s) bloqueada(s) 🚫");
+  }catch(e){toast("No se pudo bloquear")}
+  btn.disabled=false;
+}
+function groupBlocks(){
+  const hoy=iso(new Date()),by={};
+  ocup.filter(o=>o.bloqueo&&o.fecha>=hoy).forEach(o=>{(by[o.fecha]=by[o.fecha]||[]).push({id:o.id,h:hh(o.hora),m:o.motivo||((allCitas.find(c=>c._id===o.id)||{}).servicio)||"Horario bloqueado"})});
+  const days=Object.keys(by).sort().map(f=>{
+    const runs=[];by[f].sort((a,b)=>a.h-b.h).forEach(x=>{const r=runs[runs.length-1];if(r&&r.m===x.m&&x.h===r.to+1){r.to=x.h;r.ids.push(x.id)}else runs.push({from:x.h,to:x.h,m:x.m,ids:[x.id]})});
+    return {f,runs,sig:runs.map(r=>r.from+"-"+r.to+"-"+r.m).join("|")};
   });
+  const groups=[];
+  days.forEach(d=>{const g=groups[groups.length-1],ids=d.runs.flatMap(r=>r.ids);
+    if(g&&g.sig===d.sig&&nextDay(g.f2)===d.f){g.f2=d.f;g.n++;g.ids.push(...ids)}else groups.push({f1:d.f,f2:d.f,n:1,sig:d.sig,runs:d.runs,ids})});
+  return groups;
+}
+function drawBloq(){
+  const el=$("#blist");if(!el)return;
+  const gs=groupBlocks();
+  if(!gs.length){el.innerHTML=`<div class="card"><p style="text-align:center;color:var(--muted);margin:0">No tienes horas bloqueadas 🌸</p></div>`;return}
+  el.innerHTML=gs.map((g,i)=>{
+    const key=g.f1+g.f2+g.sig,arm=armed===key;
+    const lab=g.f1===g.f2?fLarga(g.f1):fCorta(g.f1)+" → "+fCorta(g.f2);
+    const runs=g.runs.map(r=>`<p>${r.from===HORAS[0]&&r.to===LAST?"Todo el día":esc(h12(r.from))+" – "+esc(h12(r.to+1))} · ${esc(r.m)}</p>`).join("");
+    return `<div class="card cita" style="border-left-color:var(--muted)"><div class="top"><span style="text-transform:capitalize">${esc(lab)}</span><span class="badge">${g.n} día${g.n>1?"s":""}</span></div>${runs}<div class="acts"><button class="btn sm ${arm?"bad":"ghost"}" data-g="${i}">${arm?"¿Seguro? Desbloquear":"Desbloquear"}</button></div></div>`;
+  }).join("");
+  el.querySelectorAll("[data-g]").forEach(b=>b.onclick=async()=>{
+    const g=gs[+b.dataset.g],key=g.f1+g.f2+g.sig;
+    if(armed!==key){armed=key;drawBloq();return}
+    try{
+      for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,"ocupado",id));if(allCitas.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,"citas",id))});await w.commit()}
+      armed=null;toast("Horarios desbloqueados ✅");
+    }catch(e){toast("No se pudo desbloquear")}
+  });
+}
 
-  renderReservar();
+/* ---- navegación y datos en vivo ---- */
+function tab(w){
+  $("#tReservar").classList.toggle("on",w==="r");$("#tPanel").classList.toggle("on",w==="p");
+  $("#vReservar").classList.toggle("hide",w!=="r");$("#vPanel").classList.toggle("hide",w!=="p");
+  document.body.classList.toggle("admin",w==="p");
+}
+$("#tReservar").onclick=()=>tab("r");
+$("#tPanel").onclick=()=>{tab("p");renderPanel()};
+
+onSnapshot(collection(db,"ocupado"),s=>{
+  ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));
+  drawCal();drawSlots();
+  if(unlocked&&psub==="bloqueos"){drawBloq();prev()}
+});
+onSnapshot(collection(db,"citas"),s=>{
+  allCitas=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allCitas.filter(c=>!c.bloqueo);
+  if(unlocked)psub==="citas"?drawCitas():drawBloq();
+});
+renderReservar();
 </script>
 </body>
 </html>

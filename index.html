@@ -4,92 +4,96 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Enamorada’s Nails — Agenda tu cita</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff3f7;--card:#fff;--ink:#4a1d33;--muted:#9b6b80;--pink:#e8457f;--pink2:#f7a8c4;--soft:#ffe0ec;--line:#f6c9da;--ok:#2e9e6b;--bad:#d6455d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1220;--card:#3a1a2d;--ink:#ffe8f1;--muted:#d9a3bb;--pink:#ff6fa5;--pink2:#c2457a;--soft:#4d2239;--line:#6a2f4e;color-scheme:dark}}
-body.admin{--bg:#120a0f;--card:#221019;--ink:#ffe8f1;--muted:#c79ab0;--pink:#ff6fa5;--pink2:#7a2b50;--soft:#37182a;--line:#4a2238;color-scheme:dark}
-body.admin header{background:linear-gradient(160deg,#4a1d38,#7a2b50)}
+:root{--bg:#09090b;--ink:#f4f4f5;--mut:#a1a1aa;--line:#27272a;--card:#131316;--acc:#a78bfa;--btn:#7c3aed;--btnk:#fff;--bad:#e5484d;--ok:#3ecf8e;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.45}
-.wrap{max-width:560px;margin:0 auto;padding:0 16px 40px}
-header{text-align:center;padding:28px 16px 18px;background:linear-gradient(160deg,var(--pink2),var(--pink));color:#fff;border-radius:0 0 32px 32px}
-header h1{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:30px}
-header p{margin:6px 0 0;opacity:.95;font-size:14px}
-.tabs{display:flex;gap:8px;margin:18px 0 14px}
-.tab{flex:1;border:2px solid var(--line);background:var(--card);color:var(--ink);padding:10px;border-radius:999px;font:600 14px 'Poppins',system-ui,sans-serif;cursor:pointer}
-.tab.on{background:var(--pink);border-color:var(--pink);color:#fff}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(232,69,127,.08)}
-h2{font-family:'Playfair Display',Georgia,serif;font-size:19px;margin:0 0 10px}
-.step{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--pink);color:#fff;font:600 13px 'Poppins',sans-serif;align-items:center;justify-content:center;margin-right:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:2px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:999px;font:500 13px 'Poppins',sans-serif;cursor:pointer}
-.chip.on{background:var(--soft);border-color:var(--pink);color:var(--pink);font-weight:600}
-.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.cal-h b{font-size:16px;text-transform:capitalize}
-.nav{border:0;background:var(--soft);color:var(--pink);width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer}
-.nav:disabled{opacity:.35}
-.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
-.dow{font-size:12px;color:var(--muted);font-weight:600;padding:4px 0}
-.day{aspect-ratio:1;border:0;border-radius:12px;background:transparent;color:var(--ink);font:500 14px 'Poppins',sans-serif;cursor:pointer}
-.day:hover:not(:disabled){background:var(--soft)}
-.day.hoy{outline:2px solid var(--pink2)}
-.day.on{background:var(--pink);color:#fff}
-.day:disabled{color:var(--muted);opacity:.35;cursor:not-allowed}
-.day.full:disabled{text-decoration:line-through;opacity:.5}
-.legend,.small{font-size:12px;color:var(--muted);margin-top:8px}
-.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.slot{border:2px solid var(--line);background:var(--card);color:var(--ink);padding:10px 4px;border-radius:12px;font:500 13px 'Poppins',sans-serif;cursor:pointer}
-.slot.on{background:var(--pink);border-color:var(--pink);color:#fff}
-.slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed;background:var(--soft)}
-label{display:block;font-size:13px;font-weight:600;margin:10px 0 4px}
-input,textarea,select{width:100%;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 12px;font:400 15px 'Poppins',system-ui,sans-serif}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--pink)}
-.btn{width:100%;border:0;background:var(--pink);color:#fff;padding:14px;border-radius:999px;font:600 16px 'Poppins',sans-serif;margin-top:14px;cursor:pointer}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5}
+.top{background:#000;border-bottom:1px solid #1f1f23;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px}.logo::before{content:"✦ ";color:#a78bfa}
+.tabs{display:flex;gap:6px}
+.tab{border:1px solid #3a3a3a;background:transparent;color:#ddd;padding:7px 14px;border-radius:999px;font:500 13px 'Inter',sans-serif;cursor:pointer}
+.tab.on{background:#7c3aed;border-color:#7c3aed;color:#fff;font-weight:600}
+.wrap{max-width:600px;margin:0 auto;padding:0 16px 48px}
+.hero{background:radial-gradient(ellipse at 50% 0%,#2b1459 0%,#09090b 72%);color:#fff;margin:0 -16px 22px;padding:44px 24px 48px;text-align:center}
+.eyebrow{letter-spacing:4px;font-size:11px;color:#a78bfa;margin:0 0 12px}
+.hero h1{font:700 36px/1.15 'Playfair Display',Georgia,serif;margin:0 0 12px}.hero h1 i{color:#a78bfa}
+.hero p.t{color:#bbb;margin:0 auto 22px;max-width:380px;font-size:15px}
+h2{font:600 20px 'Playfair Display',Georgia,serif;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.st{width:26px;height:26px;border-radius:50%;background:var(--btn);color:#fff;font:600 13px 'Inter',sans-serif;display:inline-flex;align-items:center;justify-content:center}
+.btn{display:block;width:100%;border:0;background:var(--btn);color:var(--btnk);padding:14px;border-radius:12px;font:600 15px 'Inter',sans-serif;margin-top:14px;cursor:pointer;text-align:center;text-decoration:none}
 .btn:disabled{opacity:.5}
-.btn.sm{width:auto;padding:8px 14px;font-size:13px;margin:0;display:inline-block;text-decoration:none}
-.btn.ghost{background:var(--soft);color:var(--pink)}
-.btn.wa{background:#1fa855;color:#fff;text-decoration:none;display:block;text-align:center;margin-top:10px}
-.btn.bad{background:var(--bad);color:#fff}
-.sum{background:var(--soft);border-radius:14px;padding:10px 12px;font-size:14px;margin-bottom:6px}
-.ok{text-align:center;padding:10px 0}.ok .big{font-size:48px}
-.seg{display:flex;gap:6px;background:var(--soft);padding:4px;border-radius:999px;margin-bottom:12px}
-.seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:9px 4px;border-radius:999px;font:600 13px 'Poppins',sans-serif;cursor:pointer}
-.seg button.on{background:var(--pink);color:#fff}
+.btn.sm{display:inline-block;width:auto;padding:8px 14px;font-size:13px;margin:0;border-radius:10px}
+.btn.gh{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.bad{background:var(--bad);color:#fff;border:0}
+.btn.wa{background:#1fa855;color:#fff}
+.btn.gold{background:#7c3aed;color:#fff;display:inline-block;width:auto;padding:13px 28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.svl{display:grid;gap:8px}
+.sv{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:13px 14px;border-radius:14px;font:500 14px 'Inter',sans-serif;cursor:pointer}
+.sv small{display:block;color:var(--mut);font-weight:400;font-size:12px}.sv em{font-style:normal;font-weight:600;color:var(--acc);white-space:nowrap}
+.sv.on{border:2px solid var(--acc);padding:12px 13px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer;display:block}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.cal-h b{text-transform:capitalize}
+.nav{border:1px solid var(--line);background:var(--card);color:var(--ink);width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer}.nav:disabled{opacity:.3}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.dow{font-size:11px;color:var(--mut);font-weight:600;padding:4px 0}
+.day{aspect-ratio:1;border:0;border-radius:50%;background:transparent;color:var(--ink);font:500 14px 'Inter',sans-serif;cursor:pointer}
+.day:hover:not(:disabled){background:var(--line)}.day.hoy{outline:1px solid var(--acc)}.day.on{background:var(--btn);color:#fff}
+.day:disabled{color:var(--mut);opacity:.35;cursor:not-allowed}.day.full:disabled{text-decoration:line-through}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:11px 4px;border-radius:10px;font:500 13px 'Inter',sans-serif;cursor:pointer}
+.slot.on{background:var(--btn);color:#fff;border-color:var(--btn)}.slot:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+label{display:block;font-size:12px;font-weight:600;margin:12px 0 5px;color:var(--mut);text-transform:uppercase;letter-spacing:.6px}
+input,textarea,select{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:11px 12px;font:400 15px 'Inter',system-ui,sans-serif}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
+.sum{border-left:3px solid var(--acc);background:var(--card);padding:10px 12px;font-size:14px;border-radius:6px;margin-bottom:4px}
+.small{font-size:12px;color:var(--mut);margin:6px 0}
+.ok{text-align:center}.ok .big{font-size:46px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:999px;font:500 13px 'Inter',sans-serif;cursor:pointer}.chip.on{background:var(--btn);color:#fff;border-color:var(--btn)}
+.nav2{display:flex;gap:6px;overflow-x:auto;padding:14px 0 10px;scrollbar-width:none}.nav2::-webkit-scrollbar{display:none}
+.nav2 button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--mut);padding:9px 14px;border-radius:999px;font:600 13px 'Inter',sans-serif;cursor:pointer}
+.nav2 button.on{background:var(--btn);border-color:var(--btn);color:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:center;padding:10px 2px}
-.stat b{display:block;font:700 22px 'Playfair Display',Georgia,serif;color:var(--pink)}
-.stat span{font-size:11px;color:var(--muted)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;text-align:center;padding:10px 2px}
+.stat b{display:block;font:700 22px 'Playfair Display',Georgia,serif;color:var(--acc)}.stat span{font-size:11px;color:var(--mut)}
 .week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:12px}
-.wd{border:2px solid var(--line);background:var(--card);color:var(--muted);border-radius:12px;padding:6px 0;font:600 11px 'Poppins',sans-serif;cursor:pointer;text-align:center}
-.wd b{display:block;font-size:16px;color:var(--ink)}.wd i{font-style:normal;font-size:9px;color:var(--pink)}
-.wd.on{border-color:var(--pink)}
-.dh{font-weight:600;font-size:13px;color:var(--muted);margin:14px 0 6px;text-transform:capitalize}
-.cita{border-left:5px solid var(--pink2)}
-.cita.pendiente{border-left-color:#f5a524}.cita.confirmada{border-left-color:var(--ok)}.cita.completada{border-left-color:#5aa0ff;opacity:.8}.cita.cancelada{border-left-color:var(--bad);opacity:.55}
-.top{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:14px}
-.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--pink);font-weight:600;height:fit-content;white-space:nowrap}
-.cita p{margin:3px 0;font-size:13px;color:var(--muted)}
-.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wd{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:10px;padding:6px 0;font:600 11px 'Inter',sans-serif;cursor:pointer;text-align:center}
+.wd b{display:block;font-size:16px;color:var(--ink)}.wd i{font-style:normal;font-size:9px;color:var(--acc)}.wd.on{border-color:var(--acc)}
+.dh{font-weight:600;font-size:12px;color:var(--mut);margin:16px 0 6px;text-transform:uppercase;letter-spacing:.6px}
+.cita{border-left:4px solid var(--acc)}.cita.pendiente{border-left-color:#e0a030}.cita.confirmada{border-left-color:var(--ok)}.cita.completada{border-left-color:#5aa0ff;opacity:.8}.cita.cancelada{border-left-color:var(--bad);opacity:.5}
+.top2{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:14px}
+.badge{font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--acc);font-weight:600;height:fit-content;white-space:nowrap}
+.cita p{margin:3px 0;font-size:13px;color:var(--mut)}.cita p b{color:var(--ink)}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}.chk input{width:auto}
-.prev{background:var(--soft);border-radius:12px;padding:10px;font-size:13px;margin-top:10px}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:9}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink)}.chk input{width:auto}
+.prev{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:10px;font-size:13px;margin-top:10px}
+.alert{background:#1d1236;border:1px solid var(--acc);color:#e9ddff;border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.thumbs div{position:relative}.thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
+.thumbs button{position:absolute;right:4px;top:4px}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}.lb img{max-width:100%;max-height:100%;border-radius:12px}
+.pay{border-top:1px solid var(--line);padding:11px 0;display:grid;gap:3px;font-size:14px}.pay:first-of-type{border-top:0;padding-top:0}.pay span{color:var(--mut)}.pay .btn{justify-self:start;margin-top:6px}
+.bar{height:8px;border-radius:6px;background:var(--btn);min-width:3px}.rw{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;font-size:13px;margin:7px 0}.rw small{color:var(--mut)}
+.foot{text-align:center;margin-top:30px;color:var(--mut);font-size:12px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;z-index:30;max-width:90%}
 .hide{display:none}
 </style>
 </head>
 <body>
-<header><h1>💅 Enamorada’s Nails</h1><p>Agenda tu cita en un minuto</p></header>
-<div class="wrap">
-  <div class="tabs"><button class="tab on" id="tReservar">Reservar cita</button><button class="tab" id="tPanel">Panel de la dueña</button></div>
-  <div id="vReservar"></div>
-  <div id="vPanel" class="hide"></div>
-</div>
+<header class="top"><div class="logo" id="logo">Enamorada’s Nails</div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
+<main class="wrap"><div id="vR"></div><div id="vP" class="hide"></div></main>
+<div id="lb" class="lb hide"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, setDoc, updateDoc, deleteDoc, collection, onSnapshot, writeBatch, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+/* ============================================================
+   🔥 FIREBASE — PEGA AQUÍ TU CONFIGURACIÓN (solo cambia este bloque)
+   ============================================================ */
 const firebaseConfig = {
   apiKey: "AIzaSyDDdrh8JTlPNAa1i5iQMV2mZ7aLyF3eA5I",
   authDomain: "enamorada-s-nails.firebaseapp.com",
@@ -98,260 +102,366 @@ const firebaseConfig = {
   messagingSenderId: "55705065716",
   appId: "1:55705065716:web:b520060955aafefd6e66a1"
 };
+/* ============================================================ */
 const db = getFirestore(initializeApp(firebaseConfig));
+const PW_HASH="7930b9d539644f3fd36e685de80939a7f4a4a6a78827f097e77347c7029dc759"; /* clave del panel: 2031 */
 
-const $=s=>document.querySelector(s);
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const pad=n=>String(n).padStart(2,"0");
 const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
-const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-const DIAS=["D","L","M","M","J","V","S"];
-const SERVICIOS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Baño acrílico","Aplicación de polygel","Otro"];
-const HORAS=[7,8,9,10,11,12,13,14,15,16,17,18,19],LAST=HORAS[HORAS.length-1];
-const h12=h=>(h%12||12)+":00 "+(h<12?"AM":"PM");
-const hh=t=>+String(t).slice(0,2);
-const fLarga=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("es",{weekday:"long",day:"numeric",month:"long"})};
-const fCorta=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d).toLocaleDateString("es",{day:"numeric",month:"short"})};
-const nextDay=s=>{const [y,m,d]=s.split("-").map(Number);return iso(new Date(y,m-1,d+1))};
-const WA="50432180318",WAT="+504 3218-0318";
-const PW_HASH="7930b9d539644f3fd36e685de80939a7f4a4a6a78827f097e77347c7029dc759";
+const P=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],DIAS=["D","L","M","M","J","V","S"];
+const fLarga=s=>P(s).toLocaleDateString("es",{weekday:"long",day:"numeric",month:"long"});
+const fCorta=s=>P(s).toLocaleDateString("es",{day:"numeric",month:"short"});
+const nextDay=s=>{const d=P(s);d.setDate(d.getDate()+1);return iso(d)};
+const mm=t=>{const [h,m]=String(t).split(":").map(Number);return h*60+m};
+const key=m=>pad(m/60|0)+":"+pad(m%60);
+const h12=t=>{const m=typeof t==="number"?t:mm(t),h=m/60|0;return (h%12||12)+":"+pad(m%60)+" "+(h%24<12?"AM":"PM")};
+const durL=d=>d<60?d+" min":(d/60|0)+" h"+(d%60?" "+d%60+" min":"");
+const L=n=>+n?"L "+Number(n).toLocaleString("es"):"Consultar";
+const wa=(tel,msg)=>{const d=String(tel||"").replace(/\D/g,""),n=d.length===8?"504"+d:d;return "https://wa.me/"+n+(msg?"?text="+encodeURIComponent(msg):"")};
+const toast=t=>{const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)};
+const busy=()=>/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||"");
 
-let taken=new Set(),ocup=[],allCitas=[],citas=[],done=false;
-let sel={serv:null,otro:"",fecha:null,hora:null},view=new Date();view.setDate(1);
+const DEF={nombre:"Enamorada’s Nails",wa:"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:20,paso:60,dias:90,rec:10,
+ msgConf:"¡Buen día, {nombre}! 💖 Muchas gracias por agendar. Confirmo tu cita para el {fecha} a las {hora} ({servicio}). ¡Te esperamos!",
+ msgRec:"¡Hola, {nombre}! ⏰ Te recordamos que tu cita es hoy a las {hora}. ¡Te esperamos en Enamorada’s Nails! 💅"};
+const DEFS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Baño acrílico","Aplicación de polygel"];
+const PAGOS=[{banco:"Banco de Occidente",lab:"Número de cuenta",num:"214021250580",tit:"ENAMORADO HERRERA KENSI NEVAI"},{banco:"BAC",lab:"N° de cuenta",num:"750250521",tit:"KENSI NEVAI ENAMORADO HERRERA"}];
+const payCard=()=>`<h2>💳 Formas de pago</h2><div class="card"><p style="margin:0 0 12px">Aceptamos <b>efectivo</b> y <b>transferencias</b>.</p>${PAGOS.map((p,i)=>`<div class="pay"><b>${esc(p.banco)}</b><span>${esc(p.lab)}: <b style="color:var(--ink)">${esc(p.num)}</b></span><span>A nombre de: ${esc(p.tit)}</span><button class="btn sm gh" data-cp="${i}">Copiar número</button></div>`).join("")}</div>`;
+const bindPay=r=>r.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>{const n=PAGOS[+b.dataset.cp].num;(navigator.clipboard?navigator.clipboard.writeText(n):Promise.reject()).then(()=>toast("Número copiado 📋")).catch(()=>toast("Número: "+n))});
+const M=n=>"L "+Number(n||0).toLocaleString("es");
+const DURS=[30,60,90,120,150,180,240,300];
+let cfg={...DEF},servs=[],gal=[],taken=new Set(),ocup=[],allC=[],citas=[],done=null;
+let sel={s:null,otro:"",fecha:null,m:null},view=new Date();view.setDate(1);
 let unlocked=false,psub="citas",filtro="prox",q="",armed=null;
-function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}
+const fill=(t,c)=>t.replace(/\{(\w+)\}/g,(_,k)=>({nombre:c.nombre,fecha:fLarga(c.fecha),hora:h12(c.hora),servicio:c.servicio}[k]||""));
+const nSl=d=>Math.max(1,Math.ceil((d||60)/cfg.paso));
+const ids=(f,m,n)=>[...Array(n)].map((_,i)=>f+"_"+key(m+i*cfg.paso));
+const allSlots=()=>{const a=[];for(let m=cfg.abre*60;m<cfg.cierra*60;m+=cfg.paso)a.push(m);return a};
+const catAll=()=>{const out=[];DEFS.forEach((n,i)=>{const x=servs.find(v=>v.nombre===n);out.push(x?{...x,base:true}:{id:"base"+i,nombre:n,precio:0,dur:60,activo:true,orden:i,base:true})});servs.filter(v=>!DEFS.includes(v.nombre)).forEach(v=>out.push(v));return out.sort((x,y)=>(x.orden||0)-(y.orden||0))};
+const catalog=()=>[...catAll().filter(v=>v.activo!==false),{nombre:"Otro",precio:0,dur:60,otro:true}];
+function slotsFor(f,n){
+  const out=[],now=new Date(),hoy=f===iso(now),nm=now.getHours()*60+now.getMinutes();
+  for(let m=cfg.abre*60;m+cfg.paso*n<=cfg.cierra*60;m+=cfg.paso)out.push({m,ok:!(hoy&&m<=nm)&&!ids(f,m,n).some(i=>taken.has(i))});
+  return out;
+}
 
 /* ================= CLIENTAS ================= */
-function renderReservar(){
-  const root=$("#vReservar");
+function renderR(){
+  $("#vR").innerHTML=`<section class="hero"><p class="eyebrow">NAIL STUDIO</p><h1>Uñas que hablan <i>por ti</i></h1><p class="t">${esc(cfg.tag)}</p><a class="btn gold" href="#agenda" id="goag">Agendar mi cita</a></section><div id="gal"></div><div id="agenda"></div><div id="bk"></div><div class="foot"><a class="btn wa sm" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}">💬 WhatsApp +${esc(cfg.wa)}</a><p>© ${esc(cfg.nombre)} · <a href="#" id="adm" style="color:inherit">Administración</a></p></div>`;
+  $("#goag").onclick=e=>{e.preventDefault();$("#agenda").scrollIntoView({behavior:"smooth"})};
+  $("#adm").onclick=e=>{e.preventDefault();tab("p")};
+  drawGal();drawBook();
+}
+function drawGal(){
+  const el=$("#gal");if(!el)return;
+  el.innerHTML=gal.length?`<h2>Nuestros trabajos</h2><div class="gal">${gal.map(g=>`<img src="${g.src}" alt="Trabajo de uñas" loading="lazy">`).join("")}</div>`:"";
+  el.querySelectorAll("img").forEach(i=>i.onclick=()=>{$("#lb").innerHTML=`<img src="${i.src}" alt="">`;$("#lb").classList.remove("hide")});
+}
+$("#lb").onclick=()=>$("#lb").classList.add("hide");
+function drawBook(){
+  const el=$("#bk");if(!el)return;
   if(done){
-    root.innerHTML=`<div class="card ok"><div class="big">🎀</div><h2>¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b> a las <b>${esc(h12(hh(done.hora)))}</b></p><p style="color:var(--muted);font-size:14px">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé una cita de "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(hh(done.hora))+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn" id="otra">Agendar otra cita</button></div>`;
-    $("#otra").onclick=()=>{done=false;sel={serv:null,otro:"",fecha:null,hora:null};renderReservar()};return;
+    el.innerHTML=`<div class="card ok" style="margin-top:20px"><div class="big">✨</div><h2 style="justify-content:center">¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b><br>${esc(h12(done.hora))} – ${esc(h12(mm(done.hora)+nSl(done.dur)*cfg.paso))}</p><p class="small">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(done.hora)+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn gh" id="otra">Agendar otra cita</button></div>`;
+    el.insertAdjacentHTML("beforeend",payCard());bindPay(el);$("#otra").onclick=()=>{done=null;sel={s:null,otro:"",fecha:null,m:null};drawBook()};return;
   }
-  let h=`<div class="card"><h2><span class="step">1</span>¿Qué te quieres hacer?</h2><div class="chips">${SERVICIOS.map(s=>`<button class="chip ${sel.serv===s?"on":""}" data-s="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>`;
-  if(sel.serv==="Otro")h+=`<div class="card"><label for="otro" style="margin-top:0">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué servicio necesitas" value="${esc(sel.otro)}"></div>`;
-  h+=`<div class="card"><h2><span class="step">2</span>Elige el día</h2><div id="cal"></div><div class="legend">Abierto todos los días · Los días tachados están llenos</div></div>`;
-  if(sel.fecha)h+=`<div class="card"><h2><span class="step">3</span>Elige la hora</h2><div class="slots" id="slots"></div></div>`;
-  if(sel.fecha&&sel.hora)h+=`<div class="card"><h2><span class="step">4</span>Tus datos</h2><div class="sum">${esc(sel.serv||"Elige un servicio")} · ${esc(fLarga(sel.fecha))} · ${esc(h12(hh(sel.hora)))}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita 💅</button></div>`;
-  h+=`<div class="card" style="text-align:center"><p style="margin:0;font-size:14px">¿Dudas o quieres otro horario?</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent("Hola, quiero información para agendar una cita 💅")}">💬 WhatsApp ${WAT}</a></div>`;
-  root.innerHTML=h;
-  root.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{sel.serv=b.dataset.s;renderReservar()});
-  drawCal();drawSlots();const ot=$("#otro");if(ot)ot.oninput=()=>{sel.otro=ot.value};
-  const go=$("#go");if(go)go.onclick=book;
+  const cat=catalog(),dur=sel.s?sel.s.dur:60,n=nSl(dur);
+  let h=`<h2><span class="st">1</span>Elige tu servicio</h2><div class="svl">${cat.map((s,i)=>`<button class="sv ${sel.s&&sel.s.nombre===s.nombre?"on":""}" data-i="${i}"><span>${esc(s.nombre)}<small>⏱ ${durL(s.dur)}</small></span><em>${s.otro?"A consultar":L(s.precio)}</em></button>`).join("")}</div>`;
+  if(sel.s&&sel.s.otro)h+=`<label for="otro">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué necesitas" value="${esc(sel.otro)}">`;
+  h+=`<h2><span class="st">2</span>Elige el día</h2><div class="card"><div id="cal"></div></div>`;
+  if(sel.fecha)h+=`<h2><span class="st">3</span>Elige la hora</h2><div class="slots" id="slots"></div><p class="small">${sel.s?"Tu servicio dura "+durL(dur)+".":"Elige un servicio para ver la duración."}</p>`;
+  if(sel.fecha&&sel.m!=null)h+=`<h2><span class="st">4</span>Tus datos</h2><div class="sum">${esc(sel.s?sel.s.nombre:"Elige un servicio")} · ${esc(fLarga(sel.fecha))}<br>${esc(h12(sel.m))} – ${esc(h12(sel.m+n*cfg.paso))}${sel.s&&+sel.s.precio?" · "+L(sel.s.precio):""}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita</button><p class="small">Pago en efectivo o transferencia (cuentas al final de esta página).</p>`;
+  h+=payCard();
+  el.innerHTML=h;
+  el.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{sel.s=cat[+b.dataset.i];sel.m=null;drawBook()});
+  const ot=$("#otro");if(ot)ot.oninput=()=>{sel.otro=ot.value};
+  drawCal();drawSlots();bindPay(el);const g=$("#go");if(g)g.onclick=book;
 }
 function drawCal(){
   const c=$("#cal");if(!c)return;
   const y=view.getFullYear(),m=view.getMonth(),t0=new Date();t0.setHours(0,0,0,0);
-  const max=new Date(t0);max.setDate(max.getDate()+90);
-  const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay(),cur=t0.getFullYear()===y&&t0.getMonth()===m;
+  const max=new Date(t0);max.setDate(max.getDate()+cfg.dias);
+  const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay(),cur=t0.getFullYear()===y&&t0.getMonth()===m,nn=nSl(sel.s?sel.s.dur:60);
   let h=`<div class="cal-h"><button class="nav" id="pv" ${cur?"disabled":""} aria-label="Mes anterior">‹</button><b>${MESES[m]} ${y}</b><button class="nav" id="nx" aria-label="Mes siguiente">›</button></div><div class="grid">${DIAS.map(d=>`<div class="dow">${d}</div>`).join("")}`;
   for(let i=0;i<lead;i++)h+="<div></div>";
-  for(let d=1;d<=n;d++){
-    const dt=new Date(y,m,d),k=iso(dt),full=[...taken].filter(x=>x.startsWith(k)).length>=HORAS.length;
-    h+=`<button class="day ${k===iso(t0)?"hoy":""} ${sel.fecha===k?"on":""} ${full?"full":""}" data-d="${k}" ${dt<t0||dt>max||full?"disabled":""}>${d}</button>`;
-  }
+  for(let d=1;d<=n;d++){const dt=new Date(y,m,d),k=iso(dt),full=dt>=t0&&!slotsFor(k,nn).some(s=>s.ok);
+    h+=`<button class="day ${k===iso(t0)?"hoy":""} ${sel.fecha===k?"on":""} ${full?"full":""}" data-d="${k}" ${dt<t0||dt>max||full?"disabled":""}>${d}</button>`}
   c.innerHTML=h+"</div>";
-  $("#pv").onclick=()=>{view=new Date(y,m-1,1);drawCal()};
-  $("#nx").onclick=()=>{view=new Date(y,m+1,1);drawCal()};
-  c.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{sel.fecha=b.dataset.d;sel.hora=null;renderReservar();setTimeout(()=>{const s=$("#slots");if(s)s.scrollIntoView({behavior:"smooth",block:"center"})},50)});
+  $("#pv").onclick=()=>{view=new Date(y,m-1,1);drawCal()};$("#nx").onclick=()=>{view=new Date(y,m+1,1);drawCal()};
+  c.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{sel.fecha=b.dataset.d;sel.m=null;drawBook();setTimeout(()=>{const s=$("#slots");if(s)s.scrollIntoView({behavior:"smooth",block:"center"})},60)});
 }
 function drawSlots(){
   const s=$("#slots");if(!s||!sel.fecha)return;
-  const now=new Date(),hoy=sel.fecha===iso(now);
-  s.innerHTML=HORAS.map(h=>{const k=pad(h)+":00",busy=taken.has(sel.fecha+"_"+k)||(hoy&&h<=now.getHours());
-    return `<button class="slot ${sel.hora===k?"on":""}" data-h="${k}" ${busy?"disabled":""}>${h12(h)}</button>`}).join("");
-  s.querySelectorAll("[data-h]").forEach(b=>b.onclick=()=>{sel.hora=b.dataset.h;renderReservar();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},50)});
+  s.innerHTML=slotsFor(sel.fecha,nSl(sel.s?sel.s.dur:60)).map(x=>`<button class="slot ${sel.m===x.m?"on":""}" data-m="${x.m}" ${x.ok?"":"disabled"}>${h12(x.m)}</button>`).join("");
+  s.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{sel.m=+b.dataset.m;drawBook();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},60)});
 }
 async function book(){
   const nombre=$("#nom").value.trim(),tel=$("#tel").value.trim(),notas=$("#nts").value.trim();
-  if(!sel.serv)return toast("Elige un servicio primero 💖");
-  if(sel.serv==="Otro"&&!sel.otro.trim())return toast("Escribe qué te quieres hacer");
+  if(!sel.s)return toast("Elige un servicio primero");
+  if(sel.s.otro&&!sel.otro.trim())return toast("Escribe qué te quieres hacer");
   if(nombre.length<2)return toast("Escribe tu nombre");
   if(tel.replace(/\D/g,"").length<8)return toast("Escribe un teléfono válido");
   const btn=$("#go");btn.disabled=true;btn.textContent="Agendando…";
-  const id=sel.fecha+"_"+sel.hora;
-  const c={nombre,tel,notas,servicio:sel.serv==="Otro"?"Otro: "+sel.otro.trim():sel.serv,fecha:sel.fecha,hora:sel.hora,estado:"pendiente",creada:Date.now()};
+  const dur=sel.s.dur,n=nSl(dur),all=ids(sel.fecha,sel.m,n),id=all[0];
+  const c={nombre,tel,notas,servicio:sel.s.otro?"Otro: "+sel.otro.trim():sel.s.nombre,precio:+sel.s.precio||0,dur,fecha:sel.fecha,hora:key(sel.m),estado:"pendiente",creada:Date.now()};
   try{
     await runTransaction(db,async tx=>{
-      const r=doc(db,"ocupado",id);
-      if((await tx.get(r)).exists())throw new Error("taken");
-      tx.set(r,{fecha:sel.fecha,hora:sel.hora});
+      const rs=all.map(i=>doc(db,"ocupado",i));
+      for(const r of rs)if((await tx.get(r)).exists())throw new Error("taken");
+      rs.forEach((r,i)=>tx.set(r,{fecha:sel.fecha,hora:key(sel.m+i*cfg.paso)}));
       tx.set(doc(db,"citas",id),c);
     });
-    done=c;renderReservar();window.scrollTo({top:0,behavior:"smooth"});
+    done=c;drawBook();window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){
-    if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.hora=null;renderReservar()}
-    else{console.error(e);toast("No se pudo agendar. Revisa tu conexión a internet.");btn.disabled=false;btn.textContent="Confirmar mi cita 💅"}
+    if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.m=null;drawBook()}
+    else{console.error(e);toast("No se pudo agendar. Revisa tu internet.");btn.disabled=false;btn.textContent="Confirmar mi cita"}
   }
 }
 
 /* ================= PANEL ================= */
 async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("enamorada:"+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
-function renderPanel(){
-  const root=$("#vPanel");
+function renderP(){
+  const root=$("#vP");
   if(!unlocked){
-    root.innerHTML=`<div class="card"><h2>🔒 Panel protegido</h2><p style="font-size:14px;color:var(--muted)">Escribe tu clave para ver las citas.</p><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Clave"><button class="btn" id="pwgo">Entrar</button></div>`;
-    const go=async()=>{if(await sha($("#pw").value)===PW_HASH){unlocked=true;renderPanel()}else toast("Clave incorrecta")};
+    root.innerHTML=`<div class="card" style="margin-top:24px"><h2 style="margin-top:0">🔒 Panel protegido</h2><p class="small">Escribe tu clave para entrar.</p><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Clave"><button class="btn" id="pwgo">Entrar</button></div>`;
+    const go=async()=>{if(await sha($("#pw").value)===PW_HASH){unlocked=true;try{Notification.requestPermission()}catch(e){}renderP()}else toast("Clave incorrecta")};
     $("#pwgo").onclick=go;$("#pw").onkeydown=e=>{if(e.key==="Enter")go()};return;
   }
-  root.innerHTML=`<div class="seg"><button data-p="citas" class="${psub==="citas"?"on":""}">📅 Citas</button><button data-p="bloqueos" class="${psub==="bloqueos"?"on":""}">🚫 Bloqueos</button><button id="lock">🔒 Salir</button></div><div id="pbody"></div>`;
-  root.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{psub=b.dataset.p;armed=null;renderPanel()});
-  $("#lock").onclick=()=>{unlocked=false;renderPanel()};
-  psub==="citas"?shellCitas():shellBloq();
+  const N=[["citas","📅 Citas"],["ingresos","💰 Ingresos"],["clientas","👥 Clientas"],["bloqueos","🚫 Bloqueos"],["servicios","💅 Servicios"],["galeria","🖼 Galería"],["ajustes","⚙️ Ajustes"]];
+  root.innerHTML=`<div class="nav2">${N.map(n=>`<button data-p="${n[0]}" class="${psub===n[0]?"on":""}">${n[1]}</button>`).join("")}<button id="lock">🔒 Salir</button></div><div id="rec"></div><div id="pb"></div>`;
+  $$("#vP [data-p]").forEach(b=>b.onclick=()=>{psub=b.dataset.p;armed=null;renderP()});
+  $("#lock").onclick=()=>{unlocked=false;renderP()};
+  ({citas:shellCitas,ingresos:shellIng,clientas:shellCli,bloqueos:shellBloq,servicios:shellServ,galeria:shellGal,ajustes:shellAj})[psub]();
+  checkRec();
 }
+function refreshP(){
+  if(!unlocked)return;
+  if(psub==="citas")drawCitas();else if(psub==="ingresos")drawIng();else if(psub==="clientas")drawCli();else if(psub==="bloqueos"){drawBloq();prev()}
+  else if(psub==="servicios"&&!busy())drawServ();else if(psub==="galeria")drawGalA();
+  checkRec();
+}
+const cancelIds=c=>ids(c.fecha,mm(c.hora),nSl(c.dur||60));
+async function setEstado(c,patch){await updateDoc(doc(db,"citas",c._id),patch)}
+
+/* ---- recordatorio ---- */
+const notified=new Set();
+function checkRec(){
+  const el=$("#rec");if(!el)return;
+  const now=new Date(),hoy=iso(now),nm=now.getHours()*60+now.getMinutes();
+  const due=citas.filter(c=>c.fecha===hoy&&["pendiente","confirmada"].includes(c.estado)&&!c.recordado&&mm(c.hora)-nm<=cfg.rec&&mm(c.hora)-nm>=-5);
+  el.innerHTML=due.map(c=>`<div class="alert">⏰ <b>En ${Math.max(0,mm(c.hora)-nm)} min:</b> ${esc(c.nombre)} · ${esc(h12(c.hora))} · ${esc(c.servicio)}<div class="acts"><a class="btn sm" data-r="${esc(c._id)}" target="_blank" rel="noopener" href="${wa(c.tel,fill(cfg.msgRec,c))}">Enviar recordatorio</a></div></div>`).join("");
+  due.forEach(c=>{if(!notified.has(c._id)){notified.add(c._id);try{new Notification("Cita en "+Math.max(0,mm(c.hora)-nm)+" min",{body:c.nombre+" · "+c.servicio})}catch(e){}}});
+  el.querySelectorAll("[data-r]").forEach(a=>a.onclick=()=>updateDoc(doc(db,"citas",a.dataset.r),{recordado:true}).catch(()=>{}));
+}
+setInterval(checkRec,30000);
 
 /* ---- Citas ---- */
 function shellCitas(){
-  $("#pbody").innerHTML=`<div class="stats" id="stats"></div><div class="week" id="week"></div><input id="q" type="search" placeholder="🔍 Buscar por nombre, teléfono o servicio" value="${esc(q)}" style="margin-bottom:12px"><div class="chips" id="fl" style="margin-bottom:4px"></div><div id="lista"></div>`;
-  $("#q").oninput=e=>{q=e.target.value;drawLista()};
-  drawCitas();
+  $("#pb").innerHTML=`<div class="stats" id="stats"></div><div class="week" id="week"></div><input id="q" type="search" placeholder="🔍 Buscar nombre, teléfono o servicio" value="${esc(q)}" style="margin-bottom:12px"><div class="chips" id="fl"></div><div id="lista"></div>`;
+  $("#q").oninput=e=>{q=e.target.value;drawLista()};drawCitas();
 }
 function drawCitas(){
   if(!$("#stats"))return;
-  const hoy=iso(new Date()),act=citas.filter(c=>c.estado!=="cancelada");
-  const wk=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return iso(d)});
-  const st=[["Hoy",act.filter(c=>c.fecha===hoy).length],["Próximas",act.filter(c=>c.fecha>=hoy&&c.estado!=="completada").length],["Pendientes",act.filter(c=>c.estado==="pendiente").length],["7 días",act.filter(c=>wk.includes(c.fecha)).length]];
-  $("#stats").innerHTML=st.map(s=>`<div class="stat"><b>${s[1]}</b><span>${s[0]}</span></div>`).join("");
-  $("#week").innerHTML=wk.map(f=>{const n=act.filter(c=>c.fecha===f).length,dt=new Date(f+"T12:00:00");return `<button class="wd ${filtro===f?"on":""}" data-f="${f}">${DIAS[dt.getDay()]}<b>${dt.getDate()}</b><i>${n?n+(n>1?" citas":" cita"):"·"}</i></button>`}).join("");
-  const F=[["prox","Próximas"],["hoy","Hoy"],["pend","Pendientes"],["todas","Todas"]];
-  $("#fl").innerHTML=F.map(f=>`<button class="chip ${filtro===f[0]?"on":""}" data-f="${f[0]}">${f[1]}</button>`).join("");
-  document.querySelectorAll("#week [data-f],#fl [data-f]").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;drawCitas()});
+  const hoy=iso(new Date()),act=citas.filter(c=>c.estado!=="cancelada"),wk=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return iso(d)});
+  $("#stats").innerHTML=[["Hoy",act.filter(c=>c.fecha===hoy).length],["Próximas",act.filter(c=>c.fecha>=hoy&&c.estado!=="completada").length],["Pendientes",act.filter(c=>c.estado==="pendiente").length],["7 días",act.filter(c=>wk.includes(c.fecha)).length]].map(s=>`<div class="stat"><b>${s[1]}</b><span>${s[0]}</span></div>`).join("");
+  $("#week").innerHTML=wk.map(f=>{const n=act.filter(c=>c.fecha===f).length;return `<button class="wd ${filtro===f?"on":""}" data-f="${f}">${DIAS[P(f).getDay()]}<b>${P(f).getDate()}</b><i>${n?n+(n>1?" citas":" cita"):"·"}</i></button>`}).join("");
+  $("#fl").innerHTML=[["prox","Próximas"],["hoy","Hoy"],["pend","Pendientes"],["todas","Todas"]].map(f=>`<button class="chip ${filtro===f[0]?"on":""}" data-f="${f[0]}">${f[1]}</button>`).join("");
+  $$("#week [data-f],#fl [data-f]").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;drawCitas()});
   drawLista();
 }
 function drawLista(){
   const el=$("#lista");if(!el)return;
-  const hoy=iso(new Date());
-  let list=[...citas].sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+  const hoy=iso(new Date());let list=[...citas].sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
   if(/^\d{4}-/.test(filtro))list=list.filter(c=>c.fecha===filtro);
   else if(filtro==="hoy")list=list.filter(c=>c.fecha===hoy&&c.estado!=="cancelada");
-  else if(filtro==="prox")list=list.filter(c=>c.fecha>=hoy&&c.estado!=="cancelada"&&c.estado!=="completada");
+  else if(filtro==="prox")list=list.filter(c=>c.fecha>=hoy&&!["cancelada","completada"].includes(c.estado));
   else if(filtro==="pend")list=list.filter(c=>c.estado==="pendiente");
-  const t=q.trim().toLowerCase();
-  if(t)list=list.filter(c=>(c.nombre+" "+c.tel+" "+c.servicio).toLowerCase().includes(t));
-  if(!list.length){el.innerHTML=`<div class="card"><p style="text-align:center;color:var(--muted);margin:0">No hay citas aquí todavía 🌸</p></div>`;return}
+  const t=q.trim().toLowerCase();if(t)list=list.filter(c=>(c.nombre+" "+c.tel+" "+c.servicio).toLowerCase().includes(t));
+  if(!list.length){el.innerHTML=`<div class="card"><p class="small" style="text-align:center;margin:0">No hay citas aquí todavía 🌸</p></div>`;return}
   let h="",last="";
   list.forEach(c=>{
     if(c.fecha!==last){last=c.fecha;h+=`<div class="dh">${c.fecha===hoy?"Hoy · ":""}${esc(fLarga(c.fecha))} (${list.filter(x=>x.fecha===c.fecha).length})</div>`}
-    const id=c._id,d=String(c.tel||"").replace(/\D/g,""),wa=d.length===8?"504"+d:d,arm=armed===id;
-    const msg="¡Buen día, "+c.nombre+"! 💖 Muchas gracias por agendar. Confirmo tu cita para el "+fLarga(c.fecha)+" a las "+h12(hh(c.hora))+". ¡Muchas gracias!";
-    h+=`<div class="card cita ${esc(c.estado)}"><div class="top"><span>🕒 ${esc(h12(hh(c.hora)))}</span><span class="badge">${esc(c.estado)}</span></div><p><b style="color:var(--ink)">${esc(c.nombre)}</b> — ${esc(c.servicio)}</p><p>📞 ${esc(c.tel)}</p>${c.notas?`<p>📝 ${esc(c.notas)}</p>`:""}`;
-    if(c.estado!=="cancelada"&&c.estado!=="completada")h+=`<div class="acts">${c.estado==="pendiente"?`<button class="btn sm" data-a="ok" data-id="${esc(id)}">Confirmar</button>`:""}${c.estado==="confirmada"&&c.fecha<=hoy?`<button class="btn sm" data-a="fin" data-id="${esc(id)}">✔ Atendida</button>`:""}<a class="btn sm ghost" target="_blank" rel="noopener" href="https://wa.me/${esc(wa)}?text=${encodeURIComponent(msg)}">WhatsApp</a><a class="btn sm ghost" href="tel:+${esc(wa)}">Llamar</a><button class="btn sm ${arm?"bad":"ghost"}" data-a="no" data-id="${esc(id)}">${arm?"¿Seguro? Cancelar":"Cancelar"}</button></div>`;
+    const id=c._id,arm=armed===id,act=!["cancelada","completada"].includes(c.estado);
+    h+=`<div class="card cita ${esc(c.estado)}"><div class="top2"><span>🕒 ${esc(h12(c.hora))} – ${esc(h12(mm(c.hora)+nSl(c.dur||60)*cfg.paso))}</span><span class="badge">${esc(c.estado)}</span></div><p><b>${esc(c.nombre)}</b> — ${esc(c.servicio)}${+c.precio?" · "+L(c.precio):" · <i>sin precio</i>"}</p><p>📞 ${esc(c.tel)}${c.notas?"<br>📝 "+esc(c.notas):""}</p>`;
+    if(act)h+=`<div class="acts">${c.estado==="pendiente"?`<button class="btn sm" data-a="ok" data-id="${esc(id)}">Confirmar</button>`:""}${c.estado==="confirmada"&&c.fecha<=hoy?`<button class="btn sm" data-a="fin" data-id="${esc(id)}">✔ Atendida</button>`:""}<a class="btn sm gh" target="_blank" rel="noopener" href="${wa(c.tel,fill(cfg.msgConf,c))}">WhatsApp</a><a class="btn sm gh" href="tel:${esc(String(c.tel).replace(/\D/g,""))}">Llamar</a><button class="btn sm gh" data-a="pre" data-id="${esc(id)}">💲 Precio</button><button class="btn sm gh" data-a="ext" data-id="${esc(id)}">⏱ +${cfg.paso} min</button><button class="btn sm ${arm?"bad":"gh"}" data-a="no" data-id="${esc(id)}">${arm?"¿Seguro? Cancelar":"Cancelar"}</button></div>`;
+    if(c.estado==="completada")h+=`<div class="acts"><button class="btn sm gh" data-a="pre" data-id="${esc(id)}">💲 Precio</button></div>`;
     h+="</div>";
   });
   el.innerHTML=h;
   el.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{
-    const id=b.dataset.id,a=b.dataset.a;
+    const id=b.dataset.id,a=b.dataset.a,c=citas.find(x=>x._id===id);if(!c)return;
     try{
-      if(a==="ok"){await updateDoc(doc(db,"citas",id),{estado:"confirmada"});toast("Cita confirmada ✅")}
-      else if(a==="fin"){await updateDoc(doc(db,"citas",id),{estado:"completada"});toast("Marcada como atendida 💖")}
+      if(a==="ok"){await setEstado(c,{estado:"confirmada"});toast("Cita confirmada ✅")}
+      else if(a==="fin"){await setEstado(c,{estado:"completada"});toast("Marcada como atendida 💖")}
+      else if(a==="pre"){const v=prompt("Precio de esta cita en Lempiras",c.precio||"");if(v===null)return;const n=parseFloat(String(v).replace(/[^\d.]/g,""));if(isNaN(n))return toast("Escribe solo números");await setEstado(c,{precio:n});toast("Precio guardado 💲")}
+      else if(a==="ext"){
+        const m=mm(c.hora)+nSl(c.dur||60)*cfg.paso,nid=c.fecha+"_"+key(m);
+        if(m+cfg.paso>cfg.cierra*60)return toast("Ya es el final del horario");
+        if(taken.has(nid))return toast("La siguiente hora ya está ocupada");
+        await setDoc(doc(db,"ocupado",nid),{fecha:c.fecha,hora:key(m)});
+        await setEstado(c,{dur:(nSl(c.dur||60)+1)*cfg.paso});toast("Cita extendida "+cfg.paso+" min ⏱");
+      }
       else if(armed!==id){armed=id;drawLista()}
-      else{await updateDoc(doc(db,"citas",id),{estado:"cancelada"});await deleteDoc(doc(db,"ocupado",id));armed=null;toast("Cita cancelada, horario liberado")}
+      else{await setEstado(c,{estado:"cancelada"});for(const i of cancelIds(c))await deleteDoc(doc(db,"ocupado",i));armed=null;toast("Cita cancelada, horario libre")}
     }catch(e){toast("No se pudo completar la acción")}
   });
 }
 
+/* ---- Clientas ---- */
+function clientas(){
+  const m={},hoy=iso(new Date());
+  citas.filter(c=>c.estado!=="cancelada").forEach(c=>{const k=String(c.tel).replace(/\D/g,"").slice(-8)||c.nombre,x=m[k]=m[k]||{v:[]};x.nombre=c.nombre;x.tel=c.tel;x.v.push(c)});
+  return Object.values(m).map(x=>{
+    const past=x.v.filter(c=>c.fecha<hoy||c.estado==="completada").sort((a,b)=>(b.fecha+b.hora).localeCompare(a.fecha+a.hora));
+    const fut=x.v.filter(c=>c.fecha>=hoy&&c.estado!=="completada").sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+    return {...x,past,ult:past[0],prox:fut[0],gasto:past.reduce((s,c)=>s+(+c.precio||0),0)};
+  }).sort((a,b)=>((b.ult||{}).fecha||"").localeCompare((a.ult||{}).fecha||""));
+}
+function shellCli(){$("#pb").innerHTML=`<input id="q2" type="search" placeholder="🔍 Buscar clienta" style="margin-bottom:12px"><div id="cl"></div>`;$("#q2").oninput=drawCli;drawCli()}
+function drawCli(){
+  const el=$("#cl");if(!el)return;
+  const t=(($("#q2")||{}).value||"").trim().toLowerCase(),hoy=iso(new Date());
+  const list=clientas().filter(c=>!t||(c.nombre+" "+c.tel).toLowerCase().includes(t));
+  if(!list.length){el.innerHTML=`<div class="card"><p class="small" style="text-align:center;margin:0">Aún no hay clientas 🌸</p></div>`;return}
+  el.innerHTML=`<p class="small">${list.length} clienta(s)</p>`+list.map(c=>{
+    const dias=c.ult?Math.round((P(hoy)-P(c.ult.fecha))/864e5):null;
+    return `<div class="card cita"><div class="top2"><span>${esc(c.nombre)}</span><span class="badge">${c.past.length} visita${c.past.length===1?"":"s"}</span></div><p>📞 ${esc(c.tel)}</p><p>Última visita: <b>${c.ult?esc(fCorta(c.ult.fecha))+" (hace "+dias+" día"+(dias===1?"":"s")+")":"todavía no"}</b>${c.ult?" · "+esc(c.ult.servicio):""}</p><p>Total gastado: <b>${L(c.gasto)}</b>${c.prox?" · Próxima: <b>"+esc(fCorta(c.prox.fecha))+" "+esc(h12(c.prox.hora))+"</b>":""}</p><div class="acts"><a class="btn sm gh" target="_blank" rel="noopener" href="${wa(c.tel,"¡Hola, "+c.nombre+"! 💖 Te extrañamos en "+cfg.nombre+". ¿Te agendamos una cita?")}">WhatsApp</a><a class="btn sm gh" href="tel:${esc(String(c.tel).replace(/\D/g,""))}">Llamar</a></div></div>`}).join("");
+}
+
+/* ---- Ingresos ---- */
+let mes=new Date();mes.setDate(1);
+function shellIng(){
+  $("#pb").innerHTML=`<div class="cal-h"><button class="nav" id="ip" aria-label="Mes anterior">‹</button><b id="im" style="text-transform:capitalize"></b><button class="nav" id="inx" aria-label="Mes siguiente">›</button></div><div id="ing"></div>`;
+  $("#ip").onclick=()=>{mes=new Date(mes.getFullYear(),mes.getMonth()-1,1);drawIng()};
+  $("#inx").onclick=()=>{mes=new Date(mes.getFullYear(),mes.getMonth()+1,1);drawIng()};drawIng();
+}
+function drawIng(){
+  const el=$("#ing");if(!el)return;
+  const y=mes.getFullYear(),mo=mes.getMonth(),pre=y+"-"+pad(mo+1)+"-",hoy=iso(new Date());
+  $("#im").textContent=MESES[mo]+" "+y;
+  const ok=c=>["confirmada","completada"].includes(c.estado),sum=a=>a.reduce((t,c)=>t+(+c.precio||0),0);
+  const dm=citas.filter(c=>ok(c)&&c.fecha.startsWith(pre)),total=sum(dm),hecho=sum(dm.filter(c=>c.estado==="completada"));
+  const hoyC=citas.filter(c=>ok(c)&&c.fecha===hoy),pend=citas.filter(c=>c.estado==="pendiente"&&c.fecha.startsWith(pre));
+  const nop=dm.filter(c=>!+c.precio).length,by={},sv={};
+  dm.forEach(c=>{(by[c.fecha]=by[c.fecha]||[]).push(c);sv[c.servicio]=(sv[c.servicio]||0)+(+c.precio||0)});
+  const days=Object.keys(by).sort(),mx=Math.max(1,...days.map(f=>sum(by[f])));
+  el.innerHTML=`<div class="row2"><div class="card" style="margin:0"><p class="small" style="margin:0">Hoy</p><div style="font:700 26px 'Playfair Display',serif;color:var(--acc)">${M(sum(hoyC))}</div><p class="small" style="margin:0">${hoyC.length} cita(s) confirmada(s)</p></div><div class="card" style="margin:0"><p class="small" style="margin:0">Este mes (confirmadas)</p><div style="font:700 26px 'Playfair Display',serif;color:var(--acc)">${M(total)}</div><p class="small" style="margin:0">${dm.length} cita(s)</p></div></div>
+<div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:12px"><div class="stat"><b style="font-size:17px">${M(hecho)}</b><span>Ya atendido</span></div><div class="stat"><b style="font-size:17px">${M(total-hecho)}</b><span>Por recibir</span></div><div class="stat"><b style="font-size:17px">${M(dm.length?total/dm.length:0)}</b><span>Promedio/cita</span></div></div>
+${pend.length?`<p class="small">⏳ ${pend.length} cita(s) pendiente(s) sin confirmar, no incluidas (${M(sum(pend))}).</p>`:""}${nop?`<p class="small">⚠️ ${nop} cita(s) sin precio. Toca “💲 Precio” en la cita para incluirlas.</p>`:""}
+<h2>Ingresos por día</h2><div class="card">${days.length?days.map(f=>{const t=sum(by[f]);return `<div class="rw"><small>${f===hoy?"Hoy":esc(P(f).toLocaleDateString("es",{weekday:"short",day:"numeric"}))}</small><div class="bar" style="width:${Math.max(3,t/mx*100)}%"></div><span><b>${M(t)}</b> <small>(${by[f].length})</small></span></div>`}).join(""):`<p class="small" style="margin:0;text-align:center">Aún no hay citas confirmadas este mes 🌸</p>`}</div>
+${Object.keys(sv).length?`<h2>Por servicio</h2><div class="card">${Object.entries(sv).sort((a,b)=>b[1]-a[1]).map(([n,t])=>`<div class="rw" style="grid-template-columns:1fr auto"><span>${esc(n)}</span><b>${M(t)}</b></div>`).join("")}</div>`:""}`;
+}
+
 /* ---- Bloqueos ---- */
 function shellBloq(){
-  const hoy=iso(new Date());
-  $("#pbody").innerHTML=`<div class="card"><h2>Nuevo bloqueo</h2><p class="small" style="margin-top:0">Bloquea varias horas, varios días o un mes entero en un solo paso.</p>
-<div class="chips"><button class="chip" data-q="hoy">Hoy</button><button class="chip" data-q="sem">Próximos 7 días</button><button class="chip" data-q="mes">Mes completo</button></div>
-<p class="small">Para bloquear otro mes, elige primero un día de ese mes y toca “Mes completo”.</p>
-<div class="row2"><div><label for="bf">Desde el día</label><input id="bf" type="date" min="${hoy}" value="${hoy}"></div><div><label for="bt">Hasta el día</label><input id="bt" type="date" min="${hoy}" value="${hoy}"></div></div>
-<label class="chk" style="margin-top:12px"><input type="checkbox" id="bd"> Todo el día (${h12(HORAS[0])} a ${h12(LAST+1)})</label>
-<div class="row2"><div><label for="bh1">Desde la hora</label><select id="bh1">${HORAS.map(x=>`<option value="${x}">${h12(x)}</option>`).join("")}</select></div><div><label for="bh2">Hasta las</label><select id="bh2">${HORAS.map(x=>`<option value="${x}" ${x===LAST?"selected":""}>${h12(x+1)}</option>`).join("")}</select></div></div>
-<label for="bm">Motivo (opcional)</label><input id="bm" maxlength="60" placeholder="Ej. Vacaciones, compra de productos">
-<div class="prev" id="prev"></div><button class="btn" id="bgo">🚫 Bloquear</button></div>
-<h2 style="margin:18px 0 8px">Bloqueos activos</h2><div id="blist"></div>`;
-  document.querySelectorAll("#pbody input,#pbody select").forEach(e=>{e.oninput=prev;e.onchange=()=>{if(e.id==="bf"&&$("#bt").value<e.value)$("#bt").value=e.value;hrs();prev()}});
-  document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>quick(b.dataset.q));
+  const hoy=iso(new Date()),sl=allSlots();
+  $("#pb").innerHTML=`<div class="card"><h2 style="margin-top:0">Nuevo bloqueo</h2><p class="small">Bloquea varias horas, varios días o un mes entero en un paso.</p><div class="chips"><button class="chip" data-q="hoy">Hoy</button><button class="chip" data-q="sem">Próximos 7 días</button><button class="chip" data-q="mes">Mes completo</button></div><p class="small">Para otro mes, elige un día de ese mes y toca “Mes completo”.</p><div class="row2"><div><label for="bf">Desde el día</label><input id="bf" type="date" min="${hoy}" value="${hoy}"></div><div><label for="bt">Hasta el día</label><input id="bt" type="date" min="${hoy}" value="${hoy}"></div></div><label class="chk" style="margin-top:12px"><input type="checkbox" id="bd"> Todo el día</label><div class="row2"><div><label for="bh1">Desde la hora</label><select id="bh1">${sl.map(x=>`<option value="${x}">${h12(x)}</option>`).join("")}</select></div><div><label for="bh2">Hasta las</label><select id="bh2">${sl.map((x,i)=>`<option value="${x}" ${i===sl.length-1?"selected":""}>${h12(x+cfg.paso)}</option>`).join("")}</select></div></div><label for="bm">Motivo (opcional)</label><input id="bm" maxlength="60" placeholder="Ej. Vacaciones, compras"><div class="prev" id="prev"></div><button class="btn" id="bgo">🚫 Bloquear</button></div><h2>Bloqueos activos</h2><div id="blist"></div>`;
+  $$("#pb input,#pb select").forEach(e=>{e.oninput=prev;e.onchange=()=>{if(e.id==="bf"&&$("#bt").value<e.value)$("#bt").value=e.value;hrs();prev()}});
+  $$("[data-q]").forEach(b=>b.onclick=()=>quick(b.dataset.q));
   $("#bgo").onclick=bloquear;hrs();prev();drawBloq();
 }
 const hrs=()=>{const b=$("#bh1");if(b)b.disabled=$("#bh2").disabled=$("#bd").checked};
 function quick(k){
   const t=new Date();let a=new Date(t),b=new Date(t);
   if(k==="sem")b.setDate(b.getDate()+6);
-  if(k==="mes"){const base=$("#bf").value?new Date($("#bf").value+"T12:00:00"):t;a=new Date(Math.max(t,new Date(base.getFullYear(),base.getMonth(),1)));b=new Date(base.getFullYear(),base.getMonth()+1,0);$("#bd").checked=true}
+  if(k==="mes"){const base=$("#bf").value?P($("#bf").value):t;a=new Date(Math.max(t,new Date(base.getFullYear(),base.getMonth(),1)));b=new Date(base.getFullYear(),base.getMonth()+1,0);$("#bd").checked=true}
   $("#bf").value=iso(a);$("#bt").value=iso(b);hrs();prev();
 }
 function plan(){
-  const f1=$("#bf").value,f2=$("#bt").value||f1,all=$("#bd").checked;
-  if(!f1)return {err:"Elige el día"};
-  if(f2<f1)return {err:"La fecha final es antes de la inicial"};
-  const a=all?HORAS[0]:+$("#bh1").value,b=all?LAST:+$("#bh2").value;
-  if(b<a)return {err:"La hora final es antes de la inicial"};
+  const f1=$("#bf").value,f2=$("#bt").value||f1,all=$("#bd").checked,sl=allSlots();
+  if(!f1)return {err:"Elige el día"};if(f2<f1)return {err:"La fecha final es antes de la inicial"};
+  const a=all?sl[0]:+$("#bh1").value,b=all?sl[sl.length-1]:+$("#bh2").value;if(b<a)return {err:"La hora final es antes de la inicial"};
   const mo=$("#bm").value.trim()||"Horario bloqueado",ops=[];let skip=0,days=0;
-  const [y,m,d]=f1.split("-").map(Number);
-  for(let dt=new Date(y,m-1,d),n=0;iso(dt)<=f2&&n<93;dt.setDate(dt.getDate()+1),n++){
-    days++;const f=iso(dt);
-    for(let h=a;h<=b;h++){const t=pad(h)+":00",id=f+"_"+t;if(taken.has(id))skip++;else ops.push([id,{fecha:f,hora:t,bloqueo:true,motivo:mo}])}
-  }
+  for(let f=f1,n=0;f<=f2&&n<93;f=nextDay(f),n++){days++;for(let m=a;m<=b;m+=cfg.paso){const id=f+"_"+key(m);if(taken.has(id))skip++;else ops.push([id,{fecha:f,hora:key(m),bloqueo:true,motivo:mo}])}}
   return {ops,skip,days};
 }
-function prev(){
-  const e=$("#prev");if(!e)return;const p=plan();
-  e.textContent=p.err?p.err:`Se bloquearán ${p.ops.length} hora(s) en ${p.days} día(s).`+(p.skip?` ${p.skip} ya estaban ocupadas y se respetan.`:"");
-}
+function prev(){const e=$("#prev");if(!e)return;const p=plan();e.textContent=p.err?p.err:`Se bloquearán ${p.ops.length} espacio(s) en ${p.days} día(s).`+(p.skip?` ${p.skip} ya estaban ocupados y se respetan.`:"")}
 async function bloquear(){
-  const p=plan();if(p.err)return toast(p.err);
-  if(!p.ops.length)return toast("Esas horas ya estaban ocupadas");
+  const p=plan();if(p.err)return toast(p.err);if(!p.ops.length)return toast("Esas horas ya estaban ocupadas");
   const btn=$("#bgo");btn.disabled=true;
-  try{
-    for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,"ocupado",id),o));await b.commit()}
-    toast(p.ops.length+" hora(s) bloqueada(s) 🚫");
-  }catch(e){toast("No se pudo bloquear")}
+  try{for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,"ocupado",id),o));await b.commit()}toast(p.ops.length+" espacio(s) bloqueado(s) 🚫")}catch(e){toast("No se pudo bloquear")}
   btn.disabled=false;
 }
 function groupBlocks(){
-  const hoy=iso(new Date()),by={};
-  ocup.filter(o=>o.bloqueo&&o.fecha>=hoy).forEach(o=>{(by[o.fecha]=by[o.fecha]||[]).push({id:o.id,h:hh(o.hora),m:o.motivo||((allCitas.find(c=>c._id===o.id)||{}).servicio)||"Horario bloqueado"})});
-  const days=Object.keys(by).sort().map(f=>{
-    const runs=[];by[f].sort((a,b)=>a.h-b.h).forEach(x=>{const r=runs[runs.length-1];if(r&&r.m===x.m&&x.h===r.to+1){r.to=x.h;r.ids.push(x.id)}else runs.push({from:x.h,to:x.h,m:x.m,ids:[x.id]})});
-    return {f,runs,sig:runs.map(r=>r.from+"-"+r.to+"-"+r.m).join("|")};
-  });
-  const groups=[];
-  days.forEach(d=>{const g=groups[groups.length-1],ids=d.runs.flatMap(r=>r.ids);
-    if(g&&g.sig===d.sig&&nextDay(g.f2)===d.f){g.f2=d.f;g.n++;g.ids.push(...ids)}else groups.push({f1:d.f,f2:d.f,n:1,sig:d.sig,runs:d.runs,ids})});
-  return groups;
+  const hoy=iso(new Date()),by={},sl=allSlots();
+  ocup.filter(o=>o.bloqueo&&o.fecha>=hoy).forEach(o=>{(by[o.fecha]=by[o.fecha]||[]).push({id:o.id,h:mm(o.hora),m:o.motivo||((allC.find(c=>c._id===o.id)||{}).servicio)||"Horario bloqueado"})});
+  const days=Object.keys(by).sort().map(f=>{const runs=[];by[f].sort((a,b)=>a.h-b.h).forEach(x=>{const r=runs[runs.length-1];if(r&&r.m===x.m&&x.h===r.to+cfg.paso){r.to=x.h;r.ids.push(x.id)}else runs.push({from:x.h,to:x.h,m:x.m,ids:[x.id]})});return {f,runs,sig:runs.map(r=>r.from+"-"+r.to+"-"+r.m).join("|")}});
+  const gs=[];days.forEach(d=>{const g=gs[gs.length-1],ii=d.runs.flatMap(r=>r.ids);if(g&&g.sig===d.sig&&nextDay(g.f2)===d.f){g.f2=d.f;g.n++;g.ids.push(...ii)}else gs.push({f1:d.f,f2:d.f,n:1,sig:d.sig,runs:d.runs,ids:ii})});
+  return gs.map(g=>({...g,all:g.runs.length===1&&g.runs[0].from===sl[0]&&g.runs[0].to===sl[sl.length-1]}));
 }
 function drawBloq(){
-  const el=$("#blist");if(!el)return;
-  const gs=groupBlocks();
-  if(!gs.length){el.innerHTML=`<div class="card"><p style="text-align:center;color:var(--muted);margin:0">No tienes horas bloqueadas 🌸</p></div>`;return}
+  const el=$("#blist");if(!el)return;const gs=groupBlocks();
+  if(!gs.length){el.innerHTML=`<div class="card"><p class="small" style="text-align:center;margin:0">No tienes horas bloqueadas 🌸</p></div>`;return}
   el.innerHTML=gs.map((g,i)=>{
-    const key=g.f1+g.f2+g.sig,arm=armed===key;
-    const lab=g.f1===g.f2?fLarga(g.f1):fCorta(g.f1)+" → "+fCorta(g.f2);
-    const runs=g.runs.map(r=>`<p>${r.from===HORAS[0]&&r.to===LAST?"Todo el día":esc(h12(r.from))+" – "+esc(h12(r.to+1))} · ${esc(r.m)}</p>`).join("");
-    return `<div class="card cita" style="border-left-color:var(--muted)"><div class="top"><span style="text-transform:capitalize">${esc(lab)}</span><span class="badge">${g.n} día${g.n>1?"s":""}</span></div>${runs}<div class="acts"><button class="btn sm ${arm?"bad":"ghost"}" data-g="${i}">${arm?"¿Seguro? Desbloquear":"Desbloquear"}</button></div></div>`;
-  }).join("");
+    const k=g.f1+g.f2+g.sig,arm=armed===k;
+    return `<div class="card cita"><div class="top2"><span>${g.f1===g.f2?esc(fLarga(g.f1)):esc(fCorta(g.f1))+" → "+esc(fCorta(g.f2))}</span><span class="badge">${g.n} día${g.n>1?"s":""}</span></div>${g.runs.map(r=>`<p>${g.all?"Todo el día":esc(h12(r.from))+" – "+esc(h12(r.to+cfg.paso))} · ${esc(r.m)}</p>`).join("")}<div class="acts"><button class="btn sm ${arm?"bad":"gh"}" data-g="${i}">${arm?"¿Seguro? Desbloquear":"Desbloquear"}</button></div></div>`}).join("");
   el.querySelectorAll("[data-g]").forEach(b=>b.onclick=async()=>{
-    const g=gs[+b.dataset.g],key=g.f1+g.f2+g.sig;
-    if(armed!==key){armed=key;drawBloq();return}
-    try{
-      for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,"ocupado",id));if(allCitas.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,"citas",id))});await w.commit()}
-      armed=null;toast("Horarios desbloqueados ✅");
-    }catch(e){toast("No se pudo desbloquear")}
+    const g=gs[+b.dataset.g],k=g.f1+g.f2+g.sig;if(armed!==k){armed=k;drawBloq();return}
+    try{for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,"ocupado",id));if(allC.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,"citas",id))});await w.commit()}armed=null;toast("Horarios desbloqueados ✅")}catch(e){toast("No se pudo desbloquear")}
   });
+}
+
+/* ---- Servicios y precios ---- */
+function shellServ(){$("#pb").innerHTML=`<p class="small" style="margin-top:0">Aquí cambias el precio y la duración de cada servicio. Se ve al instante en la página de reservas. Los servicios de siempre quedan fijos; solo ajustas su precio.</p><div id="sv"></div><button class="btn" id="svn">+ Agregar servicio</button>`;$("#svn").onclick=()=>setDoc(doc(db,"servicios","s"+Date.now()),{nombre:"Nuevo servicio",precio:0,dur:60,activo:true,orden:Date.now()}).catch(()=>toast("No se pudo agregar"));drawServ()}
+function drawServ(){
+  const el=$("#sv");if(!el)return;
+  el.innerHTML=catAll().map(s=>`<div class="card" data-id="${esc(s.id)}" data-o="${s.orden||0}"><label style="margin-top:0">Nombre</label><input class="n" value="${esc(s.nombre)}" ${s.base?"disabled":""}><div class="row2"><div><label>Precio (L)</label><input class="p" type="number" min="0" inputmode="numeric" value="${+s.precio||0}"></div><div><label>Duración</label><select class="d">${DURS.map(d=>`<option value="${d}" ${+s.dur===d?"selected":""}>${durL(d)}</option>`).join("")}</select></div></div><label class="chk" style="margin-top:12px"><input type="checkbox" class="a" ${s.activo!==false?"checked":""}> Visible para las clientas</label><div class="acts"><button class="btn sm" data-sv="save">Guardar</button>${s.base?"":`<button class="btn sm ${armed===s.id?"bad":"gh"}" data-sv="del">${armed===s.id?"¿Seguro? Eliminar":"Eliminar"}</button>`}</div></div>`).join("");
+  el.querySelectorAll("[data-sv]").forEach(b=>b.onclick=async()=>{
+    const card=b.closest(".card"),id=card.dataset.id;
+    try{
+      if(b.dataset.sv==="save"){await setDoc(doc(db,"servicios",id),{nombre:card.querySelector(".n").value.trim()||"Servicio",precio:+card.querySelector(".p").value||0,dur:+card.querySelector(".d").value,activo:card.querySelector(".a").checked,orden:+card.dataset.o||0});toast("Guardado ✅")}
+      else if(armed!==id){armed=id;drawServ()}else{await deleteDoc(doc(db,"servicios",id));armed=null;toast("Servicio eliminado")}
+    }catch(e){toast("No se pudo guardar")}
+  });
+}
+
+/* ---- Galería ---- */
+const comp=f=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{const k=Math.min(1,900/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext("2d").drawImage(i,0,0,c.width,c.height);res(c.toDataURL("image/jpeg",.72))};i.onerror=rej;i.src=r.result};r.onerror=rej;r.readAsDataURL(f)});
+function shellGal(){
+  $("#pb").innerHTML=`<div class="card"><p class="small" style="margin-top:0">Sube fotos de tus trabajos. Se ven en la página principal. Se reducen solas para cargar rápido.</p><input id="up" type="file" accept="image/*" multiple><div class="prev" id="upm" style="display:none"></div></div><div class="thumbs" id="gA"></div>`;
+  $("#up").onchange=async e=>{
+    const fs=[...e.target.files],m=$("#upm");m.style.display="block";let ok=0;
+    for(const f of fs){m.textContent="Subiendo "+(ok+1)+" de "+fs.length+"…";
+      try{const src=await comp(f);if(src.length>950000){toast("Una foto es muy pesada");continue}await setDoc(doc(db,"galeria","g"+Date.now()+ok),{src,creada:Date.now()});ok++}catch(er){toast("No se pudo subir una foto")}}
+    m.textContent=ok+" foto(s) subida(s) ✅";e.target.value="";
+  };
+  drawGalA();
+}
+function drawGalA(){
+  const el=$("#gA");if(!el)return;
+  el.innerHTML=gal.length?gal.map(g=>`<div><img src="${g.src}" alt=""><button class="btn sm ${armed===g.id?"bad":"gh"}" data-d="${esc(g.id)}">${armed===g.id?"¿Borrar?":"✕"}</button></div>`).join(""):`<p class="small">Todavía no hay fotos.</p>`;
+  el.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{const id=b.dataset.d;if(armed!==id){armed=id;drawGalA();return}try{await deleteDoc(doc(db,"galeria",id));armed=null}catch(e){toast("No se pudo borrar")}});
+}
+
+/* ---- Ajustes ---- */
+function shellAj(){
+  const f=(id,l,v,t="text")=>`<label for="a_${id}">${l}</label><input id="a_${id}" type="${t}" value="${esc(v)}">`;
+  const sel_=(id,l,opts,v)=>`<label for="a_${id}">${l}</label><select id="a_${id}">${opts.map(o=>`<option value="${o[0]}" ${+o[0]===+v?"selected":""}>${o[1]}</option>`).join("")}</select>`;
+  const hrsO=[...Array(25)].map((_,i)=>[i,h12(i*60)]);
+  $("#pb").innerHTML=`<div class="card">${f("nombre","Nombre del negocio",cfg.nombre)}${f("wa","WhatsApp (con código de país)",cfg.wa,"tel")}${f("tag","Frase de bienvenida",cfg.tag)}<div class="row2"><div>${sel_("abre","Abre a las",hrsO.slice(0,23),cfg.abre)}</div><div>${sel_("cierra","Cierra a las",hrsO.slice(1),cfg.cierra)}</div></div>${sel_("paso","Intervalo de horarios",[[30,"Cada 30 min"],[60,"Cada 1 hora"]],cfg.paso)}${f("dias","Días de anticipación para reservar",cfg.dias,"number")}${f("rec","Recordatorio: minutos antes de la cita",cfg.rec,"number")}<label for="a_msgConf">Mensaje de confirmación</label><textarea id="a_msgConf" rows="3">${esc(cfg.msgConf)}</textarea><label for="a_msgRec">Mensaje de recordatorio</label><textarea id="a_msgRec" rows="3">${esc(cfg.msgRec)}</textarea><p class="small">Puedes usar {nombre}, {fecha}, {hora} y {servicio}; se llenan solos.</p><button class="btn" id="asv">Guardar ajustes</button></div>`;
+  $("#asv").onclick=async()=>{
+    const v=id=>$("#a_"+id).value,ab=+v("abre"),ci=+v("cierra");
+    if(ci<=ab)return toast("La hora de cierre debe ser después de la apertura");
+    try{await setDoc(doc(db,"config","negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,rec:+v("rec")||10,msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")}catch(e){toast("No se pudo guardar")}
+  };
 }
 
 /* ---- navegación y datos en vivo ---- */
 function tab(w){
-  $("#tReservar").classList.toggle("on",w==="r");$("#tPanel").classList.toggle("on",w==="p");
-  $("#vReservar").classList.toggle("hide",w!=="r");$("#vPanel").classList.toggle("hide",w!=="p");
-  document.body.classList.toggle("admin",w==="p");
+  $("#tR").classList.toggle("on",w==="r");$("#tP").classList.toggle("on",w==="p");
+  $("#vR").classList.toggle("hide",w!=="r");$("#vP").classList.toggle("hide",w!=="p");
+  document.body.classList.toggle("admin",w==="p");if(w==="p")renderP();window.scrollTo({top:0});
 }
-$("#tReservar").onclick=()=>tab("r");
-$("#tPanel").onclick=()=>{tab("p");renderPanel()};
-
-onSnapshot(collection(db,"ocupado"),s=>{
-  ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));
-  drawCal();drawSlots();
-  if(unlocked&&psub==="bloqueos"){drawBloq();prev()}
-});
-onSnapshot(collection(db,"citas"),s=>{
-  allCitas=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allCitas.filter(c=>!c.bloqueo);
-  if(unlocked)psub==="citas"?drawCitas():drawBloq();
-});
-renderReservar();
+$("#tR").onclick=()=>tab("r");$("#tP").onclick=()=>tab("p");
+const soft=()=>{$("#logo").textContent=cfg.nombre;if(!busy()&&!$("#nom")){renderR()}else{drawGal();}};
+onSnapshot(doc(db,"config","negocio"),s=>{cfg={...DEF,...(s.data()||{})};soft();if(unlocked&&psub==="citas")drawCitas()},()=>{});
+onSnapshot(collection(db,"servicios"),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},()=>{});
+onSnapshot(collection(db,"galeria"),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},()=>{});
+onSnapshot(collection(db,"ocupado"),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));drawCal();drawSlots();refreshP()},()=>{});
+onSnapshot(collection(db,"citas"),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);refreshP()},()=>{});
+renderR();
 </script>
 </body>
 </html>

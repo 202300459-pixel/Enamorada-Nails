@@ -6,9 +6,10 @@
 <title>Enamorada’s Nails — Agenda tu cita</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#09090b;--ink:#f4f4f5;--mut:#a1a1aa;--line:#27272a;--card:#131316;--acc:#a78bfa;--btn:#7c3aed;--btnk:#fff;--bad:#e5484d;--ok:#3ecf8e;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#0b0a10;--ink:#f4f4f5;--mut:#a1a1aa;--line:#2a2635;--card:#15131c;--acc:#d8b4fe;--btn:#9333ea;--btnk:#fff;--bad:#e5484d;--ok:#3ecf8e;--rose:#f9a8d4;--r:18px;--grad:linear-gradient(135deg,#9333ea,#db2777);color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(10,9,14,.9);z-index:21;pointer-events:none}
 .top{background:#000;border-bottom:1px solid #1f1f23;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px}.logo::before{content:"✦ ";color:#a78bfa}
 .tabs{display:flex;gap:6px}
@@ -22,7 +23,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-u
 h2{font:600 20px 'Playfair Display',Georgia,serif;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
 .st{width:26px;height:26px;border-radius:50%;background:var(--btn);color:#fff;font:600 13px 'Inter',sans-serif;display:inline-flex;align-items:center;justify-content:center}
 .btn{display:block;width:100%;border:0;background:var(--btn);color:var(--btnk);padding:14px;border-radius:12px;font:600 15px 'Inter',sans-serif;margin-top:14px;cursor:pointer;text-align:center;text-decoration:none}
-.btn:disabled{opacity:.5}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .btn.sm{display:inline-block;width:auto;padding:8px 14px;font-size:13px;margin:0;border-radius:10px}
 .btn.gh{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .btn.bad{background:var(--bad);color:#fff;border:0}
@@ -81,12 +82,12 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 .dots,.fdots{display:flex;gap:6px;justify-content:center;margin-top:8px}.dots span,.fdots span{width:6px;height:6px;border-radius:50%;background:#3f3f46;transition:.2s}.dots span.on,.fdots span.on{background:var(--acc);width:18px;border-radius:4px}
 .folder{border:1px solid var(--line);background:var(--card);border-radius:0 18px 18px 18px;padding:14px;position:relative;margin-top:36px}
 .ftab{position:absolute;top:-30px;left:-1px;background:var(--card);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;padding:6px 14px;font:600 12px 'Inter',sans-serif;color:var(--acc);cursor:pointer}
-.car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.car::-webkit-scrollbar{display:none}
+.car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}.car::-webkit-scrollbar{display:none}
 .ci{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:4/5;object-fit:cover;border-radius:14px;cursor:pointer}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:40}
 .alb{height:100%;overflow-y:auto;padding:0 12px 20px}.ah{position:sticky;top:0;background:#000;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 4px 14px;z-index:2}
 .ag{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.ag img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer}
-.vw{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.vw::-webkit-scrollbar{display:none}
+.vw{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}.vw::-webkit-scrollbar{display:none}
 .sl{flex:0 0 100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:64px 10px}.sl img{max-width:100%;max-height:100%;border-radius:12px;object-fit:contain}
 .x{border:1px solid #3f3f46;background:#18181b;color:#fff;border-radius:999px;padding:8px 14px;font:600 13px 'Inter',sans-serif;cursor:pointer}
 .vx{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px}.back{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:14px}
@@ -103,7 +104,6 @@ body.admin .fab{display:none}
 .sheet b{font:600 18px 'Playfair Display',Georgia,serif}.folder .car{cursor:pointer}
 .hide{display:none}
 /* ===== Rediseño v3: tema, táctil, foco, carpeta horizontal ===== */
-:root{--bg:#0b0a10;--card:#15131c;--line:#2a2635;--acc:#d8b4fe;--btn:#9333ea;--rose:#f9a8d4;--r:18px;--grad:linear-gradient(135deg,#9333ea,#db2777)}
 body{background:radial-gradient(1100px 480px at 50% -8%,#2a1344 0,transparent 62%),var(--bg)}
 .wrap{padding-bottom:96px}
 .top{position:sticky;top:0;z-index:20;background:rgba(10,9,14,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
@@ -177,6 +177,14 @@ const waMsg=()=>"https://wa.me/"+cfg.wa+"?text="+encodeURIComponent(cfg.msgConsu
 const wa=(tel,msg)=>{const d=String(tel||"").replace(/\D/g,""),n=d.length===8?"504"+d:d;return "https://wa.me/"+n+(msg?"?text="+encodeURIComponent(msg):"")};
 const toast=t=>{const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)};
 const busy=()=>/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||"");
+/* Evita dobles envíos: deshabilita los botones mientras se procesa y bloquea acciones simultáneas */
+let pending=false;
+async function guard(btns,fn,errMsg="No se pudo completar la acción"){
+  if(pending)return;pending=true;
+  const els=[...btns].filter(Boolean);els.forEach(b=>b.disabled=true);
+  try{return await fn()}catch(e){console.error(e);toast(errMsg)}
+  finally{pending=false;els.forEach(b=>{if(b.isConnected)b.disabled=false})}
+}
 
 const DEF={nombre:T?"Mi negocio":"Enamorada’s Nails",wa:T?"":"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:20,paso:30,dias:90,recs:"30,10",msgConsulta:"¡Hola! 💅 Vi su página y quiero hacer una consulta.\n\nMi nombre es: \nMe interesa: ",
  msgConf:"¡Buen día, {nombre}! 💖 Muchas gracias por agendar. Confirmo tu cita para el {fecha} a las {hora} ({servicio}). ¡Te esperamos!",
@@ -416,22 +424,37 @@ function drawLista(){
     h+="</div>";
   });
   el.innerHTML=h;
-  el.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{
-    const id=b.dataset.id,a=b.dataset.a,c=citas.find(x=>x._id===id);if(!c)return;
-    try{
-      if(a==="ok"){await setEstado(c,{estado:"confirmada"});toast("Cita confirmada ✅")}
-      else if(a==="fin"){await setEstado(c,{estado:"completada"});toast("Marcada como atendida 💖")}
-      else if(a==="pre"){const v=prompt("Precio de esta cita en Lempiras",c.precio||"");if(v===null)return;const n=parseFloat(String(v).replace(/[^\d.]/g,""));if(isNaN(n))return toast("Escribe solo números");await setEstado(c,{precio:n});toast("Precio guardado 💲")}
-      else if(a==="ext"){
-        const m=mm(c.hora)+nSl(c.dur||60)*cfg.paso,nid=c.fecha+"_"+key(m);
-        if(m+cfg.paso>cfg.cierra*60)return toast("Ya es el final del horario");
-        if(taken.has(nid))return toast("La siguiente hora ya está ocupada");
-        await setDoc(doc(db,C("ocupado"),nid),{fecha:c.fecha,hora:key(m)});
-        await setEstado(c,{dur:(nSl(c.dur||60)+1)*cfg.paso});toast("Cita extendida "+cfg.paso+" min ⏱");
-      }
-      else if(armed!==id){armed=id;drawLista()}
-      else{await setEstado(c,{estado:"cancelada"});for(const i of cancelIds(c))await deleteDoc(doc(db,C("ocupado"),i));armed=null;toast("Cita cancelada, horario libre")}
-    }catch(e){toast("No se pudo completar la acción")}
+  el.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id,a=b.dataset.a,c=citas.find(x=>x._id===id);if(!c||pending)return;
+    const row=[...b.closest(".acts").querySelectorAll("button")];
+    if(a==="no"&&armed!==id){armed=id;drawLista();return}
+    if(a==="pre"){
+      const v=prompt("Precio de esta cita en Lempiras",c.precio||"");if(v===null)return;
+      const n=parseFloat(String(v).replace(/[^\d.]/g,""));if(isNaN(n))return toast("Escribe solo números");
+      return guard(row,async()=>{await setEstado(c,{precio:n});toast("Precio guardado 💲")});
+    }
+    if(a==="ok")return guard(row,async()=>{await setEstado(c,{estado:"confirmada"});toast("Cita confirmada ✅")});
+    if(a==="fin")return guard(row,async()=>{await setEstado(c,{estado:"completada"});toast("Marcada como atendida 💖")});
+    if(a==="ext")return guard(row,async()=>{
+      const m=mm(c.hora)+nSl(c.dur||60)*cfg.paso,nid=c.fecha+"_"+key(m),nd=(nSl(c.dur||60)+1)*cfg.paso;
+      if(m+cfg.paso>cfg.cierra*60)return toast("Ya es el final del horario");
+      if(taken.has(nid))return toast("La siguiente hora ya está ocupada");
+      try{
+        await runTransaction(db,async tx=>{
+          const r=doc(db,C("ocupado"),nid);
+          if((await tx.get(r)).exists())throw new Error("taken");
+          tx.set(r,{fecha:c.fecha,hora:key(m)});
+          tx.update(doc(db,C("citas"),c._id),{dur:nd});
+        });
+      }catch(e){if(e.message==="taken")return toast("La siguiente hora ya está ocupada");throw e}
+      toast("Cita extendida "+cfg.paso+" min ⏱");
+    });
+    if(a==="no")return guard(row,async()=>{
+      const w=writeBatch(db);
+      w.update(doc(db,C("citas"),id),{estado:"cancelada"});
+      cancelIds(c).forEach(i=>w.delete(doc(db,C("ocupado"),i)));
+      await w.commit();armed=null;toast("Cita cancelada, horario libre");
+    });
   });
 }
 
@@ -470,12 +493,12 @@ function drawIng(){
   const ok=c=>["confirmada","completada"].includes(c.estado),sum=a=>a.reduce((t,c)=>t+(+c.precio||0),0);
   const dm=citas.filter(c=>ok(c)&&c.fecha.startsWith(pre)),total=sum(dm),hecho=sum(dm.filter(c=>c.estado==="completada"));
   const hoyC=citas.filter(c=>ok(c)&&c.fecha===hoy),pend=citas.filter(c=>c.estado==="pendiente"&&c.fecha.startsWith(pre));
-  const nop=dm.filter(c=>!+c.precio).length,by={},sv={};
+  const nop=dm.filter(c=>!+c.precio).length,conP=dm.filter(c=>+c.precio>0),prom=conP.length?total/conP.length:0,by={},sv={};
   dm.forEach(c=>{(by[c.fecha]=by[c.fecha]||[]).push(c);sv[c.servicio]=(sv[c.servicio]||0)+(+c.precio||0)});
   const days=Object.keys(by).sort(),mx=Math.max(1,...days.map(f=>sum(by[f])));
   el.innerHTML=`<div class="row2"><div class="card" style="margin:0"><p class="small" style="margin:0">Hoy</p><div style="font:700 26px 'Playfair Display',serif;color:var(--acc)">${M(sum(hoyC))}</div><p class="small" style="margin:0">${hoyC.length} cita(s) confirmada(s)</p></div><div class="card" style="margin:0"><p class="small" style="margin:0">Este mes (confirmadas)</p><div style="font:700 26px 'Playfair Display',serif;color:var(--acc)">${M(total)}</div><p class="small" style="margin:0">${dm.length} cita(s)</p></div></div>
-<div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:12px"><div class="stat"><b style="font-size:17px">${M(hecho)}</b><span>Ya atendido</span></div><div class="stat"><b style="font-size:17px">${M(total-hecho)}</b><span>Por recibir</span></div><div class="stat"><b style="font-size:17px">${M(dm.length?total/dm.length:0)}</b><span>Promedio/cita</span></div></div>
-${pend.length?`<p class="small">⏳ ${pend.length} cita(s) pendiente(s) sin confirmar, no incluidas (${M(sum(pend))}).</p>`:""}${nop?`<p class="small">⚠️ ${nop} cita(s) sin precio. Toca “💲 Precio” en la cita para incluirlas.</p>`:""}
+<div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:12px"><div class="stat"><b style="font-size:17px">${M(hecho)}</b><span>Ya atendido</span></div><div class="stat"><b style="font-size:17px">${M(total-hecho)}</b><span>Por recibir</span></div><div class="stat"><b style="font-size:17px">${M(prom)}</b><span>Promedio · ${conP.length} con precio</span></div></div>
+${pend.length?`<p class="small">⏳ ${pend.length} cita(s) pendiente(s) sin confirmar, no incluidas (${M(sum(pend))}).</p>`:""}${nop?`<p class="small">⚠️ ${nop} cita(s) sin precio: no cuentan en el promedio. Toca “💲 Precio” en la cita para incluirlas.</p>`:""}
 <h2>Ingresos por día</h2><div class="card">${days.length?days.map(f=>{const t=sum(by[f]);return `<div class="rw"><small>${f===hoy?"Hoy":esc(P(f).toLocaleDateString("es",{weekday:"short",day:"numeric"}))}</small><div class="bar" style="width:${Math.max(3,t/mx*100)}%"></div><span><b>${M(t)}</b> <small>(${by[f].length})</small></span></div>`}).join(""):`<p class="small" style="margin:0;text-align:center">Aún no hay citas confirmadas este mes 🌸</p>`}</div>
 ${Object.keys(sv).length?`<h2>Por servicio</h2><div class="card">${Object.entries(sv).sort((a,b)=>b[1]-a[1]).map(([n,t])=>`<div class="rw" style="grid-template-columns:1fr auto"><span>${esc(n)}</span><b>${M(t)}</b></div>`).join("")}</div>`:""}`;
 }
@@ -504,11 +527,12 @@ function plan(){
   return {ops,skip,days};
 }
 function prev(){const e=$("#prev");if(!e)return;const p=plan();e.textContent=p.err?p.err:`Se bloquearán ${p.ops.length} espacio(s) en ${p.days} día(s).`+(p.skip?` ${p.skip} ya estaban ocupados y se respetan.`:"")}
-async function bloquear(){
+function bloquear(){
   const p=plan();if(p.err)return toast(p.err);if(!p.ops.length)return toast("Esas horas ya estaban ocupadas");
-  const btn=$("#bgo");btn.disabled=true;
-  try{for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,C("ocupado"),id),o));await b.commit()}toast(p.ops.length+" espacio(s) bloqueado(s) 🚫")}catch(e){toast("No se pudo bloquear")}
-  btn.disabled=false;
+  return guard([$("#bgo")],async()=>{
+    for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,C("ocupado"),id),o));await b.commit()}
+    toast(p.ops.length+" espacio(s) bloqueado(s) 🚫");
+  },"No se pudo bloquear");
 }
 function groupBlocks(){
   const hoy=iso(new Date()),by={},sl=allSlots();
@@ -523,9 +547,13 @@ function drawBloq(){
   el.innerHTML=gs.map((g,i)=>{
     const k=g.f1+g.f2+g.sig,arm=armed===k;
     return `<div class="card cita"><div class="top2"><span>${g.f1===g.f2?esc(fLarga(g.f1)):esc(fCorta(g.f1))+" → "+esc(fCorta(g.f2))}</span><span class="badge">${g.n} día${g.n>1?"s":""}</span></div>${g.runs.map(r=>`<p>${g.all?"Todo el día":esc(h12(r.from))+" – "+esc(h12(r.to+cfg.paso))} · ${esc(r.m)}</p>`).join("")}<div class="acts"><button class="btn sm ${arm?"bad":"gh"}" data-g="${i}">${arm?"¿Seguro? Desbloquear":"Desbloquear"}</button></div></div>`}).join("");
-  el.querySelectorAll("[data-g]").forEach(b=>b.onclick=async()=>{
+  el.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{
+    if(pending)return;
     const g=gs[+b.dataset.g],k=g.f1+g.f2+g.sig;if(armed!==k){armed=k;drawBloq();return}
-    try{for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,C("ocupado"),id));if(allC.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,C("citas"),id))});await w.commit()}armed=null;toast("Horarios desbloqueados ✅")}catch(e){toast("No se pudo desbloquear")}
+    guard([b],async()=>{
+      for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,C("ocupado"),id));if(allC.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,C("citas"),id))});await w.commit()}
+      armed=null;toast("Horarios desbloqueados ✅");
+    },"No se pudo desbloquear");
   });
 }
 
@@ -534,12 +562,12 @@ function shellServ(){$("#pb").innerHTML=`<p class="small" style="margin-top:0">A
 function drawServ(){
   const el=$("#sv");if(!el)return;
   el.innerHTML=catAll().map(s=>`<div class="card" data-id="${esc(s.id)}" data-o="${s.orden||0}"><label style="margin-top:0">Nombre</label><input class="n" value="${esc(s.nombre)}" ${s.base?"disabled":""}><div class="row2"><div><label>Precio (L)</label><input class="p" type="number" min="0" inputmode="numeric" value="${+s.precio||0}"></div><div><label>Duración</label><select class="d">${DURS.map(d=>`<option value="${d}" ${+s.dur===d?"selected":""}>${durL(d)}</option>`).join("")}</select></div></div><label class="chk" style="margin-top:12px"><input type="checkbox" class="a" ${s.activo!==false?"checked":""}> Visible para las clientas</label><div class="acts"><button class="btn sm" data-sv="save">Guardar</button>${s.base?"":`<button class="btn sm ${armed===s.id?"bad":"gh"}" data-sv="del">${armed===s.id?"¿Seguro? Eliminar":"Eliminar"}</button>`}</div></div>`).join("");
-  el.querySelectorAll("[data-sv]").forEach(b=>b.onclick=async()=>{
-    const card=b.closest(".card"),id=card.dataset.id;
-    try{
-      if(b.dataset.sv==="save"){await setDoc(doc(db,C("servicios"),id),{nombre:card.querySelector(".n").value.trim()||"Servicio",precio:+card.querySelector(".p").value||0,dur:+card.querySelector(".d").value,activo:card.querySelector(".a").checked,orden:+card.dataset.o||0});toast("Guardado ✅")}
-      else if(armed!==id){armed=id;drawServ()}else{await deleteDoc(doc(db,C("servicios"),id));armed=null;toast("Servicio eliminado")}
-    }catch(e){toast("No se pudo guardar")}
+  el.querySelectorAll("[data-sv]").forEach(b=>b.onclick=()=>{
+    if(pending)return;
+    const card=b.closest(".card"),id=card.dataset.id,row=[...card.querySelectorAll("[data-sv]")];
+    if(b.dataset.sv==="save")return guard(row,async()=>{await setDoc(doc(db,C("servicios"),id),{nombre:card.querySelector(".n").value.trim()||"Servicio",precio:+card.querySelector(".p").value||0,dur:+card.querySelector(".d").value,activo:card.querySelector(".a").checked,orden:+card.dataset.o||0});toast("Guardado ✅")},"No se pudo guardar");
+    if(armed!==id){armed=id;drawServ();return}
+    return guard(row,async()=>{await deleteDoc(doc(db,C("servicios"),id));armed=null;toast("Servicio eliminado")},"No se pudo eliminar");
   });
 }
 
@@ -567,10 +595,10 @@ function shellAj(){
   const sel_=(id,l,opts,v)=>`<label for="a_${id}">${l}</label><select id="a_${id}">${opts.map(o=>`<option value="${o[0]}" ${+o[0]===+v?"selected":""}>${o[1]}</option>`).join("")}</select>`;
   const hrsO=[...Array(25)].map((_,i)=>[i,h12(i*60)]);
   $("#pb").innerHTML=`<div class="card">${f("nombre","Nombre del negocio",cfg.nombre)}${f("wa","WhatsApp (con código de país)",cfg.wa,"tel")}${f("tag","Frase de bienvenida",cfg.tag)}<div class="row2"><div>${sel_("abre","Abre a las",hrsO.slice(0,23),cfg.abre)}</div><div>${sel_("cierra","Cierra a las",hrsO.slice(1),cfg.cierra)}</div></div>${sel_("paso","Intervalo de horarios",[[30,"Cada 30 min (recomendado)"]],cfg.paso)}${f("dias","Días de anticipación para reservar",cfg.dias,"number")}${f("recs","Recordatorios: minutos antes de la cita (ej. 30,10)",cfg.recs||cfg.rec)}<label for="a_msgConsulta">Mensaje del botón de WhatsApp (consultas)</label><textarea id="a_msgConsulta" rows="3">${esc(cfg.msgConsulta||DEF.msgConsulta)}</textarea><label for="a_msgConf">Mensaje de confirmación</label><textarea id="a_msgConf" rows="3">${esc(cfg.msgConf)}</textarea><label for="a_msgRec">Mensaje de recordatorio</label><textarea id="a_msgRec" rows="3">${esc(cfg.msgRec)}</textarea><p class="small">Puedes usar {nombre}, {fecha}, {hora} y {servicio}; se llenan solos.</p><label for="a_pagos">Cuentas de pago (una por línea: Banco | N° de cuenta | Titular)</label><textarea id="a_pagos" rows="3">${esc(pg().map(p=>[p.banco,p.num,p.tit].join(" | ")).join("\n"))}</textarea><button class="btn" id="asv">Guardar ajustes</button></div>`;
-  $("#asv").onclick=async()=>{
+  $("#asv").onclick=()=>{
     const v=id=>$("#a_"+id).value,ab=+v("abre"),ci=+v("cierra");
     if(ci<=ab)return toast("La hora de cierre debe ser después de la apertura");
-    try{await setDoc(doc(db,C("config"),"negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,recs:v("recs").replace(/[^\d,]/g,"")||"30,10",msgConsulta:v("msgConsulta")||DEF.msgConsulta,v2:true,pagos:v("pagos").split("\n").map(l=>l.split("|").map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>({banco:a[0],lab:"N° de cuenta",num:a[1],tit:a[2]||""})),...(cfg.pw?{pw:cfg.pw}:{}),msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")}catch(e){toast("No se pudo guardar")}
+    return guard([$("#asv")],async()=>{await setDoc(doc(db,C("config"),"negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,recs:v("recs").replace(/[^\d,]/g,"")||"30,10",msgConsulta:v("msgConsulta")||DEF.msgConsulta,v2:true,pagos:v("pagos").split("\n").map(l=>l.split("|").map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>({banco:a[0],lab:"N° de cuenta",num:a[1],tit:a[2]||""})),...(cfg.pw?{pw:cfg.pw}:{}),msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")},"No se pudo guardar");
   };
 }
 

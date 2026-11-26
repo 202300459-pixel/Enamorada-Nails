@@ -74,11 +74,39 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 .alert{background:#1d1236;border:1px solid var(--acc);color:#e9ddff;border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.thumbs div{position:relative}.thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
 .thumbs button{position:absolute;right:4px;top:4px}
-.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:20;display:flex;align-items:center;justify-content:center;padding:16px}.lb img{max-width:100%;max-height:100%;border-radius:12px}
+.hero{position:relative;overflow:hidden}.hero>*:not(.orb){position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;background:#7c3aed;filter:blur(46px);opacity:.38;animation:fl 9s ease-in-out infinite}
+.o1{width:190px;height:190px;left:-50px;top:-40px}.o2{width:150px;height:150px;right:-30px;bottom:-30px;background:#a78bfa;animation-delay:-4s}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+.scene{position:relative;margin:0 -16px}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#09090b;display:flex;align-items:center;justify-content:center}
+.stage .orb{animation:none;opacity:.3}
+.fr{position:absolute;width:min(78vw,420px);aspect-ratio:4/5;object-fit:cover;border-radius:22px;box-shadow:0 30px 80px rgba(124,58,237,.35);opacity:0;will-change:transform,opacity}
+.cap{position:absolute;bottom:34px;left:0;right:0;text-align:center;z-index:3}
+.dots,.fdots{display:flex;gap:6px;justify-content:center;margin-top:8px}.dots span,.fdots span{width:6px;height:6px;border-radius:50%;background:#3f3f46;transition:.2s}.dots span.on,.fdots span.on{background:var(--acc);width:18px;border-radius:4px}
+.folder{border:1px solid var(--line);background:var(--card);border-radius:0 18px 18px 18px;padding:14px;position:relative;margin-top:36px}
+.ftab{position:absolute;top:-30px;left:-1px;background:var(--card);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;padding:6px 14px;font:600 12px 'Inter',sans-serif;color:var(--acc);cursor:pointer}
+.car{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}.car::-webkit-scrollbar{display:none}
+.ci{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:4/5;object-fit:cover;border-radius:14px;cursor:pointer}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:40}
+.alb{height:100%;overflow-y:auto;padding:0 12px 20px}.ah{position:sticky;top:0;background:#000;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 4px 14px;z-index:2}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.ag img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer}
+.vw{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.vw::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:64px 10px}.sl img{max-width:100%;max-height:100%;border-radius:12px;object-fit:contain}
+.x{border:1px solid #3f3f46;background:#18181b;color:#fff;border-radius:999px;padding:8px 14px;font:600 13px 'Inter',sans-serif;cursor:pointer}
+.vx{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px}.back{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:14px}
+.cnt{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#ddd;font-size:13px}
+.fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:#1fa855;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:15}
+body.admin .fab{display:none}
+.recbar{position:fixed;top:0;left:0;right:0;z-index:35;background:#7c3aed;color:#fff;text-align:center;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px;font:600 14px 'Inter',sans-serif;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 .pay{border-top:1px solid var(--line);padding:11px 0;display:grid;gap:3px;font-size:14px}.pay:first-of-type{border-top:0;padding-top:0}.pay span{color:var(--mut)}.pay .btn{justify-self:start;margin-top:6px}
 .bar{height:8px;border-radius:6px;background:var(--btn);min-width:3px}.rw{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;font-size:13px;margin:7px 0}.rw small{color:var(--mut)}
 .foot{text-align:center;margin-top:30px;color:var(--mut);font-size:12px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;z-index:30;max-width:90%}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px 22px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.sheet b{font:600 18px 'Playfair Display',Georgia,serif}.folder .car{cursor:pointer}
+.stage{perspective:900px}
 .hide{display:none}
 </style>
 </head>
@@ -86,6 +114,8 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 <header class="top"><div class="logo" id="logo">Enamorada’s Nails</div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
 <main class="wrap"><div id="vR"></div><div id="vP" class="hide"></div></main>
 <div id="lb" class="lb hide"></div>
+<a id="fab" class="fab" target="_blank" rel="noopener" href="#" aria-label="Consultar por WhatsApp">💬</a>
+<div id="recbar" class="recbar hide"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -104,6 +134,9 @@ const firebaseConfig = {
 };
 /* ============================================================ */
 const db = getFirestore(initializeApp(firebaseConfig));
+/* Multi-negocio: tuweb/?n=otro-negocio usa su propio espacio de datos. Sin ?n= es Enamorada’s Nails (datos actuales). */
+const T=(new URLSearchParams(location.search).get("n")||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+const C=n=>T?"t_"+T+"_"+n:n;
 const PW_HASH="7930b9d539644f3fd36e685de80939a7f4a4a6a78827f097e77347c7029dc759"; /* clave del panel: 2031 */
 
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
@@ -120,17 +153,18 @@ const key=m=>pad(m/60|0)+":"+pad(m%60);
 const h12=t=>{const m=typeof t==="number"?t:mm(t),h=m/60|0;return (h%12||12)+":"+pad(m%60)+" "+(h%24<12?"AM":"PM")};
 const durL=d=>d<60?d+" min":(d/60|0)+" h"+(d%60?" "+d%60+" min":"");
 const L=n=>+n?"L "+Number(n).toLocaleString("es"):"Consultar";
+const waMsg=()=>"https://wa.me/"+cfg.wa+"?text="+encodeURIComponent(cfg.msgConsulta||DEF.msgConsulta);
 const wa=(tel,msg)=>{const d=String(tel||"").replace(/\D/g,""),n=d.length===8?"504"+d:d;return "https://wa.me/"+n+(msg?"?text="+encodeURIComponent(msg):"")};
 const toast=t=>{const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)};
 const busy=()=>/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||"");
 
-const DEF={nombre:"Enamorada’s Nails",wa:"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:20,paso:60,dias:90,rec:10,
+const DEF={nombre:T?"Mi negocio":"Enamorada’s Nails",wa:T?"":"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:20,paso:30,dias:90,recs:"30,10",msgConsulta:"¡Hola! 💅 Vi su página y quiero hacer una consulta.\n\nMi nombre es: \nMe interesa: ",
  msgConf:"¡Buen día, {nombre}! 💖 Muchas gracias por agendar. Confirmo tu cita para el {fecha} a las {hora} ({servicio}). ¡Te esperamos!",
  msgRec:"¡Hola, {nombre}! ⏰ Te recordamos que tu cita es hoy a las {hora}. ¡Te esperamos en Enamorada’s Nails! 💅"};
 const DEFS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Baño acrílico","Aplicación de polygel"];
 const PAGOS=[{banco:"Banco de Occidente",lab:"Número de cuenta",num:"214021250580",tit:"ENAMORADO HERRERA KENSI NEVAI"},{banco:"BAC",lab:"N° de cuenta",num:"750250521",tit:"KENSI NEVAI ENAMORADO HERRERA"}];
-const payCard=()=>`<h2>💳 Formas de pago</h2><div class="card"><p style="margin:0 0 12px">Aceptamos <b>efectivo</b> y <b>transferencias</b>.</p>${PAGOS.map((p,i)=>`<div class="pay"><b>${esc(p.banco)}</b><span>${esc(p.lab)}: <b style="color:var(--ink)">${esc(p.num)}</b></span><span>A nombre de: ${esc(p.tit)}</span><button class="btn sm gh" data-cp="${i}">Copiar número</button></div>`).join("")}</div>`;
-const bindPay=r=>r.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>{const n=PAGOS[+b.dataset.cp].num;(navigator.clipboard?navigator.clipboard.writeText(n):Promise.reject()).then(()=>toast("Número copiado 📋")).catch(()=>toast("Número: "+n))});
+const pg=()=>Array.isArray(cfg.pagos)?cfg.pagos:(T?[]:PAGOS);const payCard=()=>!pg().length?"":`<h2>💳 Formas de pago</h2><div class="card"><p style="margin:0 0 12px">Aceptamos <b>efectivo</b> y <b>transferencias</b>.</p>${pg().map((p,i)=>`<div class="pay"><b>${esc(p.banco)}</b><span>${esc(p.lab)}: <b style="color:var(--ink)">${esc(p.num)}</b></span><span>A nombre de: ${esc(p.tit)}</span><button class="btn sm gh" data-cp="${i}">Copiar número</button></div>`).join("")}</div>`;
+const bindPay=r=>r.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>{const n=pg()[+b.dataset.cp].num;(navigator.clipboard?navigator.clipboard.writeText(n):Promise.reject()).then(()=>toast("Número copiado 📋")).catch(()=>toast("Número: "+n))});
 const M=n=>"L "+Number(n||0).toLocaleString("es");
 const DURS=[30,60,90,120,150,180,240,300];
 let cfg={...DEF},servs=[],gal=[],taken=new Set(),ocup=[],allC=[],citas=[],done=null;
@@ -150,22 +184,60 @@ function slotsFor(f,n){
 
 /* ================= CLIENTAS ================= */
 function renderR(){
-  $("#vR").innerHTML=`<section class="hero"><p class="eyebrow">NAIL STUDIO</p><h1>Uñas que hablan <i>por ti</i></h1><p class="t">${esc(cfg.tag)}</p><a class="btn gold" href="#agenda" id="goag">Agendar mi cita</a></section><div id="gal"></div><div id="agenda"></div><div id="bk"></div><div class="foot"><a class="btn wa sm" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}">💬 WhatsApp +${esc(cfg.wa)}</a><p>© ${esc(cfg.nombre)} · <a href="#" id="adm" style="color:inherit">Administración</a></p></div>`;
+  $("#vR").innerHTML=`<section class="hero"><i class="orb o1"></i><i class="orb o2"></i><p class="eyebrow">NAIL STUDIO</p><h1>Uñas que hablan <i>por ti</i></h1><p class="t">${esc(cfg.tag)}</p><a class="btn gold" href="#agenda" id="goag">Agendar mi cita</a></section><div id="gal"></div><div id="agenda"></div><div id="bk"></div><div class="foot"><p>¿Dudas? Escríbenos y te respondemos lo antes posible.</p><a class="btn wa sm" href="#" id="fcons">💬 Consultar por WhatsApp</a><p>© ${esc(cfg.nombre)} · <a href="#" id="adm" style="color:inherit">Administración</a></p></div>`;
   $("#goag").onclick=e=>{e.preventDefault();$("#agenda").scrollIntoView({behavior:"smooth"})};
-  $("#adm").onclick=e=>{e.preventDefault();tab("p")};
+  $("#adm").onclick=e=>{e.preventDefault();tab("p")};$("#fcons").onclick=e=>{e.preventDefault();consulta()};
   drawGal();drawBook();
 }
+/* ---- Galería: escena con scroll + carpeta deslizable ---- */
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let frames=[],orbs=[];
 function drawGal(){
   const el=$("#gal");if(!el)return;
-  el.innerHTML=gal.length?`<h2>Nuestros trabajos</h2><div class="gal">${gal.map(g=>`<img src="${g.src}" alt="Trabajo de uñas" loading="lazy">`).join("")}</div>`:"";
-  el.querySelectorAll("img").forEach(i=>i.onclick=()=>{$("#lb").innerHTML=`<img src="${i.src}" alt="">`;$("#lb").classList.remove("hide")});
+  if(!gal.length){el.innerHTML="";frames=[];return}
+  const N=gal.length,sc=gal.slice(0,8),car=gal.slice(0,6);
+  el.innerHTML=(RM?"":`<section class="scene" id="scene" style="height:${(sc.length+1)*75}vh"><div class="stage"><i class="orb o1"></i><i class="orb o2"></i>${sc.map(g=>`<img class="fr" src="${g.src}" alt="Trabajo de uñas">`).join("")}<div class="cap"><p class="eyebrow">NUESTROS TRABAJOS</p><div class="dots">${sc.map(()=>"<span></span>").join("")}</div></div></div></section>`)
+  +`<h2>Nuestros trabajos</h2><div class="folder" id="fold"><div class="ftab" id="ftab">📁 Carpeta · ${N} foto${N>1?"s":""}</div><div class="car" id="car">${car.map((g,i)=>`<img class="ci" data-i="${i}" src="${g.src}" alt="Trabajo de uñas" loading="lazy">`).join("")}</div><div class="fdots" id="fdots">${car.map(()=>"<span></span>").join("")}</div><p class="small" style="text-align:center">Desliza ↔ · toca la carpeta para abrirla</p><button class="btn gh" id="openf">Abrir carpeta (${N})</button></div>`;
+  frames=[...el.querySelectorAll(".fr")];orbs=[...el.querySelectorAll(".stage .orb")];
+  const cr=$("#car"),dots=()=>{const w=cr.firstChild.clientWidth+10,i=Math.round(cr.scrollLeft/w);$$("#fdots span").forEach((x,k)=>x.classList.toggle("on",k===i))};
+  cr.onscroll=dots;dots();
+  $("#car").onclick=e=>{const im=e.target.closest(".ci");if(im)openAlbum(null)};
+  $("#ftab").onclick=$("#openf").onclick=()=>openAlbum(null);
+  scrollScene();
 }
-$("#lb").onclick=()=>$("#lb").classList.add("hide");
+let tgt=0,curp=0,raf=0;
+function scrollScene(){
+  const s=$("#scene");if(!s||!frames.length)return;
+  const r=s.getBoundingClientRect(),h=Math.max(1,s.offsetHeight-innerHeight);
+  tgt=Math.min(1,Math.max(0,-r.top/h));if(!raf)raf=requestAnimationFrame(tick);
+}
+function tick(){
+  raf=0;curp+=(tgt-curp)*.12;const p=curp,n=frames.length,x=n>1?p*(n-1):0;
+  frames.forEach((f,i)=>{const d=x-i,a=Math.abs(d);f.style.opacity=n>1?Math.max(0,1-a*1.25):1;f.style.transform=`translate3d(${-d*40}px,${-d*90}px,${-a*120}px) rotateY(${-d*14}deg) rotateZ(${-d*3}deg) scale(${1.08-a*.08+p*.05})`;f.style.zIndex=a<.5?2:1});
+  orbs.forEach((b,i)=>{b.style.transform=`translate(${(i?-1:1)*p*80}px,${p*(i?120:-140)}px) scale(${1+p*.5})`});
+  $$("#scene .dots span").forEach((d,i)=>d.classList.toggle("on",i===Math.round(x)));
+  if(Math.abs(tgt-curp)>.0005)raf=requestAnimationFrame(tick);
+}
+addEventListener("scroll",()=>requestAnimationFrame(scrollScene),{passive:true});addEventListener("resize",scrollScene);
+const closeLb=()=>{$("#lb").classList.add("hide");$("#lb").innerHTML=""};
+function openAlbum(i){
+  const lb=$("#lb");lb.classList.remove("hide");
+  if(i!=null)return openViewer(i);
+  lb.innerHTML=`<div class="alb"><div class="ah"><b>📁 Trabajos de uñas (${gal.length})</b><button class="x" id="x">✕ Cerrar</button></div><div class="ag">${gal.map((g,k)=>`<img data-i="${k}" src="${g.src}" alt="Trabajo de uñas" loading="lazy">`).join("")}</div></div>`;
+  $("#x").onclick=closeLb;lb.querySelectorAll(".ag img").forEach(im=>im.onclick=()=>openViewer(+im.dataset.i));
+}
+function openViewer(i){
+  const lb=$("#lb");
+  lb.innerHTML=`<div class="vw" id="vw">${gal.map(g=>`<div class="sl"><img src="${g.src}" alt="Trabajo de uñas"></div>`).join("")}</div><button class="x vx" id="x">✕</button><button class="x back" id="bk2">▦ Carpeta</button><div class="cnt" id="cnt">${i+1} / ${gal.length}</div>`;
+  const v=$("#vw");v.scrollLeft=i*v.clientWidth;
+  v.onscroll=()=>{$("#cnt").textContent=(Math.round(v.scrollLeft/v.clientWidth)+1)+" / "+gal.length};
+  $("#x").onclick=closeLb;$("#bk2").onclick=()=>openAlbum(null);
+}
 function drawBook(){
   const el=$("#bk");if(!el)return;
   if(done){
-    el.innerHTML=`<div class="card ok" style="margin-top:20px"><div class="big">✨</div><h2 style="justify-content:center">¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b><br>${esc(h12(done.hora))} – ${esc(h12(mm(done.hora)+nSl(done.dur)*cfg.paso))}</p><p class="small">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(done.hora)+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn gh" id="otra">Agendar otra cita</button></div>`;
-    el.insertAdjacentHTML("beforeend",payCard());bindPay(el);$("#otra").onclick=()=>{done=null;sel={s:null,otro:"",fecha:null,m:null};drawBook()};return;
+    el.innerHTML=`<div class="card ok" style="margin-top:20px"><div class="big">✨</div><h2 style="justify-content:center">¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b><br>${esc(h12(done.hora))} – ${esc(h12(mm(done.hora)+nSl(done.dur)*cfg.paso))}</p><p class="small">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(done.hora)+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn gh" id="ntf">🔔 Avisarme antes de mi cita</button><button class="btn gh" id="ics">📅 Guardar en mi calendario (con alarmas)</button><button class="btn gh" id="otra">Agendar otra cita</button></div>`;
+    el.insertAdjacentHTML("beforeend",payCard());bindPay(el);$("#ntf").onclick=async()=>{try{await Notification.requestPermission()}catch(e){}toast("Avisos activados 🔔");checkRec()};$("#ics").onclick=()=>dl(done);$("#otra").onclick=()=>{done=null;sel={s:null,otro:"",fecha:null,m:null};drawBook()};return;
   }
   const cat=catalog(),dur=sel.s?sel.s.dur:60,n=nSl(dur);
   let h=`<h2><span class="st">1</span>Elige tu servicio</h2><div class="svl">${cat.map((s,i)=>`<button class="sv ${sel.s&&sel.s.nombre===s.nombre?"on":""}" data-i="${i}"><span>${esc(s.nombre)}<small>⏱ ${durL(s.dur)}</small></span><em>${s.otro?"A consultar":L(s.precio)}</em></button>`).join("")}</div>`;
@@ -208,12 +280,12 @@ async function book(){
   const c={nombre,tel,notas,servicio:sel.s.otro?"Otro: "+sel.otro.trim():sel.s.nombre,precio:+sel.s.precio||0,dur,fecha:sel.fecha,hora:key(sel.m),estado:"pendiente",creada:Date.now()};
   try{
     await runTransaction(db,async tx=>{
-      const rs=all.map(i=>doc(db,"ocupado",i));
+      const rs=all.map(i=>doc(db,C("ocupado"),i));
       for(const r of rs)if((await tx.get(r)).exists())throw new Error("taken");
       rs.forEach((r,i)=>tx.set(r,{fecha:sel.fecha,hora:key(sel.m+i*cfg.paso)}));
-      tx.set(doc(db,"citas",id),c);
+      tx.set(doc(db,C("citas"),id),c);
     });
-    done=c;drawBook();window.scrollTo({top:0,behavior:"smooth"});
+    done=c;mineAdd(c);drawBook();window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){
     if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.m=null;drawBook()}
     else{console.error(e);toast("No se pudo agendar. Revisa tu internet.");btn.disabled=false;btn.textContent="Confirmar mi cita"}
@@ -225,8 +297,12 @@ async function sha(t){const b=await crypto.subtle.digest("SHA-256",new TextEncod
 function renderP(){
   const root=$("#vP");
   if(!unlocked){
-    root.innerHTML=`<div class="card" style="margin-top:24px"><h2 style="margin-top:0">🔒 Panel protegido</h2><p class="small">Escribe tu clave para entrar.</p><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Clave"><button class="btn" id="pwgo">Entrar</button></div>`;
-    const go=async()=>{if(await sha($("#pw").value)===PW_HASH){unlocked=true;try{Notification.requestPermission()}catch(e){}renderP()}else toast("Clave incorrecta")};
+    const first=T&&!cfg.pw;
+    root.innerHTML=`<div class="card" style="margin-top:24px"><h2 style="margin-top:0">🔒 Panel protegido</h2><p class="small">${first?"Crea una clave para tu panel (mínimo 4 caracteres).":"Escribe tu clave para entrar."}</p><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Clave"><button class="btn" id="pwgo">Entrar</button></div>`;
+    const go=async()=>{const v=$("#pw").value,h=await sha(v);
+      if(first){if(v.length<4)return toast("Mínimo 4 caracteres");try{await setDoc(doc(db,C("config"),"negocio"),{...cfg,pw:h,v2:true})}catch(e){return toast("No se pudo guardar")}unlocked=true}
+      else if(h===(T?cfg.pw:PW_HASH))unlocked=true;else return toast("Clave incorrecta");
+      try{Notification.requestPermission()}catch(e){}renderP()};
     $("#pwgo").onclick=go;$("#pw").onkeydown=e=>{if(e.key==="Enter")go()};return;
   }
   const N=[["citas","📅 Citas"],["ingresos","💰 Ingresos"],["clientas","👥 Clientas"],["bloqueos","🚫 Bloqueos"],["servicios","💅 Servicios"],["galeria","🖼 Galería"],["ajustes","⚙️ Ajustes"]];
@@ -234,28 +310,65 @@ function renderP(){
   $$("#vP [data-p]").forEach(b=>b.onclick=()=>{psub=b.dataset.p;armed=null;renderP()});
   $("#lock").onclick=()=>{unlocked=false;renderP()};
   ({citas:shellCitas,ingresos:shellIng,clientas:shellCli,bloqueos:shellBloq,servicios:shellServ,galeria:shellGal,ajustes:shellAj})[psub]();
-  checkRec();
+  syncOcupado();checkRec();
 }
 function refreshP(){
-  if(!unlocked)return;
+  syncOcupado();if(!unlocked)return;
   if(psub==="citas")drawCitas();else if(psub==="ingresos")drawIng();else if(psub==="clientas")drawCli();else if(psub==="bloqueos"){drawBloq();prev()}
   else if(psub==="servicios"&&!busy())drawServ();else if(psub==="galeria")drawGalA();
   checkRec();
 }
-const cancelIds=c=>ids(c.fecha,mm(c.hora),nSl(c.dur||60));
-async function setEstado(c,patch){await updateDoc(doc(db,"citas",c._id),patch)}
-
-/* ---- recordatorio ---- */
-const notified=new Set();
-function checkRec(){
-  const el=$("#rec");if(!el)return;
-  const now=new Date(),hoy=iso(now),nm=now.getHours()*60+now.getMinutes();
-  const due=citas.filter(c=>c.fecha===hoy&&["pendiente","confirmada"].includes(c.estado)&&!c.recordado&&mm(c.hora)-nm<=cfg.rec&&mm(c.hora)-nm>=-5);
-  el.innerHTML=due.map(c=>`<div class="alert">⏰ <b>En ${Math.max(0,mm(c.hora)-nm)} min:</b> ${esc(c.nombre)} · ${esc(h12(c.hora))} · ${esc(c.servicio)}<div class="acts"><a class="btn sm" data-r="${esc(c._id)}" target="_blank" rel="noopener" href="${wa(c.tel,fill(cfg.msgRec,c))}">Enviar recordatorio</a></div></div>`).join("");
-  due.forEach(c=>{if(!notified.has(c._id)){notified.add(c._id);try{new Notification("Cita en "+Math.max(0,mm(c.hora)-nm)+" min",{body:c.nombre+" · "+c.servicio})}catch(e){}}});
-  el.querySelectorAll("[data-r]").forEach(a=>a.onclick=()=>updateDoc(doc(db,"citas",a.dataset.r),{recordado:true}).catch(()=>{}));
+let gotO=false,gotC=false,synced=false;
+async function syncOcupado(){
+  if(synced||!unlocked||!gotO||!gotC)return;synced=true;
+  const hoy=iso(new Date()),miss=[];
+  citas.filter(c=>c.fecha>=hoy&&["pendiente","confirmada"].includes(c.estado)).forEach(c=>cancelIds(c).forEach((id,i)=>{if(!taken.has(id))miss.push([id,{fecha:c.fecha,hora:key(mm(c.hora)+i*cfg.paso)}])}));
+  try{for(let i=0;i<miss.length;i+=400){const b=writeBatch(db);miss.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,C("ocupado"),id),o));await b.commit()}}catch(e){synced=false}
 }
-setInterval(checkRec,30000);
+const cancelIds=c=>ids(c.fecha,mm(c.hora),nSl(c.dur||60));
+async function setEstado(c,patch){await updateDoc(doc(db,C("citas"),c._id),patch)}
+
+/* ---- consulta por WhatsApp (mensaje guiado) ---- */
+function consulta(){
+  if(!cfg.wa)return toast("WhatsApp no configurado");
+  const lb=$("#lb");lb.classList.remove("hide");lb.onclick=e=>{if(e.target===lb)closeLb()};
+  lb.innerHTML=`<div class="sheet"><b>💬 Consulta por WhatsApp</b><p class="small">Cuéntanos qué necesitas y te respondemos lo antes posible.</p><label for="cn">Tu nombre</label><input id="cn" autocomplete="name" placeholder="Ej. María"><label>Me interesa</label><div class="chips" id="cc">${["Precios","Diseños","Disponibilidad","Otro"].map(t=>`<button class="chip" data-t="${t}">${t}</button>`).join("")}</div><label for="cm">Mensaje (opcional)</label><textarea id="cm" rows="2"></textarea><a class="btn wa" id="cs" target="_blank" rel="noopener" href="#">Abrir WhatsApp</a><button class="btn gh" id="cx">Cancelar</button></div>`;
+  const up=()=>{const t=[...$$("#cc .on")].map(x=>x.dataset.t).join(", "),m=$("#cm").value.trim(),n=$("#cn").value.trim(),intro=(cfg.msgConsulta||DEF.msgConsulta).split(/\n\s*\n/)[0];
+    $("#cs").href=wa(cfg.wa,intro+"\n\nMi nombre es: "+n+"\nMe interesa: "+t+(m?"\n"+m:""))};
+  $$("#cc .chip").forEach(c=>c.onclick=()=>{c.classList.toggle("on");up()});
+  $("#cn").oninput=$("#cm").oninput=up;$("#cx").onclick=closeLb;up();
+}
+/* ---- notificaciones (service worker) + citas de la clienta ---- */
+let swr=null;try{navigator.serviceWorker.register("sw.js").then(r=>swr=r).catch(()=>{})}catch(e){}
+const notify=(t,b,tag)=>{try{if(Notification.permission!=="granted")return;if(swr&&swr.showNotification)swr.showNotification(t,{body:b,tag,vibrate:[200,100,200]});else new Notification(t,{body:b,tag})}catch(e){}};
+const MK="misCitas_"+(T||"main");
+const mineGet=()=>{try{return JSON.parse(localStorage.getItem(MK)||"[]")}catch(e){return[]}};
+const mineAdd=c=>{try{const a=mineGet().filter(x=>x.fecha>=iso(new Date()));a.push({servicio:c.servicio,fecha:c.fecha,hora:c.hora,dur:c.dur});localStorage.setItem(MK,JSON.stringify(a))}catch(e){}};
+function dl(c){
+  const d=P(c.fecha),m=mm(c.hora);d.setHours(m/60|0,m%60);const e=new Date(d.getTime()+(c.dur||60)*6e4),f=x=>x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+"T"+pad(x.getHours())+pad(x.getMinutes())+"00";
+  const al=[...recList(),1440].map(r=>"BEGIN:VALARM\r\nACTION:DISPLAY\r\nDESCRIPTION:Recordatorio de cita\r\nTRIGGER:-PT"+r+"M\r\nEND:VALARM").join("\r\n");
+  const t=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Citas//ES","BEGIN:VEVENT","UID:"+c.fecha+c.hora+"@"+(T||"main"),"DTSTAMP:"+f(new Date()),"DTSTART:"+f(d),"DTEND:"+f(e),"SUMMARY:"+c.servicio+" · "+cfg.nombre,al,"END:VEVENT","END:VCALENDAR"].join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/calendar"}));a.download="cita.ics";a.click();
+}
+/* ---- recordatorios (varias personas, varios avisos) ---- */
+const notified=new Set();
+const recList=()=>String(cfg.recs||cfg.rec||10).split(",").map(x=>+x.trim()).filter(x=>x>0).sort((a,b)=>b-a);
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.value=.08;o.start();o.stop(a.currentTime+.3)}catch(e){}}
+function checkRec(){
+  const now=new Date(),hoy=iso(now),nm=now.getHours()*60+now.getMinutes(),rl=recList(),mx=rl[0]||10;
+  const due=unlocked?citas.filter(c=>c.fecha===hoy&&["pendiente","confirmada"].includes(c.estado)&&!c.recordado&&mm(c.hora)-nm<=mx&&mm(c.hora)-nm>=-5).sort((a,b)=>a.hora.localeCompare(b.hora)):[];
+  let ping=false;
+  due.forEach(c=>{const d=mm(c.hora)-nm;rl.forEach(r=>{const k=c._id+"_"+r;if(d<=r&&!notified.has(k)){notified.add(k);ping=true;notify("⏰ Cita en "+Math.max(0,d)+" min",c.nombre+" · "+c.servicio,k)}})});
+  if(ping)beep();
+  const mine=unlocked?[]:mineGet().filter(c=>c.fecha===hoy&&mm(c.hora)-nm<=mx&&mm(c.hora)-nm>=-5);
+  mine.forEach(c=>{const d=mm(c.hora)-nm;rl.forEach(r=>{const k="m"+c.fecha+c.hora+r;if(d<=r&&!notified.has(k)){notified.add(k);notify("⏰ Tu cita es en "+Math.max(0,d)+" min",c.servicio+" · "+h12(c.hora)+" — "+cfg.nombre,k);beep()}})});
+  const bar=$("#recbar");bar.classList.toggle("hide",!due.length&&!mine.length);bar.textContent=due.length?"⏰ "+due.length+" cita"+(due.length>1?"s":"")+" por comenzar · toca para ver":mine.length?"⏰ Tu cita es hoy a las "+h12(mine[0].hora):"";
+  const el=$("#rec");if(!el)return;
+  el.innerHTML=due.map(c=>`<div class="alert">⏰ <b>En ${Math.max(0,mm(c.hora)-nm)} min:</b> ${esc(c.nombre)} · ${esc(h12(c.hora))} · ${esc(c.servicio)}<div class="acts"><a class="btn sm" data-r="${esc(c._id)}" target="_blank" rel="noopener" href="${wa(c.tel,fill(cfg.msgRec,c))}">Enviar recordatorio</a><a class="btn sm gh" href="tel:${esc(String(c.tel).replace(/\D/g,""))}">Llamar</a></div></div>`).join("");
+  el.querySelectorAll("[data-r]").forEach(a=>a.onclick=()=>updateDoc(doc(db,C("citas"),a.dataset.r),{recordado:true}).catch(()=>{}));
+}
+$("#recbar").onclick=()=>{if(unlocked){psub="citas";tab("p")}};$("#fab").onclick=e=>{e.preventDefault();consulta()};
+setInterval(checkRec,20000);
 
 /* ---- Citas ---- */
 function shellCitas(){
@@ -300,11 +413,11 @@ function drawLista(){
         const m=mm(c.hora)+nSl(c.dur||60)*cfg.paso,nid=c.fecha+"_"+key(m);
         if(m+cfg.paso>cfg.cierra*60)return toast("Ya es el final del horario");
         if(taken.has(nid))return toast("La siguiente hora ya está ocupada");
-        await setDoc(doc(db,"ocupado",nid),{fecha:c.fecha,hora:key(m)});
+        await setDoc(doc(db,C("ocupado"),nid),{fecha:c.fecha,hora:key(m)});
         await setEstado(c,{dur:(nSl(c.dur||60)+1)*cfg.paso});toast("Cita extendida "+cfg.paso+" min ⏱");
       }
       else if(armed!==id){armed=id;drawLista()}
-      else{await setEstado(c,{estado:"cancelada"});for(const i of cancelIds(c))await deleteDoc(doc(db,"ocupado",i));armed=null;toast("Cita cancelada, horario libre")}
+      else{await setEstado(c,{estado:"cancelada"});for(const i of cancelIds(c))await deleteDoc(doc(db,C("ocupado"),i));armed=null;toast("Cita cancelada, horario libre")}
     }catch(e){toast("No se pudo completar la acción")}
   });
 }
@@ -381,7 +494,7 @@ function prev(){const e=$("#prev");if(!e)return;const p=plan();e.textContent=p.e
 async function bloquear(){
   const p=plan();if(p.err)return toast(p.err);if(!p.ops.length)return toast("Esas horas ya estaban ocupadas");
   const btn=$("#bgo");btn.disabled=true;
-  try{for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,"ocupado",id),o));await b.commit()}toast(p.ops.length+" espacio(s) bloqueado(s) 🚫")}catch(e){toast("No se pudo bloquear")}
+  try{for(let i=0;i<p.ops.length;i+=400){const b=writeBatch(db);p.ops.slice(i,i+400).forEach(([id,o])=>b.set(doc(db,C("ocupado"),id),o));await b.commit()}toast(p.ops.length+" espacio(s) bloqueado(s) 🚫")}catch(e){toast("No se pudo bloquear")}
   btn.disabled=false;
 }
 function groupBlocks(){
@@ -399,20 +512,20 @@ function drawBloq(){
     return `<div class="card cita"><div class="top2"><span>${g.f1===g.f2?esc(fLarga(g.f1)):esc(fCorta(g.f1))+" → "+esc(fCorta(g.f2))}</span><span class="badge">${g.n} día${g.n>1?"s":""}</span></div>${g.runs.map(r=>`<p>${g.all?"Todo el día":esc(h12(r.from))+" – "+esc(h12(r.to+cfg.paso))} · ${esc(r.m)}</p>`).join("")}<div class="acts"><button class="btn sm ${arm?"bad":"gh"}" data-g="${i}">${arm?"¿Seguro? Desbloquear":"Desbloquear"}</button></div></div>`}).join("");
   el.querySelectorAll("[data-g]").forEach(b=>b.onclick=async()=>{
     const g=gs[+b.dataset.g],k=g.f1+g.f2+g.sig;if(armed!==k){armed=k;drawBloq();return}
-    try{for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,"ocupado",id));if(allC.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,"citas",id))});await w.commit()}armed=null;toast("Horarios desbloqueados ✅")}catch(e){toast("No se pudo desbloquear")}
+    try{for(let i=0;i<g.ids.length;i+=200){const w=writeBatch(db);g.ids.slice(i,i+200).forEach(id=>{w.delete(doc(db,C("ocupado"),id));if(allC.some(c=>c._id===id&&c.bloqueo))w.delete(doc(db,C("citas"),id))});await w.commit()}armed=null;toast("Horarios desbloqueados ✅")}catch(e){toast("No se pudo desbloquear")}
   });
 }
 
 /* ---- Servicios y precios ---- */
-function shellServ(){$("#pb").innerHTML=`<p class="small" style="margin-top:0">Aquí cambias el precio y la duración de cada servicio. Se ve al instante en la página de reservas. Los servicios de siempre quedan fijos; solo ajustas su precio.</p><div id="sv"></div><button class="btn" id="svn">+ Agregar servicio</button>`;$("#svn").onclick=()=>setDoc(doc(db,"servicios","s"+Date.now()),{nombre:"Nuevo servicio",precio:0,dur:60,activo:true,orden:Date.now()}).catch(()=>toast("No se pudo agregar"));drawServ()}
+function shellServ(){$("#pb").innerHTML=`<p class="small" style="margin-top:0">Aquí cambias el precio y la duración de cada servicio. Se ve al instante en la página de reservas. Los servicios de siempre quedan fijos; solo ajustas su precio.</p><div id="sv"></div><button class="btn" id="svn">+ Agregar servicio</button>`;$("#svn").onclick=()=>setDoc(doc(db,C("servicios"),"s"+Date.now()),{nombre:"Nuevo servicio",precio:0,dur:60,activo:true,orden:Date.now()}).catch(()=>toast("No se pudo agregar"));drawServ()}
 function drawServ(){
   const el=$("#sv");if(!el)return;
   el.innerHTML=catAll().map(s=>`<div class="card" data-id="${esc(s.id)}" data-o="${s.orden||0}"><label style="margin-top:0">Nombre</label><input class="n" value="${esc(s.nombre)}" ${s.base?"disabled":""}><div class="row2"><div><label>Precio (L)</label><input class="p" type="number" min="0" inputmode="numeric" value="${+s.precio||0}"></div><div><label>Duración</label><select class="d">${DURS.map(d=>`<option value="${d}" ${+s.dur===d?"selected":""}>${durL(d)}</option>`).join("")}</select></div></div><label class="chk" style="margin-top:12px"><input type="checkbox" class="a" ${s.activo!==false?"checked":""}> Visible para las clientas</label><div class="acts"><button class="btn sm" data-sv="save">Guardar</button>${s.base?"":`<button class="btn sm ${armed===s.id?"bad":"gh"}" data-sv="del">${armed===s.id?"¿Seguro? Eliminar":"Eliminar"}</button>`}</div></div>`).join("");
   el.querySelectorAll("[data-sv]").forEach(b=>b.onclick=async()=>{
     const card=b.closest(".card"),id=card.dataset.id;
     try{
-      if(b.dataset.sv==="save"){await setDoc(doc(db,"servicios",id),{nombre:card.querySelector(".n").value.trim()||"Servicio",precio:+card.querySelector(".p").value||0,dur:+card.querySelector(".d").value,activo:card.querySelector(".a").checked,orden:+card.dataset.o||0});toast("Guardado ✅")}
-      else if(armed!==id){armed=id;drawServ()}else{await deleteDoc(doc(db,"servicios",id));armed=null;toast("Servicio eliminado")}
+      if(b.dataset.sv==="save"){await setDoc(doc(db,C("servicios"),id),{nombre:card.querySelector(".n").value.trim()||"Servicio",precio:+card.querySelector(".p").value||0,dur:+card.querySelector(".d").value,activo:card.querySelector(".a").checked,orden:+card.dataset.o||0});toast("Guardado ✅")}
+      else if(armed!==id){armed=id;drawServ()}else{await deleteDoc(doc(db,C("servicios"),id));armed=null;toast("Servicio eliminado")}
     }catch(e){toast("No se pudo guardar")}
   });
 }
@@ -424,7 +537,7 @@ function shellGal(){
   $("#up").onchange=async e=>{
     const fs=[...e.target.files],m=$("#upm");m.style.display="block";let ok=0;
     for(const f of fs){m.textContent="Subiendo "+(ok+1)+" de "+fs.length+"…";
-      try{const src=await comp(f);if(src.length>950000){toast("Una foto es muy pesada");continue}await setDoc(doc(db,"galeria","g"+Date.now()+ok),{src,creada:Date.now()});ok++}catch(er){toast("No se pudo subir una foto")}}
+      try{const src=await comp(f);if(src.length>950000){toast("Una foto es muy pesada");continue}await setDoc(doc(db,C("galeria"),"g"+Date.now()+ok),{src,creada:Date.now()});ok++}catch(er){toast("No se pudo subir una foto")}}
     m.textContent=ok+" foto(s) subida(s) ✅";e.target.value="";
   };
   drawGalA();
@@ -432,7 +545,7 @@ function shellGal(){
 function drawGalA(){
   const el=$("#gA");if(!el)return;
   el.innerHTML=gal.length?gal.map(g=>`<div><img src="${g.src}" alt=""><button class="btn sm ${armed===g.id?"bad":"gh"}" data-d="${esc(g.id)}">${armed===g.id?"¿Borrar?":"✕"}</button></div>`).join(""):`<p class="small">Todavía no hay fotos.</p>`;
-  el.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{const id=b.dataset.d;if(armed!==id){armed=id;drawGalA();return}try{await deleteDoc(doc(db,"galeria",id));armed=null}catch(e){toast("No se pudo borrar")}});
+  el.querySelectorAll("[data-d]").forEach(b=>b.onclick=async()=>{const id=b.dataset.d;if(armed!==id){armed=id;drawGalA();return}try{await deleteDoc(doc(db,C("galeria"),id));armed=null}catch(e){toast("No se pudo borrar")}});
 }
 
 /* ---- Ajustes ---- */
@@ -440,11 +553,11 @@ function shellAj(){
   const f=(id,l,v,t="text")=>`<label for="a_${id}">${l}</label><input id="a_${id}" type="${t}" value="${esc(v)}">`;
   const sel_=(id,l,opts,v)=>`<label for="a_${id}">${l}</label><select id="a_${id}">${opts.map(o=>`<option value="${o[0]}" ${+o[0]===+v?"selected":""}>${o[1]}</option>`).join("")}</select>`;
   const hrsO=[...Array(25)].map((_,i)=>[i,h12(i*60)]);
-  $("#pb").innerHTML=`<div class="card">${f("nombre","Nombre del negocio",cfg.nombre)}${f("wa","WhatsApp (con código de país)",cfg.wa,"tel")}${f("tag","Frase de bienvenida",cfg.tag)}<div class="row2"><div>${sel_("abre","Abre a las",hrsO.slice(0,23),cfg.abre)}</div><div>${sel_("cierra","Cierra a las",hrsO.slice(1),cfg.cierra)}</div></div>${sel_("paso","Intervalo de horarios",[[30,"Cada 30 min"],[60,"Cada 1 hora"]],cfg.paso)}${f("dias","Días de anticipación para reservar",cfg.dias,"number")}${f("rec","Recordatorio: minutos antes de la cita",cfg.rec,"number")}<label for="a_msgConf">Mensaje de confirmación</label><textarea id="a_msgConf" rows="3">${esc(cfg.msgConf)}</textarea><label for="a_msgRec">Mensaje de recordatorio</label><textarea id="a_msgRec" rows="3">${esc(cfg.msgRec)}</textarea><p class="small">Puedes usar {nombre}, {fecha}, {hora} y {servicio}; se llenan solos.</p><button class="btn" id="asv">Guardar ajustes</button></div>`;
+  $("#pb").innerHTML=`<div class="card">${f("nombre","Nombre del negocio",cfg.nombre)}${f("wa","WhatsApp (con código de país)",cfg.wa,"tel")}${f("tag","Frase de bienvenida",cfg.tag)}<div class="row2"><div>${sel_("abre","Abre a las",hrsO.slice(0,23),cfg.abre)}</div><div>${sel_("cierra","Cierra a las",hrsO.slice(1),cfg.cierra)}</div></div>${sel_("paso","Intervalo de horarios",[[30,"Cada 30 min (recomendado)"]],cfg.paso)}${f("dias","Días de anticipación para reservar",cfg.dias,"number")}${f("recs","Recordatorios: minutos antes de la cita (ej. 30,10)",cfg.recs||cfg.rec)}<label for="a_msgConsulta">Mensaje del botón de WhatsApp (consultas)</label><textarea id="a_msgConsulta" rows="3">${esc(cfg.msgConsulta||DEF.msgConsulta)}</textarea><label for="a_msgConf">Mensaje de confirmación</label><textarea id="a_msgConf" rows="3">${esc(cfg.msgConf)}</textarea><label for="a_msgRec">Mensaje de recordatorio</label><textarea id="a_msgRec" rows="3">${esc(cfg.msgRec)}</textarea><p class="small">Puedes usar {nombre}, {fecha}, {hora} y {servicio}; se llenan solos.</p><label for="a_pagos">Cuentas de pago (una por línea: Banco | N° de cuenta | Titular)</label><textarea id="a_pagos" rows="3">${esc(pg().map(p=>[p.banco,p.num,p.tit].join(" | ")).join("\n"))}</textarea><button class="btn" id="asv">Guardar ajustes</button></div>`;
   $("#asv").onclick=async()=>{
     const v=id=>$("#a_"+id).value,ab=+v("abre"),ci=+v("cierra");
     if(ci<=ab)return toast("La hora de cierre debe ser después de la apertura");
-    try{await setDoc(doc(db,"config","negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,rec:+v("rec")||10,msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")}catch(e){toast("No se pudo guardar")}
+    try{await setDoc(doc(db,C("config"),"negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,recs:v("recs").replace(/[^\d,]/g,"")||"30,10",msgConsulta:v("msgConsulta")||DEF.msgConsulta,v2:true,pagos:v("pagos").split("\n").map(l=>l.split("|").map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>({banco:a[0],lab:"N° de cuenta",num:a[1],tit:a[2]||""})),...(cfg.pw?{pw:cfg.pw}:{}),msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")}catch(e){toast("No se pudo guardar")}
   };
 }
 
@@ -455,13 +568,13 @@ function tab(w){
   document.body.classList.toggle("admin",w==="p");if(w==="p")renderP();window.scrollTo({top:0});
 }
 $("#tR").onclick=()=>tab("r");$("#tP").onclick=()=>tab("p");
-const soft=()=>{$("#logo").textContent=cfg.nombre;if(!busy()&&!$("#nom")){renderR()}else{drawGal();}};
-onSnapshot(doc(db,"config","negocio"),s=>{cfg={...DEF,...(s.data()||{})};soft();if(unlocked&&psub==="citas")drawCitas()},()=>{});
-onSnapshot(collection(db,"servicios"),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},()=>{});
-onSnapshot(collection(db,"galeria"),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},()=>{});
-onSnapshot(collection(db,"ocupado"),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));drawCal();drawSlots();refreshP()},()=>{});
-onSnapshot(collection(db,"citas"),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);refreshP()},()=>{});
-renderR();
+const soft=()=>{$("#logo").textContent=cfg.nombre;document.title=cfg.nombre+" — Agenda tu cita";if(!busy()&&!$("#nom")){renderR()}else{drawGal();}};
+onSnapshot(doc(db,C("config"),"negocio"),s=>{const dd=s.data()||{};cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()},()=>{});
+onSnapshot(collection(db,C("servicios")),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},()=>{});
+onSnapshot(collection(db,C("galeria")),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},()=>{});
+onSnapshot(collection(db,C("ocupado")),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},()=>{});
+onSnapshot(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()},()=>{});
+renderR();setTimeout(checkRec,1500);
 </script>
 </body>
 </html>

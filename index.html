@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0a10"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Enamorada’s Nails — Agenda tu cita</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -78,11 +78,6 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 .orb{position:absolute;border-radius:50%;background:#7c3aed;filter:blur(46px);opacity:.38;animation:fl 9s ease-in-out infinite}
 .o1{width:190px;height:190px;left:-50px;top:-40px}.o2{width:150px;height:150px;right:-30px;bottom:-30px;background:#a78bfa;animation-delay:-4s}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
-.scene{position:relative;margin:0 -16px}
-.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#09090b;display:flex;align-items:center;justify-content:center}
-.stage .orb{animation:none;opacity:.3}
-.fr{position:absolute;width:min(78vw,420px);aspect-ratio:4/5;object-fit:cover;border-radius:22px;box-shadow:0 30px 80px rgba(124,58,237,.35);opacity:0;will-change:transform,opacity}
-.cap{position:absolute;bottom:34px;left:0;right:0;text-align:center;z-index:3}
 .dots,.fdots{display:flex;gap:6px;justify-content:center;margin-top:8px}.dots span,.fdots span{width:6px;height:6px;border-radius:50%;background:#3f3f46;transition:.2s}.dots span.on,.fdots span.on{background:var(--acc);width:18px;border-radius:4px}
 .folder{border:1px solid var(--line);background:var(--card);border-radius:0 18px 18px 18px;padding:14px;position:relative;margin-top:36px}
 .ftab{position:absolute;top:-30px;left:-1px;background:var(--card);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;padding:6px 14px;font:600 12px 'Inter',sans-serif;color:var(--acc);cursor:pointer}
@@ -106,8 +101,33 @@ body.admin .fab{display:none}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-size:14px;z-index:30;max-width:90%}
 .sheet{position:absolute;left:0;right:0;bottom:0;max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px 22px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px))}
 .sheet b{font:600 18px 'Playfair Display',Georgia,serif}.folder .car{cursor:pointer}
-.stage{perspective:900px}
 .hide{display:none}
+/* ===== Rediseño v3: tema, táctil, foco, carpeta horizontal ===== */
+:root{--bg:#0b0a10;--card:#15131c;--line:#2a2635;--acc:#d8b4fe;--btn:#9333ea;--rose:#f9a8d4;--r:18px;--grad:linear-gradient(135deg,#9333ea,#db2777)}
+body{background:radial-gradient(1100px 480px at 50% -8%,#2a1344 0,transparent 62%),var(--bg)}
+.wrap{padding-bottom:96px}
+.top{position:sticky;top:0;z-index:20;background:rgba(10,9,14,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo::before{color:var(--rose)}
+.tab,.chip,.x{min-height:44px}.tab{padding:8px 16px}
+.tab.on,.slot.on,.day.on,.chip.on,.nav2 button.on{background:var(--grad);border-color:transparent;color:#fff}
+.nav{width:44px;height:44px}.slot{min-height:46px}
+.btn{background:var(--grad);min-height:48px;box-shadow:0 8px 22px rgba(147,51,234,.28);transition:transform .15s,box-shadow .15s,opacity .15s}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:scale(.98)}
+.btn.gh{background:transparent;box-shadow:none}.btn.wa{background:#1fa855;box-shadow:none}.btn.bad{background:var(--bad);box-shadow:none}.btn.gold{background:var(--grad)}
+.btn.sm{min-height:40px}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.card,.sv,.folder,.sum,.alert{border-radius:var(--r)}
+.sv{min-height:56px;transition:border-color .15s,transform .15s}.sv:hover{border-color:#5b4580;transform:translateY(-1px)}
+.sv.on{background:linear-gradient(135deg,rgba(147,51,234,.2),rgba(219,39,119,.12))}
+.slot:hover:not(:disabled),.day:hover:not(:disabled){border-color:var(--acc)}
+h2 .st{background:var(--grad)}h2{margin-top:30px}
+.hero{border-radius:0 0 32px 32px;padding-bottom:54px}
+input,textarea,select{min-height:46px;font-size:16px}
+input:focus,textarea:focus,select:focus{box-shadow:0 0 0 3px rgba(216,180,254,.18)}
+.folder{margin-top:40px;overflow:visible}
+.car{perspective:1000px;padding:6px 11% 10px;scroll-padding:0 11%;touch-action:pan-x pan-y}
+.ci{flex:0 0 78%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;transition:opacity .2s;box-shadow:0 18px 40px rgba(0,0,0,.45);user-select:none;-webkit-user-drag:none}
+.fab{box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 0 4px rgba(31,168,85,.22)}
 </style>
 </head>
 <body>
@@ -189,36 +209,27 @@ function renderR(){
   $("#adm").onclick=e=>{e.preventDefault();tab("p")};$("#fcons").onclick=e=>{e.preventDefault();consulta()};
   drawGal();drawBook();
 }
-/* ---- Galería: escena con scroll + carpeta deslizable ---- */
+/* ---- Galería: carpeta con deslizamiento horizontal ---- */
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
-let frames=[],orbs=[];
 function drawGal(){
   const el=$("#gal");if(!el)return;
-  if(!gal.length){el.innerHTML="";frames=[];return}
-  const N=gal.length,sc=gal.slice(0,8),car=gal.slice(0,6);
-  el.innerHTML=(RM?"":`<section class="scene" id="scene" style="height:${(sc.length+1)*75}vh"><div class="stage"><i class="orb o1"></i><i class="orb o2"></i>${sc.map(g=>`<img class="fr" src="${g.src}" alt="Trabajo de uñas">`).join("")}<div class="cap"><p class="eyebrow">NUESTROS TRABAJOS</p><div class="dots">${sc.map(()=>"<span></span>").join("")}</div></div></div></section>`)
-  +`<h2>Nuestros trabajos</h2><div class="folder" id="fold"><div class="ftab" id="ftab">📁 Carpeta · ${N} foto${N>1?"s":""}</div><div class="car" id="car">${car.map((g,i)=>`<img class="ci" data-i="${i}" src="${g.src}" alt="Trabajo de uñas" loading="lazy">`).join("")}</div><div class="fdots" id="fdots">${car.map(()=>"<span></span>").join("")}</div><p class="small" style="text-align:center">Desliza ↔ · toca la carpeta para abrirla</p><button class="btn gh" id="openf">Abrir carpeta (${N})</button></div>`;
-  frames=[...el.querySelectorAll(".fr")];orbs=[...el.querySelectorAll(".stage .orb")];
-  const cr=$("#car"),dots=()=>{const w=cr.firstChild.clientWidth+10,i=Math.round(cr.scrollLeft/w);$$("#fdots span").forEach((x,k)=>x.classList.toggle("on",k===i))};
-  cr.onscroll=dots;dots();
-  $("#car").onclick=e=>{const im=e.target.closest(".ci");if(im)openAlbum(null)};
+  const sig=gal.map(g=>g.id).join();
+  if(el.dataset.sig===sig&&el.children.length)return;
+  el.dataset.sig=sig;
+  if(!gal.length){el.innerHTML="";return}
+  const N=gal.length,car=gal.slice(0,8);
+  el.innerHTML=`<h2>Nuestros trabajos</h2><div class="folder" id="fold"><div class="ftab" id="ftab">📁 Carpeta · ${N} foto${N>1?"s":""}</div><div class="car" id="car">${car.map((g,i)=>`<img class="ci" data-i="${i}" src="${g.src}" alt="Trabajo de uñas ${i+1}" draggable="false" ${i>1?'loading="lazy"':""}>`).join("")}</div><div class="fdots" id="fdots">${car.map(()=>"<span></span>").join("")}</div><p class="small" style="text-align:center">Desliza ↔ · toca una foto para abrir la carpeta</p><button class="btn gh" id="openf">Abrir carpeta (${N})</button></div>`;
+  const cr=$("#car");let tk=0;
+  const fx=()=>{tk=0;const b=cr.getBoundingClientRect(),c=b.left+b.width/2;let best=0,bd=9;
+    [...cr.children].forEach((im,i)=>{const r=im.getBoundingClientRect(),d=(r.left+r.width/2-c)/b.width,a=Math.min(1,Math.abs(d));
+      if(!RM){im.style.transform=`scale(${1-a*.14}) rotateY(${-d*30}deg)`;im.style.opacity=1-a*.45}
+      if(a<bd){bd=a;best=i}});
+    $$("#fdots span").forEach((x,k)=>x.classList.toggle("on",k===best))};
+  cr.onscroll=()=>{if(!tk)tk=requestAnimationFrame(fx)};
+  requestAnimationFrame(fx);
+  cr.onclick=e=>{if(e.target.closest(".ci"))openAlbum(null)};
   $("#ftab").onclick=$("#openf").onclick=()=>openAlbum(null);
-  scrollScene();
 }
-let tgt=0,curp=0,raf=0;
-function scrollScene(){
-  const s=$("#scene");if(!s||!frames.length)return;
-  const r=s.getBoundingClientRect(),h=Math.max(1,s.offsetHeight-innerHeight);
-  tgt=Math.min(1,Math.max(0,-r.top/h));if(!raf)raf=requestAnimationFrame(tick);
-}
-function tick(){
-  raf=0;curp+=(tgt-curp)*.12;const p=curp,n=frames.length,x=n>1?p*(n-1):0;
-  frames.forEach((f,i)=>{const d=x-i,a=Math.abs(d);f.style.opacity=n>1?Math.max(0,1-a*1.25):1;f.style.transform=`translate3d(${-d*40}px,${-d*90}px,${-a*120}px) rotateY(${-d*14}deg) rotateZ(${-d*3}deg) scale(${1.08-a*.08+p*.05})`;f.style.zIndex=a<.5?2:1});
-  orbs.forEach((b,i)=>{b.style.transform=`translate(${(i?-1:1)*p*80}px,${p*(i?120:-140)}px) scale(${1+p*.5})`});
-  $$("#scene .dots span").forEach((d,i)=>d.classList.toggle("on",i===Math.round(x)));
-  if(Math.abs(tgt-curp)>.0005)raf=requestAnimationFrame(tick);
-}
-addEventListener("scroll",()=>requestAnimationFrame(scrollScene),{passive:true});addEventListener("resize",scrollScene);
 const closeLb=()=>{$("#lb").classList.add("hide");$("#lb").innerHTML=""};
 function openAlbum(i){
   const lb=$("#lb");lb.classList.remove("hide");
@@ -239,7 +250,7 @@ function drawBook(){
     el.innerHTML=`<div class="card ok" style="margin-top:20px"><div class="big">✨</div><h2 style="justify-content:center">¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b><br>${esc(h12(done.hora))} – ${esc(h12(mm(done.hora)+nSl(done.dur)*cfg.paso))}</p><p class="small">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(done.hora)+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn gh" id="ntf">🔔 Avisarme antes de mi cita</button><button class="btn gh" id="ics">📅 Guardar en mi calendario (con alarmas)</button><button class="btn gh" id="otra">Agendar otra cita</button></div>`;
     el.insertAdjacentHTML("beforeend",payCard());bindPay(el);$("#ntf").onclick=async()=>{try{await Notification.requestPermission()}catch(e){}toast("Avisos activados 🔔");checkRec()};$("#ics").onclick=()=>dl(done);$("#otra").onclick=()=>{done=null;sel={s:null,otro:"",fecha:null,m:null};drawBook()};return;
   }
-  const cat=catalog(),dur=sel.s?sel.s.dur:60,n=nSl(dur);
+  const cat=catalog(),dur=sel.s?sel.s.dur:60,n=nSl(dur),keep=["nom","tel","nts"].map(i=>($("#"+i)||{}).value||"");
   let h=`<h2><span class="st">1</span>Elige tu servicio</h2><div class="svl">${cat.map((s,i)=>`<button class="sv ${sel.s&&sel.s.nombre===s.nombre?"on":""}" data-i="${i}"><span>${esc(s.nombre)}<small>⏱ ${durL(s.dur)}</small></span><em>${s.otro?"A consultar":L(s.precio)}</em></button>`).join("")}</div>`;
   if(sel.s&&sel.s.otro)h+=`<label for="otro">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué necesitas" value="${esc(sel.otro)}">`;
   h+=`<h2><span class="st">2</span>Elige el día</h2><div class="card"><div id="cal"></div></div>`;
@@ -247,6 +258,7 @@ function drawBook(){
   if(sel.fecha&&sel.m!=null)h+=`<h2><span class="st">4</span>Tus datos</h2><div class="sum">${esc(sel.s?sel.s.nombre:"Elige un servicio")} · ${esc(fLarga(sel.fecha))}<br>${esc(h12(sel.m))} – ${esc(h12(sel.m+n*cfg.paso))}${sel.s&&+sel.s.precio?" · "+L(sel.s.precio):""}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita</button><p class="small">Pago en efectivo o transferencia (cuentas al final de esta página).</p>`;
   h+=payCard();
   el.innerHTML=h;
+  ["nom","tel","nts"].forEach((i,k)=>{const f=$("#"+i);if(f&&keep[k])f.value=keep[k]});
   el.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{sel.s=cat[+b.dataset.i];sel.m=null;drawBook()});
   const ot=$("#otro");if(ot)ot.oninput=()=>{sel.otro=ot.value};
   drawCal();drawSlots();bindPay(el);const g=$("#go");if(g)g.onclick=book;
@@ -275,9 +287,10 @@ async function book(){
   if(sel.s.otro&&!sel.otro.trim())return toast("Escribe qué te quieres hacer");
   if(nombre.length<2)return toast("Escribe tu nombre");
   if(tel.replace(/\D/g,"").length<8)return toast("Escribe un teléfono válido");
+  if(sel.fecha===iso(new Date())){const n0=new Date();if(sel.m<=n0.getHours()*60+n0.getMinutes())return toast("Esa hora ya pasó, elige otra")}
   const btn=$("#go");btn.disabled=true;btn.textContent="Agendando…";
   const dur=sel.s.dur,n=nSl(dur),all=ids(sel.fecha,sel.m,n),id=all[0];
-  const c={nombre,tel,notas,servicio:sel.s.otro?"Otro: "+sel.otro.trim():sel.s.nombre,precio:+sel.s.precio||0,dur,fecha:sel.fecha,hora:key(sel.m),estado:"pendiente",creada:Date.now()};
+  const c={nombre:nombre.slice(0,60),tel:tel.slice(0,30),notas:notas.slice(0,300),servicio:sel.s.otro?"Otro: "+sel.otro.trim():sel.s.nombre,precio:+sel.s.precio||0,dur,fecha:sel.fecha,hora:key(sel.m),estado:"pendiente",creada:Date.now()};
   try{
     await runTransaction(db,async tx=>{
       const rs=all.map(i=>doc(db,C("ocupado"),i));
@@ -574,6 +587,7 @@ onSnapshot(collection(db,C("servicios")),s=>{servs=s.docs.map(d=>({id:d.id,...d.
 onSnapshot(collection(db,C("galeria")),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},()=>{});
 onSnapshot(collection(db,C("ocupado")),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},()=>{});
 onSnapshot(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()},()=>{});
+addEventListener("offline",()=>toast("Sin internet: los cambios no se guardarán"));addEventListener("online",()=>toast("Conexión recuperada ✅"));addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
 renderR();setTimeout(checkRec,1500);
 </script>
 </body>

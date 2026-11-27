@@ -316,16 +316,16 @@ async function book(){
   const dur=sel.s.dur,n=nSl(dur),all=ids(sel.fecha,sel.m,n),id=all[0];
   const c={nombre:nombre.slice(0,60),tel:tel.slice(0,30),notas:notas.slice(0,300),servicio:sel.s.otro?"Otro: "+sel.otro.trim():sel.s.nombre,precio:+sel.s.precio||0,dur,fecha:sel.fecha,hora:key(sel.m),estado:"pendiente",creada:Date.now()};
   try{
-    await runTransaction(db,async tx=>{
-      const rs=all.map(i=>doc(db,C("ocupado"),i));
-      for(const r of rs)if((await tx.get(r)).exists())throw new Error("taken");
-      rs.forEach((r,i)=>tx.set(r,{fecha:sel.fecha,hora:key(sel.m+i*cfg.paso)}));
-      tx.set(doc(db,C("citas"),id),c);
-    });
+    if(all.some(i=>taken.has(i))){toast("Ese horario ya se ocupó, elige otro");sel.m=null;drawBook();return}
+    await setDoc(doc(db,C("citas"),id),c);
+    for(let i=0;i<all.length;i++){
+      await setDoc(doc(db,C("ocupado"),all[i]),{fecha:sel.fecha,hora:key(sel.m+i*cfg.paso)});
+    }
     done=c;mineAdd(c);drawBook();window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){
-    if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.m=null;drawBook()}
-    else{console.error(e);toast(e.code==="permission-denied"?"No se pudo agendar: la base de datos rechazó la cita (permission-denied)":"No se pudo agendar ("+(e.code||"error")+"). Revisa tu internet.");btn.disabled=false;btn.textContent="Confirmar mi cita"}
+    console.error(e);
+    toast(e.code==="permission-denied"?"Firebase bloqueó la escritura (permission-denied)":"Error al guardar ("+(e.code||"red")+"). Revisa tu conexión.");
+    btn.disabled=false;btn.textContent="Confirmar mi cita";
   }
 }
 

@@ -155,7 +155,7 @@ input:focus,textarea:focus,select:focus{box-shadow:0 0 0 3px rgba(216,180,254,.1
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, doc, setDoc, updateDoc, deleteDoc, collection, onSnapshot, writeBatch, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, getDocs, query, where, orderBy, limit, setDoc, updateDoc, deleteDoc, collection, onSnapshot, writeBatch, runTransaction } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 /* ============================================================
    🔥 FIREBASE — PEGA AQUÍ TU CONFIGURACIÓN (solo cambia este bloque)
@@ -339,13 +339,13 @@ function renderP(){
     const go=async()=>{const v=$("#pw").value,h=await sha(v);
       if(first){if(v.length<4)return toast("Mínimo 4 caracteres");try{await setDoc(doc(db,C("config"),"negocio"),{...cfg,pw:h,v2:true})}catch(e){return toast("No se pudo guardar")}unlocked=true}
       else if(h===(T?cfg.pw:PW_HASH))unlocked=true;else return toast("Clave incorrecta");
-      try{Notification.requestPermission()}catch(e){}renderP()};
+      startLive("admin");try{Notification.requestPermission()}catch(e){}renderP()};
     $("#pwgo").onclick=go;$("#pw").onkeydown=e=>{if(e.key==="Enter")go()};return;
   }
   const N=[["citas","📅 Citas"],["ingresos","💰 Ingresos"],["clientas","👥 Clientas"],["bloqueos","🚫 Bloqueos"],["servicios","💅 Servicios"],["galeria","🖼 Galería"],["ajustes","⚙️ Ajustes"]];
   root.innerHTML=`<div class="nav2">${N.map(n=>`<button data-p="${n[0]}" class="${psub===n[0]?"on":""}">${n[1]}</button>`).join("")}<button id="lock">🔒 Salir</button></div><div id="rec"></div><div id="pb"></div>`;
   $$("#vP [data-p]").forEach(b=>b.onclick=()=>{psub=b.dataset.p;armed=null;renderP()});
-  $("#lock").onclick=()=>{unlocked=false;renderP()};
+  $("#lock").onclick=()=>{unlocked=false;startLive("public");renderP()};
   ({citas:shellCitas,ingresos:shellIng,clientas:shellCli,bloqueos:shellBloq,servicios:shellServ,galeria:shellGal,ajustes:shellAj})[psub]();
   syncOcupado();checkRec();
 }
@@ -628,11 +628,55 @@ $("#tR").onclick=()=>tab("r");$("#tP").onclick=()=>tab("p");
 const soft=()=>{$("#logo").textContent=cfg.nombre;document.title=cfg.nombre+" — Agenda tu cita";if(!busy()&&!$("#nom")){renderR()}else{drawGal();}};
 let errShown=false;
 const onErr=e=>{console.error("Firestore:",e&&e.code,e&&e.message);if(!errShown){errShown=true;toast("Sin conexión con la base de datos ("+((e&&e.code)||"error")+")")}};
-onSnapshot(doc(db,C("config"),"negocio"),s=>{const dd=s.data()||{};cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()},onErr);
-onSnapshot(collection(db,C("servicios")),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},onErr);
-onSnapshot(collection(db,C("galeria")),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},onErr);
-onSnapshot(collection(db,C("ocupado")),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},onErr);
-onSnapshot(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()},onErr);
+/* ============================================================
+   LECTURAS MÍNIMAS DE FIRESTORE (plan gratuito)
+   - Visitantes: config + servicios en caché local (10 min), galería limitada,
+     y SOLO los horarios ocupados de hoy en adelante. Nunca leen "citas".
+   - Panel (tras la clave): escuchas en vivo completas; se cierran al salir.
+   ============================================================ */
+const CK="enm_pub_"+(T||"main"),CTTL=10*60*1000,GAL_PUB=12;
+const cacheGet=()=>{try{const o=JSON.parse(localStorage.getItem(CK)||"null");return o&&o.t&&Date.now()-o.t<CTTL?o:null}catch(e){return null}};
+const cacheSet=o=>{try{localStorage.setItem(CK,JSON.stringify({...o,t:Date.now()}))}catch(e){}};
+const cacheDirty=()=>{try{localStorage.removeItem(CK)}catch(e){}};
+const applyCfg=dd=>{cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()};
+const applyServs=l=>{servs=l;if(!busy()){drawBook()}refreshP()};
+const setGal=l=>{gal=l.sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()};
+
+async function loadPublic(){
+  const c=cacheGet();
+  if(c){applyCfg(c.cfg||{});applyServs(c.servs||[])}
+  else{
+    try{
+      const [cs,ss]=await Promise.all([getDoc(doc(db,C("config"),"negocio")),getDocs(collection(db,C("servicios")))]);
+      const dd=cs.data()||{},sv=ss.docs.map(d=>({id:d.id,...d.data()}));
+      cacheSet({cfg:dd,servs:sv});applyCfg(dd);applyServs(sv);
+    }catch(e){onErr(e)}
+  }
+  try{ /* galería: solo las más recientes, un poco después para no frenar la primera pantalla */
+    await new Promise(r=>setTimeout(r,600));
+    const g=await getDocs(query(collection(db,C("galeria")),orderBy("creada","desc"),limit(GAL_PUB)));
+    if(mode==="public")setGal(g.docs.map(d=>({id:d.id,...d.data()})));
+  }catch(e){onErr(e)}
+}
+
+/* Horarios ocupados: en vivo, pero solo de hoy en adelante (no el historial) */
+onSnapshot(query(collection(db,C("ocupado")),where("fecha",">=",iso(new Date()))),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},onErr);
+
+let unsubs=[],mode="public";
+function startLive(m){
+  if(mode===m)return;
+  unsubs.forEach(u=>u());unsubs=[];mode=m;
+  if(m==="admin"){
+    const L=(q,fn)=>unsubs.push(onSnapshot(q,fn,onErr));
+    L(doc(db,C("config"),"negocio"),s=>{applyCfg(s.data()||{});cacheDirty()});
+    L(collection(db,C("servicios")),s=>{applyServs(s.docs.map(d=>({id:d.id,...d.data()})));cacheDirty()});
+    L(collection(db,C("galeria")),s=>setGal(s.docs.map(d=>({id:d.id,...d.data()}))));
+    L(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()});
+  }else{ /* al salir del panel no dejamos datos de clientas en memoria */
+    allC=[];citas=[];gotC=false;synced=false;
+  }
+}
+loadPublic();
 addEventListener("offline",()=>toast("Sin internet: los cambios no se guardarán"));addEventListener("online",()=>toast("Conexión recuperada ✅"));addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
 renderR();setTimeout(checkRec,1500);
 </script>

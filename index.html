@@ -4,6 +4,22 @@
 <meta charset="utf-8">
 <meta name="theme-color" content="#0b0a10"><link rel="manifest" href="manifest.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Enamorada’s Nails — Agenda tu cita</title>
+<!-- Vista previa al compartir enlace (WhatsApp, Facebook, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Enamorada’s Nails">
+<meta property="og:title" content="Enamorada’s Nails — Agenda tu cita">
+<meta property="og:description" content="Diseños únicos, acabado perfecto y atención con cariño. Elige tu servicio, día y hora en línea.">
+<meta property="og:url" content="https://202300459-pixel.github.io/Enamorada-Nails/">
+<meta property="og:image" content="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Enamorada’s Nails — Agenda tu cita">
+<meta name="twitter:description" content="Diseños únicos, acabado perfecto y atención con cariño. Agenda tu cita en línea.">
+<meta name="twitter:image" content="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0a10;--ink:#f4f4f5;--mut:#a1a1aa;--line:#2a2635;--card:#15131c;--acc:#d8b4fe;--btn:#9333ea;--btnk:#fff;--bad:#e5484d;--ok:#3ecf8e;--rose:#f9a8d4;--r:18px;--grad:linear-gradient(135deg,#9333ea,#db2777);color-scheme:dark}
@@ -610,11 +626,13 @@ function tab(w){
 }
 $("#tR").onclick=()=>tab("r");$("#tP").onclick=()=>tab("p");
 const soft=()=>{$("#logo").textContent=cfg.nombre;document.title=cfg.nombre+" — Agenda tu cita";if(!busy()&&!$("#nom")){renderR()}else{drawGal();}};
-onSnapshot(doc(db,C("config"),"negocio"),s=>{const dd=s.data()||{};cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()},()=>{});
-onSnapshot(collection(db,C("servicios")),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},()=>{});
-onSnapshot(collection(db,C("galeria")),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},()=>{});
-onSnapshot(collection(db,C("ocupado")),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},()=>{});
-onSnapshot(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()},()=>{});
+let errShown=false;
+const onErr=e=>{console.error("Firestore:",e&&e.code,e&&e.message);if(!errShown){errShown=true;toast("Sin conexión con la base de datos ("+((e&&e.code)||"error")+")")}};
+onSnapshot(doc(db,C("config"),"negocio"),s=>{const dd=s.data()||{};cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()},onErr);
+onSnapshot(collection(db,C("servicios")),s=>{servs=s.docs.map(d=>({id:d.id,...d.data()}));if(!busy()){drawBook()}refreshP()},onErr);
+onSnapshot(collection(db,C("galeria")),s=>{gal=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()},onErr);
+onSnapshot(collection(db,C("ocupado")),s=>{ocup=s.docs.map(d=>({id:d.id,...d.data()}));taken=new Set(ocup.map(o=>o.id));gotO=true;drawCal();drawSlots();refreshP()},onErr);
+onSnapshot(collection(db,C("citas")),s=>{allC=s.docs.map(d=>({...d.data(),_id:d.id}));citas=allC.filter(c=>!c.bloqueo);gotC=true;refreshP()},onErr);
 addEventListener("offline",()=>toast("Sin internet: los cambios no se guardarán"));addEventListener("online",()=>toast("Conexión recuperada ✅"));addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
 renderR();setTimeout(checkRec,1500);
 </script>

@@ -325,7 +325,7 @@ async function book(){
     done=c;mineAdd(c);drawBook();window.scrollTo({top:0,behavior:"smooth"});
   }catch(e){
     if(e.message==="taken"){toast("Ese horario ya se ocupó, elige otro");sel.m=null;drawBook()}
-    else{console.error(e);toast("No se pudo agendar. Revisa tu internet.");btn.disabled=false;btn.textContent="Confirmar mi cita"}
+    else{console.error(e);toast(e.code==="permission-denied"?"No se pudo agendar: la base de datos rechazó la cita (permission-denied)":"No se pudo agendar ("+(e.code||"error")+"). Revisa tu internet.");btn.disabled=false;btn.textContent="Confirmar mi cita"}
   }
 }
 

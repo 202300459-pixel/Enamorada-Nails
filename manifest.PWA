@@ -1,0 +1,26 @@
+{
+"name": "Enamorada’s Nails — Agenda tu cita",
+"short_name": "Enamorada's Nails",
+"description": "Diseños únicos, acabado perfecto y agenda de citas en línea para Enamorada’s Nails.",
+"start_url": "./index.html",
+"scope": "./",
+"display": "standalone",
+"orientation": "portrait",
+"background_color": "#0b0a10",
+"theme_color": "#0b0a10",
+"lang": "es",
+"icons": [
+{
+"src": "./icon-192.png",
+"sizes": "192x192",
+"type": "image/png",
+"purpose": "any maskable"
+},
+{
+"src": "./icon-512.png",
+"sizes": "512x512",
+"type": "image/png",
+"purpose": "any maskable"
+}
+]
+}

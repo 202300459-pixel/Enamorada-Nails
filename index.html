@@ -27,9 +27,9 @@
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(10,9,14,.9);z-index:21;pointer-events:none}
 .top{background:#000;border-bottom:1px solid #1f1f23;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px;display:flex;align-items:center;gap:9px;min-width:0}
-.logo img{width:46px;height:46px;border-radius:12px;object-fit:cover;flex:none;background:#15131c;box-shadow:0 0 0 1.5px rgba(216,180,254,.45),0 4px 14px rgba(147,51,234,.35)}
-@media (max-width:400px){.logo{font-size:16px;gap:8px}.logo img{width:42px;height:42px}.tab{padding:8px 12px}}
+.logo{font:700 21px 'Playfair Display',Georgia,serif;letter-spacing:.3px;display:flex;align-items:center;gap:12px;min-width:0}
+.logo img{width:68px;height:68px;border-radius:12px;object-fit:cover;flex:none;background:#15131c;box-shadow:0 0 0 1.5px rgba(216,180,254,.45),0 4px 14px rgba(147,51,234,.35)}
+@media (max-width:400px){.logo{font-size:15px;gap:8px}.logo img{width:56px;height:56px;border-radius:14px}.logo span{white-space:normal;line-height:1.15}.tab{padding:8px 11px}}
 .logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tabs{display:flex;gap:6px}
 .tab{border:1px solid #3a3a3a;background:transparent;color:#ddd;padding:7px 14px;border-radius:999px;font:500 13px 'Inter',sans-serif;cursor:pointer}
@@ -126,7 +126,7 @@ body.admin .fab{display:none}
 body{background:radial-gradient(1100px 480px at 50% -8%,#2a1344 0,transparent 62%),var(--bg)}
 .wrap{padding-bottom:96px}
 .top{position:sticky;top:0;z-index:20;background:rgba(10,9,14,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.tab,.chip,.x{min-height:44px}.tab{padding:8px 16px}
+.tab,.chip,.x{min-height:44px}.tab{padding:8px 16px}.top{padding-top:10px;padding-bottom:10px}
 .tab.on,.slot.on,.day.on,.chip.on,.nav2 button.on{background:var(--grad);border-color:transparent;color:#fff}
 .nav{width:44px;height:44px}.slot{min-height:46px}
 .btn{background:var(--grad);min-height:48px;box-shadow:0 8px 22px rgba(147,51,234,.28);transition:transform .15s,box-shadow .15s,opacity .15s}
@@ -154,7 +154,7 @@ h2{margin-top:24px}
 </style>
 </head>
 <body>
-<header class="top"><div class="logo"><img src="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png" alt="Logo Enamorada’s Nails" width="46" height="46" onerror="this.style.display='none'"><span id="logo">Enamorada’s Nails</span></div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
+<header class="top"><div class="logo"><img src="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png" alt="Logo Enamorada’s Nails" width="68" height="68" onerror="this.style.display='none'"><span id="logo">Enamorada’s Nails</span></div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
 <main class="wrap"><div id="vR"></div><div id="vP" class="hide"></div></main>
 <div id="lb" class="lb hide"></div>
 <a id="fab" class="fab" target="_blank" rel="noopener" href="#" aria-label="Consultar por WhatsApp">💬</a>
@@ -230,16 +230,18 @@ const allSlots=()=>{const a=[];for(let m=cfg.abre*60;m<cfg.cierra*60;m+=cfg.paso
 const catAll=()=>{const out=[];DEFS.forEach((n,i)=>{const x=servs.find(v=>v.nombre===n);out.push(x?{...x,base:true}:{id:"base"+i,nombre:n,precio:0,dur:60,activo:true,orden:i,base:true})});servs.filter(v=>!DEFS.includes(v.nombre)).forEach(v=>out.push(v));return out.sort((x,y)=>(x.orden||0)-(y.orden||0))};
 const catalog=()=>[...catAll().filter(v=>v.activo!==false),{nombre:"Otro",precio:0,dur:60,otro:true}];
 /* Evita que una cita deje "huérfana" una media hora que ningún servicio puede usar.
-   Ej.: si el servicio más corto dura 1 h y reservas 10:30, las 10:00 quedarían perdidas;
-   por eso se ofrece 10:00 (y no 10:30). Pon false para desactivar. */
+   Ej.: si reservas un servicio de 1 h a las 1:30 y la siguiente cita es a las 3:00,
+   las 2:30 quedarían perdidas; por eso se ofrecen 1:00 y 2:00 (y no 1:30).
+   Si tienes un servicio de 30 min (ej. "Diseño"), esa media hora ya se puede vender y no se oculta nada. Pon false para desactivar. */
 const EVITAR_HUECOS=true;
-const minSl=()=>Math.min(...catAll().filter(v=>v.activo!==false).map(v=>nSl(v.dur)),nSl(60));
+const corto=()=>catAll().filter(v=>v.activo!==false).reduce((a,v)=>(!a||nSl(v.dur)<nSl(a.dur))?v:a,null);
+const minSl=()=>{const c=corto();return c?nSl(c.dur):2};
 function slotsFor(f,n){
   const now=new Date(),hoy=f===iso(now),nm=now.getHours()*60+now.getMinutes(),A=cfg.abre*60,Z=cfg.cierra*60,st=cfg.paso;
   const free=m=>m>=A&&m<Z&&!(hoy&&m<=nm)&&!taken.has(f+"_"+key(m));
   const out=[];
   for(let m=A;m+st*n<=Z;m+=st)out.push({m,ok:[...Array(n)].every((_,i)=>free(m+i*st))});
-  const mn=minSl();
+  const mn=minSl(); /* un hueco solo se considera perdido si es menor que el servicio más corto que ofreces */
   if(EVITAR_HUECOS&&mn>1){
     const runs={};
     out.forEach(o=>{if(!o.ok)return;let b=0,a=0;
@@ -330,6 +332,10 @@ function drawCal(){
 function drawSlots(){
   const s=$("#slots");if(!s||!sel.fecha)return;
   s.innerHTML=slotsFor(sel.fecha,nSl(selDur())).map(x=>`<button class="slot ${sel.m===x.m?"on":""}" data-m="${x.m}" ${x.ok?"":"disabled"}>${h12(x.m)}</button>`).join("");
+  const nn=nSl(selDur()),c0=corto(),short=c0&&nSl(c0.dur)<nn&&sel.s&&!sel.s.otro;
+  const sobra=short&&slotsFor(sel.fecha,nSl(c0.dur)).some((x,_)=>x.ok&&!slotsFor(sel.fecha,nn).find(y=>y.m===x.m&&y.ok));
+  const pn=$("#slotnote");if(pn)pn.remove();
+  if(sobra)s.insertAdjacentHTML("afterend",`<p class="small" id="slotnote">💡 Las horas tachadas no alcanzan para este servicio. Para aprovechar los espacios cortos libres, elige <b>${esc(c0.nombre)}</b> (${durL(c0.dur)}).</p>`);
   s.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{sel.m=+b.dataset.m;drawBook();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},60)});
 }
 async function book(){

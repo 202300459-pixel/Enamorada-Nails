@@ -27,7 +27,9 @@
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(10,9,14,.9);z-index:21;pointer-events:none}
 .top{background:#000;border-bottom:1px solid #1f1f23;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px}.logo::before{content:"✦ ";color:#a78bfa}
+.logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px;display:flex;align-items:center;gap:9px;min-width:0}
+.logo img{width:30px;height:30px;border-radius:8px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tabs{display:flex;gap:6px}
 .tab{border:1px solid #3a3a3a;background:transparent;color:#ddd;padding:7px 14px;border-radius:999px;font:500 13px 'Inter',sans-serif;cursor:pointer}
 .tab.on{background:#7c3aed;border-color:#7c3aed;color:#fff;font-weight:600}
@@ -123,7 +125,6 @@ body.admin .fab{display:none}
 body{background:radial-gradient(1100px 480px at 50% -8%,#2a1344 0,transparent 62%),var(--bg)}
 .wrap{padding-bottom:96px}
 .top{position:sticky;top:0;z-index:20;background:rgba(10,9,14,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.logo::before{color:var(--rose)}
 .tab,.chip,.x{min-height:44px}.tab{padding:8px 16px}
 .tab.on,.slot.on,.day.on,.chip.on,.nav2 button.on{background:var(--grad);border-color:transparent;color:#fff}
 .nav{width:44px;height:44px}.slot{min-height:46px}
@@ -136,18 +137,23 @@ body{background:radial-gradient(1100px 480px at 50% -8%,#2a1344 0,transparent 62
 .sv{min-height:56px;transition:border-color .15s,transform .15s}.sv:hover{border-color:#5b4580;transform:translateY(-1px)}
 .sv.on{background:linear-gradient(135deg,rgba(147,51,234,.2),rgba(219,39,119,.12))}
 .slot:hover:not(:disabled),.day:hover:not(:disabled){border-color:var(--acc)}
-h2 .st{background:var(--grad)}h2{margin-top:30px}
+h2 .st{background:var(--grad)}
 .hero{border-radius:0 0 32px 32px;padding-bottom:54px}
 input,textarea,select{min-height:46px;font-size:16px}
 input:focus,textarea:focus,select:focus{box-shadow:0 0 0 3px rgba(216,180,254,.18)}
-.folder{margin-top:40px;overflow:visible}
-.car{perspective:1000px;padding:6px 11% 10px;scroll-padding:0 11%;touch-action:pan-x pan-y}
-.ci{flex:0 0 78%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;transition:opacity .2s;box-shadow:0 18px 40px rgba(0,0,0,.45);user-select:none;-webkit-user-drag:none}
+.folder{margin-top:34px;overflow:visible;padding:10px 10px 12px}
+.ftab{top:-27px;padding:5px 12px;font-size:11px}
+.car{perspective:800px;gap:8px;padding:2px 30% 6px;scroll-padding:0 30%;touch-action:pan-x pan-y}
+.ci{flex:0 0 40%;aspect-ratio:1;max-height:150px;object-fit:cover;border-radius:12px;transition:opacity .2s;box-shadow:0 8px 18px rgba(0,0,0,.4);user-select:none;-webkit-user-drag:none}
+.folder .fdots{margin-top:4px}
+.folder .small{margin:4px 0;font-size:11px}
+.folder .btn.gh{min-height:36px;padding:7px;font-size:13px;margin-top:6px;border-radius:10px}
+h2{margin-top:24px}
 .fab{box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 0 4px rgba(31,168,85,.22)}
 </style>
 </head>
 <body>
-<header class="top"><div class="logo" id="logo">Enamorada’s Nails</div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
+<header class="top"><div class="logo"><img src="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png" alt="Logo Enamorada’s Nails" width="30" height="30" onerror="this.style.display='none'"><span id="logo">Enamorada’s Nails</span></div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
 <main class="wrap"><div id="vR"></div><div id="vP" class="hide"></div></main>
 <div id="lb" class="lb hide"></div>
 <a id="fab" class="fab" target="_blank" rel="noopener" href="#" aria-label="Consultar por WhatsApp">💬</a>
@@ -202,7 +208,7 @@ async function guard(btns,fn,errMsg="No se pudo completar la acción"){
   finally{pending=false;els.forEach(b=>{if(b.isConnected)b.disabled=false})}
 }
 
-const DEF={nombre:T?"Mi negocio":"Enamorada’s Nails",wa:T?"":"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:20,paso:30,dias:90,recs:"30,10",msgConsulta:"¡Hola! 💅 Vi su página y quiero hacer una consulta.\n\nMi nombre es: \nMe interesa: ",
+const DEF={nombre:T?"Mi negocio":"Enamorada’s Nails",wa:T?"":"50432180318",tag:"Diseños únicos, acabado perfecto y atención con cariño.",abre:7,cierra:21,paso:30,dias:90,recs:"30,10",msgConsulta:"¡Hola! 💅 Vi su página y quiero hacer una consulta.\n\nMi nombre es: \nMe interesa: ",
  msgConf:"¡Buen día, {nombre}! 💖 Muchas gracias por agendar. Confirmo tu cita para el {fecha} a las {hora} ({servicio}). ¡Te esperamos!",
  msgRec:"¡Hola, {nombre}! ⏰ Te recordamos que tu cita es hoy a las {hora}. ¡Te esperamos en Enamorada’s Nails! 💅"};
 const DEFS=["Manicura clásica","Uñas acrílicas","Gel / Semipermanente","Pedicura","Nail art / Diseño","Baño acrílico","Aplicación de polygel"];
@@ -216,6 +222,8 @@ let sel={s:null,otro:"",fecha:null,m:null},view=new Date();view.setDate(1);
 let unlocked=false,psub="citas",filtro="prox",q="",armed=null;
 const fill=(t,c)=>t.replace(/\{(\w+)\}/g,(_,k)=>({nombre:c.nombre,fecha:fLarga(c.fecha),hora:h12(c.hora),servicio:c.servicio}[k]||""));
 const nSl=d=>Math.max(1,Math.ceil((d||60)/cfg.paso));
+/* Duración usada para mostrar disponibilidad: la del servicio elegido; si aún no hay servicio, solo 1 espacio (así no se "pierde" la media hora previa a una cita) */
+const selDur=()=>sel.s?sel.s.dur:cfg.paso;
 const ids=(f,m,n)=>[...Array(n)].map((_,i)=>f+"_"+key(m+i*cfg.paso));
 const allSlots=()=>{const a=[];for(let m=cfg.abre*60;m<cfg.cierra*60;m+=cfg.paso)a.push(m);return a};
 const catAll=()=>{const out=[];DEFS.forEach((n,i)=>{const x=servs.find(v=>v.nombre===n);out.push(x?{...x,base:true}:{id:"base"+i,nombre:n,precio:0,dur:60,activo:true,orden:i,base:true})});servs.filter(v=>!DEFS.includes(v.nombre)).forEach(v=>out.push(v));return out.sort((x,y)=>(x.orden||0)-(y.orden||0))};
@@ -242,7 +250,7 @@ function drawGal(){
   el.dataset.sig=sig;
   if(!gal.length){el.innerHTML="";return}
   const N=gal.length,car=gal.slice(0,8);
-  el.innerHTML=`<h2>Nuestros trabajos</h2><div class="folder" id="fold"><div class="ftab" id="ftab">📁 Carpeta · ${N} foto${N>1?"s":""}</div><div class="car" id="car">${car.map((g,i)=>`<img class="ci" data-i="${i}" src="${g.src}" alt="Trabajo de uñas ${i+1}" draggable="false" ${i>1?'loading="lazy"':""}>`).join("")}</div><div class="fdots" id="fdots">${car.map(()=>"<span></span>").join("")}</div><p class="small" style="text-align:center">Desliza ↔ · toca una foto para abrir la carpeta</p><button class="btn gh" id="openf">Abrir carpeta (${N})</button></div>`;
+  el.innerHTML=`<h2>Nuestros trabajos</h2><div class="folder" id="fold"><div class="ftab" id="ftab">📁 Carpeta · ${N} foto${N>1?"s":""}</div><div class="car" id="car">${car.map((g,i)=>`<img class="ci" data-i="${i}" src="${g.src}" alt="Trabajo de uñas ${i+1}" draggable="false" ${i>1?'loading="lazy"':""}>`).join("")}</div><div class="fdots" id="fdots">${car.map(()=>"<span></span>").join("")}</div><p class="small" style="text-align:center">Desliza ↔ · toca para abrir</p><button class="btn gh" id="openf">Abrir carpeta (${N})</button></div>`;
   const cr=$("#car");let tk=0;
   const fx=()=>{tk=0;const b=cr.getBoundingClientRect(),c=b.left+b.width/2;let best=0,bd=9;
     [...cr.children].forEach((im,i)=>{const r=im.getBoundingClientRect(),d=(r.left+r.width/2-c)/b.width,a=Math.min(1,Math.abs(d));
@@ -274,11 +282,11 @@ function drawBook(){
     el.innerHTML=`<div class="card ok" style="margin-top:20px"><div class="big">✨</div><h2 style="justify-content:center">¡Cita agendada!</h2><p>${esc(done.servicio)}<br><b>${esc(fLarga(done.fecha))}</b><br>${esc(h12(done.hora))} – ${esc(h12(mm(done.hora)+nSl(done.dur)*cfg.paso))}</p><p class="small">Gracias, ${esc(done.nombre)}. Te esperamos con mucho cariño 💖</p><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${esc(cfg.wa)}?text=${encodeURIComponent("Hola, soy "+done.nombre+". Agendé "+done.servicio+" el "+fLarga(done.fecha)+" a las "+h12(done.hora)+" 💅")}">💬 Avisar por WhatsApp</a><button class="btn gh" id="ntf">🔔 Avisarme antes de mi cita</button><button class="btn gh" id="ics">📅 Guardar en mi calendario (con alarmas)</button><button class="btn gh" id="otra">Agendar otra cita</button></div>`;
     el.insertAdjacentHTML("beforeend",payCard());bindPay(el);$("#ntf").onclick=async()=>{try{await Notification.requestPermission()}catch(e){}toast("Avisos activados 🔔");checkRec()};$("#ics").onclick=()=>dl(done);$("#otra").onclick=()=>{done=null;sel={s:null,otro:"",fecha:null,m:null};drawBook()};return;
   }
-  const cat=catalog(),dur=sel.s?sel.s.dur:60,n=nSl(dur),keep=["nom","tel","nts"].map(i=>($("#"+i)||{}).value||"");
+  const cat=catalog(),dur=selDur(),n=nSl(dur),keep=["nom","tel","nts"].map(i=>($("#"+i)||{}).value||"");
   let h=`<h2><span class="st">1</span>Elige tu servicio</h2><div class="svl">${cat.map((s,i)=>`<button class="sv ${sel.s&&sel.s.nombre===s.nombre?"on":""}" data-i="${i}"><span>${esc(s.nombre)}<small>⏱ ${durL(s.dur)}</small></span><em>${s.otro?"A consultar":L(s.precio)}</em></button>`).join("")}</div>`;
   if(sel.s&&sel.s.otro)h+=`<label for="otro">¿Qué te quieres hacer?</label><input id="otro" maxlength="80" placeholder="Cuéntanos qué necesitas" value="${esc(sel.otro)}">`;
   h+=`<h2><span class="st">2</span>Elige el día</h2><div class="card"><div id="cal"></div></div>`;
-  if(sel.fecha)h+=`<h2><span class="st">3</span>Elige la hora</h2><div class="slots" id="slots"></div><p class="small">${sel.s?"Tu servicio dura "+durL(dur)+".":"Elige un servicio para ver la duración."}</p>`;
+  if(sel.fecha)h+=`<h2><span class="st">3</span>Elige la hora</h2><div class="slots" id="slots"></div><p class="small">${sel.s?"Tu servicio dura "+durL(dur)+".":"Elige un servicio para ver los horarios exactos."}</p>`;
   if(sel.fecha&&sel.m!=null)h+=`<h2><span class="st">4</span>Tus datos</h2><div class="sum">${esc(sel.s?sel.s.nombre:"Elige un servicio")} · ${esc(fLarga(sel.fecha))}<br>${esc(h12(sel.m))} – ${esc(h12(sel.m+n*cfg.paso))}${sel.s&&+sel.s.precio?" · "+L(sel.s.precio):""}</div><label for="nom">Tu nombre</label><input id="nom" autocomplete="name" placeholder="Ej. María López"><label for="tel">WhatsApp / Teléfono</label><input id="tel" type="tel" autocomplete="tel" placeholder="Ej. 9999-9999"><label for="nts">Notas (opcional)</label><textarea id="nts" rows="2" placeholder="Color, diseño, inspiración…"></textarea><button class="btn" id="go">Confirmar mi cita</button><p class="small">Pago en efectivo o transferencia (cuentas al final de esta página).</p>`;
   h+=payCard();
   el.innerHTML=h;
@@ -291,7 +299,7 @@ function drawCal(){
   const c=$("#cal");if(!c)return;
   const y=view.getFullYear(),m=view.getMonth(),t0=new Date();t0.setHours(0,0,0,0);
   const max=new Date(t0);max.setDate(max.getDate()+cfg.dias);
-  const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay(),cur=t0.getFullYear()===y&&t0.getMonth()===m,nn=nSl(sel.s?sel.s.dur:60);
+  const n=new Date(y,m+1,0).getDate(),lead=new Date(y,m,1).getDay(),cur=t0.getFullYear()===y&&t0.getMonth()===m,nn=nSl(selDur());
   let h=`<div class="cal-h"><button class="nav" id="pv" ${cur?"disabled":""} aria-label="Mes anterior">‹</button><b>${MESES[m]} ${y}</b><button class="nav" id="nx" aria-label="Mes siguiente">›</button></div><div class="grid">${DIAS.map(d=>`<div class="dow">${d}</div>`).join("")}`;
   for(let i=0;i<lead;i++)h+="<div></div>";
   for(let d=1;d<=n;d++){const dt=new Date(y,m,d),k=iso(dt),full=dt>=t0&&!slotsFor(k,nn).some(s=>s.ok);
@@ -302,7 +310,7 @@ function drawCal(){
 }
 function drawSlots(){
   const s=$("#slots");if(!s||!sel.fecha)return;
-  s.innerHTML=slotsFor(sel.fecha,nSl(sel.s?sel.s.dur:60)).map(x=>`<button class="slot ${sel.m===x.m?"on":""}" data-m="${x.m}" ${x.ok?"":"disabled"}>${h12(x.m)}</button>`).join("");
+  s.innerHTML=slotsFor(sel.fecha,nSl(selDur())).map(x=>`<button class="slot ${sel.m===x.m?"on":""}" data-m="${x.m}" ${x.ok?"":"disabled"}>${h12(x.m)}</button>`).join("");
   s.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{sel.m=+b.dataset.m;drawBook();setTimeout(()=>{const g=$("#nom");if(g)g.scrollIntoView({behavior:"smooth",block:"center"})},60)});
 }
 async function book(){
@@ -614,7 +622,7 @@ function shellAj(){
   $("#asv").onclick=()=>{
     const v=id=>$("#a_"+id).value,ab=+v("abre"),ci=+v("cierra");
     if(ci<=ab)return toast("La hora de cierre debe ser después de la apertura");
-    return guard([$("#asv")],async()=>{await setDoc(doc(db,C("config"),"negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,recs:v("recs").replace(/[^\d,]/g,"")||"30,10",msgConsulta:v("msgConsulta")||DEF.msgConsulta,v2:true,pagos:v("pagos").split("\n").map(l=>l.split("|").map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>({banco:a[0],lab:"N° de cuenta",num:a[1],tit:a[2]||""})),...(cfg.pw?{pw:cfg.pw}:{}),msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")},"No se pudo guardar");
+    return guard([$("#asv")],async()=>{await setDoc(doc(db,C("config"),"negocio"),{nombre:v("nombre").trim()||DEF.nombre,wa:v("wa").replace(/\D/g,"")||DEF.wa,tag:v("tag"),abre:ab,cierra:ci,paso:+v("paso"),dias:+v("dias")||90,recs:v("recs").replace(/[^\d,]/g,"")||"30,10",msgConsulta:v("msgConsulta")||DEF.msgConsulta,v2:true,v3:true,pagos:v("pagos").split("\n").map(l=>l.split("|").map(x=>x.trim())).filter(a=>a[0]&&a[1]).map(a=>({banco:a[0],lab:"N° de cuenta",num:a[1],tit:a[2]||""})),...(cfg.pw?{pw:cfg.pw}:{}),msgConf:v("msgConf")||DEF.msgConf,msgRec:v("msgRec")||DEF.msgRec});toast("Ajustes guardados ✅")},"No se pudo guardar");
   };
 }
 
@@ -638,7 +646,7 @@ const CK="enm_pub_"+(T||"main"),CTTL=10*60*1000,GAL_PUB=12;
 const cacheGet=()=>{try{const o=JSON.parse(localStorage.getItem(CK)||"null");return o&&o.t&&Date.now()-o.t<CTTL?o:null}catch(e){return null}};
 const cacheSet=o=>{try{localStorage.setItem(CK,JSON.stringify({...o,t:Date.now()}))}catch(e){}};
 const cacheDirty=()=>{try{localStorage.removeItem(CK)}catch(e){}};
-const applyCfg=dd=>{cfg={...DEF,...dd};cfg.paso=30;soft();if(unlocked&&psub==="citas")drawCitas()};
+const applyCfg=dd=>{cfg={...DEF,...dd};cfg.paso=30;if(+dd.cierra===20&&!dd.v3)cfg.cierra=21; /* migración: +1 hora de trabajo (hasta que se guarden Ajustes con v3) */soft();if(unlocked&&psub==="citas")drawCitas()};
 const applyServs=l=>{servs=l;if(!busy()){drawBook()}refreshP()};
 const setGal=l=>{gal=l.sort((a,b)=>(b.creada||0)-(a.creada||0));drawGal();refreshP()};
 

@@ -28,7 +28,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-u
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(10,9,14,.9);z-index:21;pointer-events:none}
 .top{background:#000;border-bottom:1px solid #1f1f23;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .logo{font:700 19px 'Playfair Display',Georgia,serif;letter-spacing:.3px;display:flex;align-items:center;gap:9px;min-width:0}
-.logo img{width:30px;height:30px;border-radius:8px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.logo img{width:46px;height:46px;border-radius:12px;object-fit:cover;flex:none;background:#15131c;box-shadow:0 0 0 1.5px rgba(216,180,254,.45),0 4px 14px rgba(147,51,234,.35)}
+@media (max-width:400px){.logo{font-size:16px;gap:8px}.logo img{width:42px;height:42px}.tab{padding:8px 12px}}
 .logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tabs{display:flex;gap:6px}
 .tab{border:1px solid #3a3a3a;background:transparent;color:#ddd;padding:7px 14px;border-radius:999px;font:500 13px 'Inter',sans-serif;cursor:pointer}
@@ -153,7 +154,7 @@ h2{margin-top:24px}
 </style>
 </head>
 <body>
-<header class="top"><div class="logo"><img src="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png" alt="Logo Enamorada’s Nails" width="30" height="30" onerror="this.style.display='none'"><span id="logo">Enamorada’s Nails</span></div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
+<header class="top"><div class="logo"><img src="https://202300459-pixel.github.io/Enamorada-Nails/icon-512.png" alt="Logo Enamorada’s Nails" width="46" height="46" onerror="this.style.display='none'"><span id="logo">Enamorada’s Nails</span></div><div class="tabs"><button class="tab on" id="tR">Reservar</button><button class="tab" id="tP">Panel</button></div></header>
 <main class="wrap"><div id="vR"></div><div id="vP" class="hide"></div></main>
 <div id="lb" class="lb hide"></div>
 <a id="fab" class="fab" target="_blank" rel="noopener" href="#" aria-label="Consultar por WhatsApp">💬</a>
@@ -228,9 +229,27 @@ const ids=(f,m,n)=>[...Array(n)].map((_,i)=>f+"_"+key(m+i*cfg.paso));
 const allSlots=()=>{const a=[];for(let m=cfg.abre*60;m<cfg.cierra*60;m+=cfg.paso)a.push(m);return a};
 const catAll=()=>{const out=[];DEFS.forEach((n,i)=>{const x=servs.find(v=>v.nombre===n);out.push(x?{...x,base:true}:{id:"base"+i,nombre:n,precio:0,dur:60,activo:true,orden:i,base:true})});servs.filter(v=>!DEFS.includes(v.nombre)).forEach(v=>out.push(v));return out.sort((x,y)=>(x.orden||0)-(y.orden||0))};
 const catalog=()=>[...catAll().filter(v=>v.activo!==false),{nombre:"Otro",precio:0,dur:60,otro:true}];
+/* Evita que una cita deje "huérfana" una media hora que ningún servicio puede usar.
+   Ej.: si el servicio más corto dura 1 h y reservas 10:30, las 10:00 quedarían perdidas;
+   por eso se ofrece 10:00 (y no 10:30). Pon false para desactivar. */
+const EVITAR_HUECOS=true;
+const minSl=()=>Math.min(...catAll().filter(v=>v.activo!==false).map(v=>nSl(v.dur)),nSl(60));
 function slotsFor(f,n){
-  const out=[],now=new Date(),hoy=f===iso(now),nm=now.getHours()*60+now.getMinutes();
-  for(let m=cfg.abre*60;m+cfg.paso*n<=cfg.cierra*60;m+=cfg.paso)out.push({m,ok:!(hoy&&m<=nm)&&!ids(f,m,n).some(i=>taken.has(i))});
+  const now=new Date(),hoy=f===iso(now),nm=now.getHours()*60+now.getMinutes(),A=cfg.abre*60,Z=cfg.cierra*60,st=cfg.paso;
+  const free=m=>m>=A&&m<Z&&!(hoy&&m<=nm)&&!taken.has(f+"_"+key(m));
+  const out=[];
+  for(let m=A;m+st*n<=Z;m+=st)out.push({m,ok:[...Array(n)].every((_,i)=>free(m+i*st))});
+  const mn=minSl();
+  if(EVITAR_HUECOS&&mn>1){
+    const runs={};
+    out.forEach(o=>{if(!o.ok)return;let b=0,a=0;
+      for(let x=o.m-st;free(x);x-=st)b++;
+      for(let x=o.m+n*st;free(x);x+=st)a++;
+      o.orf=(b>0&&b<mn)||(a>0&&a<mn);o.run=o.m-b*st;
+      (runs[o.run]=runs[o.run]||[]).push(o)});
+    /* solo se ocultan si en esa misma franja libre existe otra hora que no deja hueco */
+    Object.values(runs).forEach(r=>{if(r.some(o=>!o.orf))r.forEach(o=>{if(o.orf)o.ok=false})});
+  }
   return out;
 }
 
